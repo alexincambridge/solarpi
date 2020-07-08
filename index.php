@@ -332,13 +332,13 @@ reset($data);
     });
 </script>
 <script>
-    //DC load Amper [9]
+    //DC load Current Amper [7]
     var g9;
     document.addEventListener("DOMContentLoaded", function(event) {
         g6 = new JustGage({
             id: "g9",
             decimals: true,
-            value: 9,
+            value: "<?php echo $tracer->realtimeData[7]; ?>",
             min: 0,
             max: 50,
             symbol: 'A',
