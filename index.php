@@ -1,6 +1,6 @@
 <?php
-
-/*
+*
+*
  * PHP EpSolar Tracer Class (PhpEpsolarTracer) v0.9
  *
  * Library for communicating with
@@ -20,95 +20,94 @@
  * It creates a web page with tracer data
  *
  * The version below is a highly modified version of that referred to by the headers above, the origninal can be found at https://github.com/toggio/PhpEpsolarTracer
- */
-//
-////require_once 'PhpEpsolarTracer.php';
-////$tracer = new PhpEpsolarTracer('/dev/ttyXRUSB0');
-//
-//$tracerstatus_bgcolor = "#dedede";
-//// $ecolor = "black";
-//// $battSoc = 0;
-//// Get Info and check if is connected
-//if ($tracer->getInfoData()) {
-//    $connection = "Connected";
-//    $connection_bgcolor = "lime";
-//} else {
-//    $connection = "Disconnected";
-//    $connection_bgcolor = "red";
-//}
-//
-//// Get Real Time Data
-//if ($tracer->getRealTimeData()) {
-//    $tracerstatus_bgcolor = "lime";
-//    $equipStatus = $tracer->realtimeData[16];
-//    $chargStatus = 0b11 & ($equipStatus >> 2);
-//    switch ($chargStatus) {
-//        case 0: $eStatus = "Not charging";
-//            break;
-//        case 1: $eStatus = "Float (13.8V)";
-//            break;
-//        case 2: $eStatus = "Boost (14.4V)";
-//            break;
-//        case 3: $eStatus = "Equalization (14.6V)";
-//            break;
-//    };
-//    if ($equipStatus >> 4) {
-//        $eStatus = "<font color=\"red\">FAULT</font>";
-//        $tracerstatus_bgcolor = "red";
-//    }
-//
-//    $battStatus = $tracer->realtimeData[15];
-//    $battLevel = 0b1111 & $battStatus;
-//    switch ($battLevel) {
-//        case 0: $bStatus = "Normal";
-//            break;
-//        case 1: $bStatus = "<font color=\"red\">Overvolt</font>";
-//            break;
-//        case 2: $bStatus = "<font color=\"yellow\">Undervolt</font>";
-//            break;
-//        case 3: $bStatus = "<font color=\"red\">Low volt disconnect</font>";
-//            break;
-//        case 4: {
-//            $bStatus = "<font color=\"red\">FAULT</font>";
-//            $tracerstatus_bgcolor = "red";
-//            break;
-//        }
-//    }
-//
-//    $battSoc = $tracer->realtimeData[12];
-//}
-//
-////get data for the last 2 weeks
-////$ago = time() - 1209600;
-////get data for the last 24 hrs
-////$ago = time() - 86400;
-////get data for the last 48 hrs
-//$ago = time() - (86400 * 2);
-//
-//$dsn = "mysql:host=localhost;dbname=Solardata";
-//$user = "root";
-//$passwd = "password";
-//
-//$pdo = new PDO($dsn, $user, $passwd);
-//
-////$dbh = new PDO("mysql:host=localhost;dbname=solardata", "databaseusername", "databasepassword");
-//$sth = $pdo->prepare("select `timestamp`,`PV array voltage`,`PV array current`,`PV array power`,`Battery voltage`,`Battery charging current`,`Battery charging power`,`Load voltage`,`Load current`,`Load power` from stats where `Controller` = 1 and `timestamp` > ? order by `timestamp` asc");
-//$sth->bindParam(1, $ago);
-//$sth->execute();
-//
-////build the json array
-//$data = array();
-//while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
-//    $data["category"][] = date("H:i", $row["timestamp"]);
-//    while (list($key, $val) = each($row)) {
-//        $data[$key][] = $val;
-//    }
-//}
-//
-//unset($data["timestamp"]);
-//
-//reset($data);
-//?>
+ **/
+require_once 'PhpEpsolarTracer.php';
+$tracer = new PhpEpsolarTracer('/dev/ttyXRUSB0');
+
+$tracerstatus_bgcolor = "#dedede";
+$ecolor = "black";
+$battSoc = 0;
+Get Info and check if is connected
+if ($tracer->getInfoData()) {
+    $connection = "Connected";
+    $connection_bgcolor = "lime";
+} else {
+    $connection = "Disconnected";
+    $connection_bgcolor = "red";
+}
+
+// Get Real Time Data
+if ($tracer->getRealTimeData()) {
+    $tracerstatus_bgcolor = "lime";
+    $equipStatus = $tracer->realtimeData[16];
+    $chargStatus = 0b11 & ($equipStatus >> 2);
+    switch ($chargStatus) {
+        case 0: $eStatus = "Not charging";
+            break;
+        case 1: $eStatus = "Float (13.8V)";
+            break;
+        case 2: $eStatus = "Boost (14.4V)";
+            break;
+        case 3: $eStatus = "Equalization (14.6V)";
+            break;
+    };
+    if ($equipStatus >> 4) {
+        $eStatus = "<font color=\"red\">FAULT</font>";
+        $tracerstatus_bgcolor = "red";
+    }
+
+    $battStatus = $tracer->realtimeData[15];
+    $battLevel = 0b1111 & $battStatus;
+    switch ($battLevel) {
+        case 0: $bStatus = "Normal";
+            break;
+        case 1: $bStatus = "<font color=\"red\">Overvolt</font>";
+            break;
+        case 2: $bStatus = "<font color=\"yellow\">Undervolt</font>";
+            break;
+        case 3: $bStatus = "<font color=\"red\">Low volt disconnect</font>";
+            break;
+        case 4: {
+            $bStatus = "<font color=\"red\">FAULT</font>";
+            $tracerstatus_bgcolor = "red";
+            break;
+        }
+    }
+
+    $battSoc = $tracer->realtimeData[12];
+}
+
+get data for the last 2 weeks
+$ago = time() - 1209600;
+get data for the last 24 hrs
+$ago = time() - 86400;
+get data for the last 48 hrs
+$ago = time() - (86400 * 2);
+
+$dsn = "mysql:host=localhost;dbname=Solardata";
+$user = "root";
+$passwd = "password";
+
+$pdo = new PDO($dsn, $user, $passwd);
+
+$dbh = new PDO("mysql:host=localhost;dbname=solardata", "databaseusername", "databasepassword");
+$sth = $pdo->prepare("select `timestamp`,`PV array voltage`,`PV array current`,`PV array power`,`Battery voltage`,`Battery charging current`,`Battery charging power`,`Load voltage`,`Load current`,`Load power` from stats where `Controller` = 1 and `timestamp` > ? order by `timestamp` asc");
+$sth->bindParam(1, $ago);
+$sth->execute();
+
+build the json array
+$data = array();
+while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
+    $data["category"][] = date("H:i", $row["timestamp"]);
+    while (list($key, $val) = each($row)) {
+        $data[$key][] = $val;
+    }
+}
+
+unset($data["timestamp"]);
+
+reset($data);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -338,7 +337,7 @@
         g6 = new JustGage({
             id: "g9",
             decimals: true,
-            value: "<?php echo $tracer->realtimeData[7]; ?>",
+            value: 9,
             min: 0,
             max: 50,
             symbol: 'A',
