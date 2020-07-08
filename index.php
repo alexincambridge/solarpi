@@ -18,7 +18,7 @@
  *
  * This is an example on how to use the library
  * It creates a web page with tracer data
- * 
+ *
  * The version below is a highly modified version of that referred to by the headers above, the origninal can be found at https://github.com/toggio/PhpEpsolarTracer
  */
 
@@ -69,10 +69,10 @@ if ($tracer->getRealTimeData()) {
         case 3: $bStatus = "<font color=\"red\">Low volt disconnect</font>";
             break;
         case 4: {
-                $bStatus = "<font color=\"red\">FAULT</font>";
-                $tracerstatus_bgcolor = "red";
-                break;
-            }
+            $bStatus = "<font color=\"red\">FAULT</font>";
+            $tracerstatus_bgcolor = "red";
+            break;
+        }
     }
 
     $battSoc = $tracer->realtimeData[12];
@@ -111,701 +111,592 @@ reset($data);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <script type="text/javascript" src="./fusioncharts/fusioncharts.js"></script>
-        <script type="text/javascript" src="fusioncharts/fusioncharts.charts.js"></script>
-        <script type="text/javascript" src="fusioncharts/fusioncharts.widgets.js"></script>
-        <script type="text/javascript" src="fusioncharts/themes/fusioncharts.theme.fint.js"></script>
 
+<head>
 
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-        <script type="text/javascript">
-                    FusionCharts.ready(function () {
-                    var fusioncharts = new FusionCharts({
-                    type: 'zoomlinedy',
-                            renderAt: 'chart',
-                            width: '800',
-                            height: '600',
-                            dataFormat: 'json',
-                            dataSource: {
-                            "chart": {
-                            "caption": "Performance History",
-                                    "pYAxisname": "Value",
-                                    "sYAxisname": "PV Array Voltage (V)",
-                                    "xAxisname": "Time",
-                                    "pYAxisMinValue":"0",
-                                    "pYAxisMaxValue":"15",
-                                    "sYAxisMaxValue": "100",
-                                    "sYAxisMinValue": "0",
-                                    "lineThickness": "1",
-                                    "compactdatamode": "1",
-                                    "dataseparator": "|",
-                                    "labelHeight": "30",
-                                    "theme": "fint"
-                            },
-                                    "categories": [{
-                                    "category": "<?php
-echo implode('|', $data["category"]);
-unset($data["category"]);
-reset($data);
-?>"
-                                    }],
-<?php
-$i = 1;
-echo '"dataset":[';
-while (list ($key, $val) = each($data)) {
+  <title>Solar Tracer Dashboard</title>
 
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-    echo '{"seriesname": "' . $key . '",';
-    if (stripos($key, 'PV array voltage') !== FALSE) {
-        echo '"parentYAxis": "S",';
-    } else {
-        echo '"parentYAxis": "P",';
-    }
-    echo '"data": "' . implode('|', $val) . '"';
-    echo "}";
-    if ($i != count($data)) {
-        echo ",";
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <script src="js/raphael-2.1.4.min.js"></script>
+    <script src="js/justgage.js"></script>
+
+<style>
+    #g1, #g2, #g3, #g4, #g5, #g6{
+        width:80px; height:80px;
+        display: inline-block;
+        margin: 0em;
     }
 
-    $i++;
-}
-?>
-
-                            ]
-                            }
-                    }
-                    );
-                            fusioncharts.render();
-                    });</script>
+</style>
 
 
-        <script type="text/javascript">
-                    FusionCharts.ready(function () {
-                    var fusioncharts = new FusionCharts({
-                    type: 'angulargauge',
-                            renderAt: 'currentflow',
-                            width: '400',
-                            height: '250',
-                            dataFormat: 'json',
-                            dataSource: {
-                            "chart": {
-                            "caption": "Nett Current (A)",
-                                    "subcaption": "-ve = from battery | +ve = to battery ",
-                                    "lowerLimit": "-30",
-                                    "upperLimit": "+30",
-                                    "theme": "fint",
-                                    "showValue": "1",
-                                    "valueBelowPivot": "1",
-                                    "majorTMNumber": "7",
-                                    "minorTMNumber": "9",
-                            },
-                                    "colorRange": {
-                                    "color": [{
-                                    "minValue": "-30",
-                                            "maxValue": "0",
-                                            "code": "#e44a00"
-                                    }, {
-                                    "minValue": "0.001",
-                                            "maxValue": "30",
-                                            "code": "#6baa01"
-                                    }]
-                                    },
-                                    "dials": {
-                                    "dial": [{
-                                    "value": "<?php echo $tracer->realtimeData[4] - $tracer->realtimeData[7]; ?>"
-                                    }]
-                                    }
-                            }
-                    }
-                    );
-                            fusioncharts.render();
-                    });</script>
+</head>
 
-        <script type="text/javascript">
-                    FusionCharts.ready(function () {
-                    var fusioncharts = new FusionCharts({
-                    type: 'angulargauge',
-                            renderAt: 'PV voltage',
-                            width: '300',
-                            height: '200',
-                            dataFormat: 'json',
-                            dataSource: {
-                            "chart": {
-                            "caption": "PV Voltage (V)",
-                                    "lowerLimit": "0",
-                                    "upperLimit": "100",
-                                    "theme": "fint",
-                                    "showValue": "1",
-                                    "valueBelowPivot": "1",
-                                    "majorTMNumber": "9",
-                                    "minorTMNumber": "5",
-                            },
-                                    "colorRange": {
-                                    "color": [{
-                                    "minValue": "0",
-                                            "maxValue": "90",
-                                            "code": "#6baa01"
-                                    }, {
-                                    "minValue": "91",
-                                            "maxValue": "100",
-                                            "code": "#e44a00"
-                                    }]
-                                    },
-                                    "dials": {
-                                    "dial": [{
-                                    "value": "<?php echo $tracer->realtimeData[0]; ?>"
-                                    }]
-                                    }
-                            }
-                    }
-                    );
-                            fusioncharts.render();
-                    });</script>
+<body id="page-top">
 
+<script>
+    var g1;
+    document.addEventListener("DOMContentLoaded", function(event) {
+        g1 = new JustGage({
+            id: "g1",
+            value: 12,
+            min: 0,
+            max: 50,
+            gaugeWidthScale: 0.6,
+            counter: true,
+            label: "V"
 
-        <script type="text/javascript">
-                    FusionCharts.ready(function () {
-                    var fusioncharts = new FusionCharts({
-                    type: 'angulargauge',
-                            renderAt: 'Battery voltage',
-                            width: '300',
-                            height: '200',
-                            dataFormat: 'json',
-                            dataSource: {
-                            "chart": {
-                            "caption": "Battery Voltage (V)",
-                                    "lowerLimit": "10",
-                                    "upperLimit": "15",
-                                    "theme": "fint",
-                                    "showValue": "1",
-                                    "valueBelowPivot": "1",
-                                    "majorTMNumber": "7",
-                                    "minorTMNumber": "9",
-                            },
-                                    "colorRange": {
-                                    "color": [{
-                                    "minValue": "10",
-                                            "maxValue": "11",
-                                            "code": "#e44a00"
-                                    }, {
-                                    "minValue": "11.001",
-                                            "maxValue": "13.8",
-                                            "code": "#6baa01"
-                                    }, {
-                                    "minValue": "13.801",
-                                            "maxValue": "14.5",
-                                            "code": "#f8bd19"
-                                    }, {
-                                    "minValue": "14.501",
-                                            "maxValue": "15",
-                                            "code": "#e44a00"
-                                    }]
-                                    },
-                                    "dials": {
-                                    "dial": [{
-                                    "value": "<?php echo $tracer->realtimeData[3]; ?>"
-                                    }]
-                                    }
-                            }
-                    }
-                    );
-                            fusioncharts.render();
-                    });</script>
+        });
 
-        <script type="text/javascript">
-                    FusionCharts.ready(function () {
-                    var fusioncharts = new FusionCharts({
-                    type: 'angulargauge',
-                            renderAt: 'Load voltage',
-                            width: '300',
-                            height: '200',
-                            dataFormat: 'json',
-                            dataSource: {
-                            "chart": {
-                            "caption": "Load Voltage (V)",
-                                    "lowerLimit": "10",
-                                    "upperLimit": "15",
-                                    "theme": "fint",
-                                    "showValue": "1",
-                                    "valueBelowPivot": "1",
-                                    "majorTMNumber": "16",
-                                    "minorTMNumber": "5",
-                            },
-                                    "colorRange": {
-                                    "color": [{
-                                    "minValue": "0",
-                                            "maxValue": "13.8",
-                                            "code": "#6baa01"
-                                    }, {
-                                    "minValue": "13.801",
-                                            "maxValue": "14.5",
-                                            "code": "#f8bd19"
-                                    }, {
-                                    "minValue": "14.501",
-                                            "maxValue": "15",
-                                            "code": "#e44a00"
-                                    }]
-                                    },
-                                    "dials": {
-                                    "dial": [{
-                                    "value": "<?php echo $tracer->realtimeData[6]; ?>"
-                                    }]
-                                    }
-                            }
-                    }
-                    );
-                            fusioncharts.render();
-                    });</script>
+        document.getElementById('g1_refresh').addEventListener('click', function() {
+            g1.refresh(getRandomInt(0, 30));
+        });
+    });
+</script>
+
+<script>
+    var g2;
+    document.addEventListener("DOMContentLoaded", function(event) {
+        g2 = new JustGage({
+            id: "g2",
+            value: 5,
+            min: 0,
+            max: 30,
+            gaugeWidthScale: 0.6,
+            counter: true,
+            label: "A",
+
+        });
+
+        document.getElementById('g2_refresh').addEventListener('click', function() {
+            g1.refresh(getRandomInt(0, 30));
+        });
+    });
+</script>
+
+<script>
+    var g3;
+    document.addEventListener("DOMContentLoaded", function(event) {
+        g2 = new JustGage({
+            id: "g3",
+            value: 14,
+            min: 0,
+            max: 30,
+            gaugeWidthScale: 0.6,
+            counter: true,
+            label: "W",
+        });
+
+        document.getElementById('g3_refresh').addEventListener('click', function() {
+            g1.refresh(getRandomInt(0, 20));
+        });
+    });
+</script>
+
+<script>
+    var g4;
+    document.addEventListener("DOMContentLoaded", function(event) {
+        g4 = new JustGage({
+            id: "g4",
+            value: 12,
+            min: 0,
+            max: 50,
+            symbol: 'V',
+            pointer: true,
+            pointerOptions: {
+                toplength: 8,
+                bottomlength: -20,
+                bottomwidth: 6,
+                color: '#8e8e93'
+            },
+            gaugeWidthScale: 0.6,
+            counter: true,
+            label: "V"
+
+        });
+
+        document.getElementById('g4_refresh').addEventListener('click', function() {
+            g1.refresh(getRandomInt(0, 30));
+        });
+    });
+</script>
+<script>
+    var g5;
+    document.addEventListener("DOMContentLoaded", function(event) {
+        g4 = new JustGage({
+            id: "g5",
+            value: 5,
+            min: 0,
+            max: 8,
+            symbol: 'A',
+            pointer: true,
+            pointerOptions: {
+                toplength: 8,
+                bottomlength: -20,
+                bottomwidth: 6,
+                color: '#8e8e93'
+            },
+            gaugeWidthScale: 0.6,
+            counter: true,
+            label: "A"
+
+        });
+
+        document.getElementById('g5_refresh').addEventListener('click', function() {
+            g1.refresh(getRandomInt(0, 30));
+        });
+    });
+</script>
+<script>
+    var g6;
+    document.addEventListener("DOMContentLoaded", function(event) {
+        g6 = new JustGage({
+            id: "g6",
+            value: 12,
+            min: 0,
+            max: 50,
+            symbol: 'W',
+            pointer: true,
+            pointerOptions: {
+                toplength: 8,
+                bottomlength: -20,
+                bottomwidth: 6,
+                color: '#8e8e93'
+            },
+            gaugeWidthScale: 0.6,
+            counter: true,
+            label: "W"
 
 
-        <script type="text/javascript">
-                    FusionCharts.ready(function () {
-                    var fusioncharts = new FusionCharts({
-                    type: 'angulargauge',
-                            renderAt: 'PV power',
-                            width: '300',
-                            height: '200',
-                            dataFormat: 'json',
-                            dataSource: {
-                            "chart": {
-                            "caption": "PV power (W)",
-                                    "lowerLimit": "0",
-                                    "upperLimit": "400",
-                                    "theme": "fint",
-                                    "showValue": "1",
-                                    "valueBelowPivot": "1",
-                                    "majorTMNumber": "5",
-                                    "minorTMNumber": "9",
-                            },
-                                    "colorRange": {
-                                    "color": [{
-                                    "minValue": "0",
-                                            "maxValue": "350",
-                                            "code": "#6baa01"
-                                    }, {
-                                    "minValue": "351",
-                                            "maxValue": "400",
-                                            "code": "#e44a00"
-                                    }]
-                                    },
-                                    "dials": {
-                                    "dial": [{
-                                    "value": "<?php echo $tracer->realtimeData[2]; ?>"
-                                    }]
-                                    }
-                            }
-                    }
-                    );
-                            fusioncharts.render();
-                    });</script>
+        });
+
+        document.getElementById('g6_refresh').addEventListener('click', function() {
+            g1.refresh(getRandomInt(0, 30));
+        });
+    });
+</script>
+<script>
+    var g7;
+    document.addEventListener("DOMContentLoaded", function(event) {
+        g7 = new JustGage({
+            id: "g7",
+            value: <?php echo $battSoc; ?>,
+            min: 0,
+            max: 100,
+            symbol: '%',
+            pointer: true,
+            pointerOptions: {
+                toplength: 8,
+                bottomlength: -20,
+                bottomwidth: 6,
+                color: '#8e8e93'
+            },
+            gaugeWidthScale: 0.6,
+            counter: true,
+            label: "Ah"
 
 
-        <script type="text/javascript">
-                    FusionCharts.ready(function () {
-                    var fusioncharts = new FusionCharts({
-                    type: 'angulargauge',
-                            renderAt: 'Battery power',
-                            width: '300',
-                            height: '200',
-                            dataFormat: 'json',
-                            dataSource: {
-                            "chart": {
-                            "caption": "Battery Power (W)",
-                                    "lowerLimit": "0",
-                                    "upperLimit": "400",
-                                    "theme": "fint",
-                                    "showValue": "1",
-                                    "valueBelowPivot": "1",
-                                    "majorTMNumber": "5",
-                                    "minorTMNumber": "9",
-                            },
-                                    "colorRange": {
-                                    "color": [{
-                                    "minValue": "0",
-                                            "maxValue": "350",
-                                            "code": "#6baa01"
-                                    }, {
-                                    "minValue": "351",
-                                            "maxValue": "400",
-                                            "code": "#e44a00"
-                                    }]
-                                    },
-                                    "dials": {
-                                    "dial": [{
-                                    "value": "<?php echo $tracer->realtimeData[5]; ?>"
-                                    }]
-                                    }
-                            }
-                    }
-                    );
-                            fusioncharts.render();
-                    });</script>
+        });
 
-        <script type="text/javascript">
-                    FusionCharts.ready(function () {
-                    var fusioncharts = new FusionCharts({
-                    type: 'angulargauge',
-                            renderAt: 'Load power',
-                            width: '300',
-                            height: '200',
-                            dataFormat: 'json',
-                            dataSource: {
-                            "chart": {
-                            "caption": "Load Power (W)",
-                                    "lowerLimit": "0",
-                                    "upperLimit": "400",
-                                    "theme": "fint",
-                                    "showValue": "1",
-                                    "valueBelowPivot": "1",
-                                    "majorTMNumber": "5",
-                                    "minorTMNumber": "9",
-                            },
-                                    "colorRange": {
-                                    "color": [{
-                                    "minValue": "0",
-                                            "maxValue": "350",
-                                            "code": "#6baa01"
-                                    }, {
-                                    "minValue": "351",
-                                            "maxValue": "400",
-                                            "code": "#e44a00"
-                                    }]
-                                    },
-                                    "dials": {
-                                    "dial": [{
-                                    "value": "<?php echo $tracer->realtimeData[8]; ?>"
-                                    }]
-                                    }
-                            }
-                    }
-                    );
-                            fusioncharts.render();
-                    });</script>
+        document.getElementById('g7_refresh').addEventListener('click', function() {
+            g1.refresh(getRandomInt(0, 30));
+        });
+    });
 
-        <script type="text/javascript">
-                    FusionCharts.ready(function () {
-                    var fusioncharts = new FusionCharts({
-                    type: 'angulargauge',
-                            renderAt: 'PV current',
-                            width: '300',
-                            height: '200',
-                            dataFormat: 'json',
-                            dataSource: {
-                            "chart": {
-                            "caption": "PV Current (A)",
-                                    "lowerLimit": "0",
-                                    "upperLimit": "30",
-                                    "theme": "fint",
-                                    "showValue": "1",
-                                    "valueBelowPivot": "1",
-                                    "majorTMNumber": "4",
-                                    "minorTMNumber": "9",
-                            },
-                                    "colorRange": {
-                                    "color": [{
-                                    "minValue": "0",
-                                            "maxValue": "25",
-                                            "code": "#6baa01"
-                                    }, {
-                                    "minValue": "25.001",
-                                            "maxValue": "30",
-                                            "code": "#e44a00"
-                                    }]
-                                    },
-                                    "dials": {
-                                    "dial": [{
-                                    "value": "<?php echo $tracer->realtimeData[1]; ?>"
-                                    }]
-                                    }
-                            }
-                    }
-                    );
-                            fusioncharts.render();
-                    });</script>
+</script>
 
-        <script type="text/javascript">
-                    FusionCharts.ready(function () {
-                    var fusioncharts = new FusionCharts({
-                    type: 'angulargauge',
-                            renderAt: 'Battery current',
-                            width: '300',
-                            height: '200',
-                            dataFormat: 'json',
-                            dataSource: {
-                            "chart": {
-                            "caption": "Battery Current (A)",
-                                    "lowerLimit": "-30",
-                                    "upperLimit": "30",
-                                    "theme": "fint",
-                                    "showValue": "1",
-                                    "valueBelowPivot": "1",
-                                    "majorTMNumber": "7",
-                                    "minorTMNumber": "9",
-                            },
-                                    "colorRange": {
-                                    "color": [{
-                                    "minValue": "-30",
-                                            "maxValue": "0",
-                                            "code": "#e44a00"
-                                    }, {
-                                    "minValue": "0.001",
-                                            "maxValue": "30",
-                                            "code": "#6baa01"
-                                    }]
-                                    },
-                                    "dials": {
-                                    "dial": [{
-                                    "value": "<?php echo $tracer->realtimeData[4]; ?>"
-                                    }]
-                                    }
-                            }
-                    }
-                    );
-                            fusioncharts.render();
-                    });</script>
+  <!-- Page Wrapper -->
+  <div id="wrapper">
 
-        <script type="text/javascript">
-                    FusionCharts.ready(function () {
-                    var fusioncharts = new FusionCharts({
-                    type: 'angulargauge',
-                            renderAt: 'Load current',
-                            width: '300',
-                            height: '200',
-                            dataFormat: 'json',
-                            dataSource: {
-                            "chart": {
-                            "caption": "Load Current (A)",
-                                    "lowerLimit": "0",
-                                    "upperLimit": "30",
-                                    "theme": "fint",
-                                    "showValue": "1",
-                                    "valueBelowPivot": "1",
-                                    "majorTMNumber": "4",
-                                    "minorTMNumber": "9",
-                            },
-                                    "colorRange": {
-                                    "color": [{
-                                    "minValue": "0",
-                                            "maxValue": "25",
-                                            "code": "#6baa01"
-                                    }, {
-                                    "minValue": "25.001",
-                                            "maxValue": "30",
-                                            "code": "#e44a00"
-                                    }]
-                                    },
-                                    "dials": {
-                                    "dial": [{
-                                    "value": "<?php echo $tracer->realtimeData[7]; ?>"
-                                    }]
-                                    }
-                            }
-                    }
-                    );
-                            fusioncharts.render();
-                    });</script>
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+        <div class="sidebar-brand-text mx-3">Solar Tracer <sup>2.0</sup></div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link" href="index.php">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Options
+      </div>
+
+      <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Charts</span></a>
+      </li>
+
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="tables.html">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Tables</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
 
 
-        <script type="text/javascript">
-                    FusionCharts.ready(function(){
-                    var fusioncharts = new FusionCharts({
-                    type: 'thermometer',
-                            renderAt: 'Charger temp',
-                            width: '160',
-                            height: '400',
-                            dataFormat: 'json',
-                            dataSource: {
-                            "chart": {
-                            "caption": "Charger Temperature",
-                                    "lowerLimit": "-20",
-                                    "upperLimit": "100",
-                                    "numberSuffix": "°C",
-                                    "showhovereffect": "1",
-                                    "decimals": "2",
-                                    "majorTMNumber": "13",
-                                    "minorTMNumber": "5",
-                                    "thmBulbRadius": "25",
-                                    "thmOriginX": "80",
-<?php
-switch ($tracer->realtimeData[10]) {
-    case ($tracer->realtimeData[10] < 10):
-        echo '"gaugeFillColor": "#008ee4",';
-        echo '"gaugeBorderColor": "#008ee4",';
-        break;
-    case ($tracer->realtimeData[10] >= 10 && $tracer->realtimeData[10] < 70):
-        echo '"gaugeFillColor": "#6baa01",';
-        echo '"gaugeBorderColor": "#6baa01",';
-        break;
-    case ($tracer->realtimeData[10] >= 70 && $tracer->realtimeData[10] < 75):
-        echo '"gaugeFillColor": "#f8bd19",';
-        echo '"gaugeBorderColor": "#f8bd19",';
-        break;
-    case ($tracer->realtimeData[10] >= 75):
-        echo '"gaugeFillColor": "#e44a00",';
-        echo '"gaugeBorderColor": "#e44a00",';
-        break;
-}
-?>
-                            "gaugeFillAlpha": "70",
-                                    //Customizing gauge border
-                                    "showGaugeBorder": "1",
-                                    "gaugeBorderThickness": "2",
-                                    "gaugeBorderAlpha": "60",
-                                    "theme": "fint",
-                                    "chartBottomMargin": "20"
-                            },
-                                    "value": "<?php echo $tracer->realtimeData[10]; ?>"
-                            }
-                    }
-                    );
-                            fusioncharts.render();
-                    });
-        </script>
+          <ul class="navbar-nav ml-auto">
 
-        <meta charset="utf-8">
-        <meta name="description" content="">
-        <meta name="keywords" content="">
-        <title>Power Status</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <style>
-            table.gridtable {
-                font-family: verdana,arial,sans-serif;
-                font-size:12px;
-                color:#333333;
-                border-width: 1px;
-                border-color: #666666;
-                border-collapse: collapse;
-                width: 100%;
-            }
-            table.gridtable th {
-                border-width: 1px;
-                padding: 8px;
-                border-style: solid;
-                border-color: #666666;
-                background-color: #dedede;
-                text-align: center;
-            }
-            table.gridtable th.connection {
-                background-color: <?php echo $connection_bgcolor ?>;
-                text-align:center;
-            }
-            table.gridtable th.tracerstatus {
-                background-color: <?php echo $tracerstatus_bgcolor ?>;
-                text-align:center;
-            }
-            table.gridtable td {
-                border-width: 1px;
-                border-top: 0px;
-                padding: 5px;
-                border-style: solid;
-                border-color: #666666;
-                background-color: #ffffff;
-                text-align:right;
-                height:17px;
-            }
-            table.gridtable td.bold {
-                font-weight: bold;
-                width: 33.3%;
-                text-align:left;
-            }
-            table.gridtable td.head {
-                font-weight: bold;
-                width: 33.3%;
-                text-align:right;
-            }
-            table.gridtable td.button {
-                width: 15%;
-                text-align:center;
-                background-color:#efefef;
-                color:#cecece;
-                cursor: default;
-            }
-            div.centered
-            {
-                text-align: center;
-            }
-            div.inner
-            {
-                max-width: 650px;
-                width: 95%;
-                text-align: center;
-                margin: 0 auto;
-            }
-            div.inner table
-            {
-                margin: 0 auto;
-                text-align: left;
-            }
-            #chargepercentp {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                vertical-align: middle;
-                left:-5px;
-                z-index: 10;
-            }
-            #chargepercentg {
-                top: 0;
-                width: <?php echo $battSoc; ?>%;
-                height: 100%;
-                position: absolute;
-                background-color:#dedede;
-                margin: 0 auto;
-                padding: 0;
-                z-index: 1;
-            }
-            #container {
-                position: relative;
-                top: 0;
-                left: 0;
-                width:100%;
-                height:100%;
-                margin: 0 auto;
-                padding: 0;
-                vertical-align: middle;
-                line-height: 27px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="centered">
-            <table style='width:97%;'>
-                <tr>
-                    <td>
-                        <table>
-                            <tr><td colspan="3" style='text-align:center;'><div id="currentflow"></div></td></tr>
-                            <tr><td><div id="PV voltage"></div></td><td><div id="Battery voltage"></div></td><td><div id="Load voltage"></div></td></tr>
-                            <tr><td><div id="PV current"></div></td><td><div id="Battery current"></div></td><td><div id="Load current"></div></td></tr>
-                            <tr><td><div id="PV power"></div></td><td><div id="Battery power"></div></td><td><div id="Load power"></div></td></tr>
-                        </table>
-                    </td>
-                    <td>
-                        <table class="gridtable">
-                            <tr>
-                                <th class="tracerstatus" id="tracerstatus" colspan=2>-= Tracer Status =-</th>
-                            </tr>
-                            <tr>
-                                <td class="bold">Battery status</td><td class="status" id="batterystatus"><?php echo $bStatus; ?></td>
-                            </tr>
-                            <tr>
-                                <td class="bold">Equipment status</td><td class="status" id="equipmentstatus"><?php echo $eStatus; ?></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" style='text-align:center;'><div id="Charger temp"></div></td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td><div id="chart"></div></td>
-                </tr>
-                <tr><td colspan="3"><table class="gridtable">
-                            <tr>
-                                <th class="connection" id="connection"><?php echo $connection; ?></th>
-                            </tr>
-                        </table></td></tr>
-            </table>
-            <br>
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo "The time is " . date("h:i:sa");?></span>
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Activity Log
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+          </div>
+
+          <!-- Content Row -->
+          <div class="row">
+
+            <!-- Metemos Gauges aqui -->
+             <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Solar Panel Activity</div>
+                        <div class="container">
+                            <div id="g1" class="gauge"></div>
+                            <div id="g2" class="gauge"></div>
+                            <div id="g3" class="gauge"></div>
+                            </div>
+
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Solar Activity</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-solar-panel fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Battery Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Battery Activity</div>
+                        <div class="container">
+                        <div id="g4" class="gauge"></div>
+                        <div id="g5" class="gauge"></div>
+                        <div id="g6" class="gauge"></div>
+                        </div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Battery Activity</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-car-battery fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+              <!-- Battery Example -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card border-left-success shadow h-100 py-2">
+                      <div class="card-body">
+                          <div class="row no-gutters align-items-center">
+                              <div class="col mr-2">
+                                  <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Battery SOC</div>
+                                  <div class="container">
+                                      <div id="g7" class="gauge"></div>
+                                  </div>
+                                  <div class="h5 mb-0 font-weight-bold text-gray-800">Battery Remain Capacity</div>
+                              </div>
+                              <div class="col-auto">
+                                  <i class="fas fa-car-battery fa-2x text-gray-300"></i>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">KiloWats Generated</div>
+                        <div class="col-auto">
+                            <i class="fas fa-charging-station fa-2x text-gray-300"></i>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">18Kws</div>
+                        <hr>
+                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Temperature</div>
+                            <i class="fas fa-thermometer-half fa-2x text-gray-300"></i>
+                               <div class="h5 mb-0 font-weight-bold text-gray-800">18ºC</div>
+
+
+                    </div>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Row -->
+
+          <div class="row">
+
+            <!-- Area Chart -->
+            <div class="col-xl-8 col-lg-7">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Energy Produced</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-area">
+                    <canvas id="myAreaChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pie Chart -->
+            <div class="col-xl-4 col-lg-5">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">DC Load Information</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-pie pt-4 pb-2">
+                    <canvas id="myPieChart"></canvas>
+                  </div>
+                  <div class="mt-4 text-center small">
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-primary"></i> Load Current (A)
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-success"></i> Load Voltage (V)
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-info"></i> Load Power (W)
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Row -->
+          <div class="row">
+
+            <!-- Content Column -->
+            <div class="col-lg-6 mb-4">
+
+              <!-- Project Card Example -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                </div>
+                <div class="card-body">
+                  <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+             </div>
+          </div>
+
         </div>
-    </body>
-</html>
+        <!-- /.container-fluid -->
 
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; 2020</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
+
+</body>
+
+</html>
