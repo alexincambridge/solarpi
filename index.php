@@ -154,6 +154,7 @@ reset($data);
             id: "g1",
             decimals: true,
             value: "<?php echo $tracer->realtimeData[0]; ?>",
+            symbol: 'V',
             min: 0.0,
             max: 50,
             gaugeWidthScale: 0.6,
@@ -162,10 +163,7 @@ reset($data);
 
         });
 
-        document.getElementById('g1_refresh').addEventListener('click', function() {
-            g1.refresh(getRandomInt(0, 30));
-        });
-    });
+
 </script>
 
 <script>
@@ -175,6 +173,7 @@ reset($data);
             id: "g2",
             decimals: true,
             value: "<?php echo $tracer->realtimeData[1]; ?>",
+            symbol: 'A',
             min: 0,
             max: 30,
             gaugeWidthScale: 0.6,
@@ -196,6 +195,7 @@ reset($data);
             id: "g3",
             decimals: true,
             value: "<?php echo $tracer->realtimeData[2]; ?>",
+            symbol: 'W',
             min: 0,
             max: 30,
             gaugeWidthScale: 0.6,
