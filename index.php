@@ -155,15 +155,18 @@ reset($data);
             decimals: true,
             value: "<?php echo $tracer->realtimeData[0]; ?>",
             symbol: 'V',
-            min: 0.0,
-            max: 50,
+            min: 0,
+            max: 30,
             gaugeWidthScale: 0.6,
             counter: true,
             label: "V"
 
         });
 
-
+        document.getElementById('g1_refresh').addEventListener('click', function() {
+            g1.refresh(getRandomInt(0, 30));
+        });
+    });
 </script>
 
 <script>
