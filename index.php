@@ -1,6 +1,6 @@
 <?php
-*
-*
+
+/*
  * PHP EpSolar Tracer Class (PhpEpsolarTracer) v0.9
  *
  * Library for communicating with
@@ -20,14 +20,15 @@
  * It creates a web page with tracer data
  *
  * The version below is a highly modified version of that referred to by the headers above, the origninal can be found at https://github.com/toggio/PhpEpsolarTracer
- **/
+ */
+
 require_once 'PhpEpsolarTracer.php';
 $tracer = new PhpEpsolarTracer('/dev/ttyXRUSB0');
 
 $tracerstatus_bgcolor = "#dedede";
-$ecolor = "black";
-$battSoc = 0;
-Get Info and check if is connected
+// $ecolor = "black";
+// $battSoc = 0;
+// Get Info and check if is connected
 if ($tracer->getInfoData()) {
     $connection = "Connected";
     $connection_bgcolor = "lime";
@@ -77,11 +78,11 @@ if ($tracer->getRealTimeData()) {
     $battSoc = $tracer->realtimeData[12];
 }
 
-get data for the last 2 weeks
-$ago = time() - 1209600;
-get data for the last 24 hrs
-$ago = time() - 86400;
-get data for the last 48 hrs
+//get data for the last 2 weeks
+//$ago = time() - 1209600;
+//get data for the last 24 hrs
+//$ago = time() - 86400;
+//get data for the last 48 hrs
 $ago = time() - (86400 * 2);
 
 $dsn = "mysql:host=localhost;dbname=Solardata";
@@ -90,12 +91,12 @@ $passwd = "password";
 
 $pdo = new PDO($dsn, $user, $passwd);
 
-$dbh = new PDO("mysql:host=localhost;dbname=solardata", "databaseusername", "databasepassword");
+//$dbh = new PDO("mysql:host=localhost;dbname=solardata", "databaseusername", "databasepassword");
 $sth = $pdo->prepare("select `timestamp`,`PV array voltage`,`PV array current`,`PV array power`,`Battery voltage`,`Battery charging current`,`Battery charging power`,`Load voltage`,`Load current`,`Load power` from stats where `Controller` = 1 and `timestamp` > ? order by `timestamp` asc");
 $sth->bindParam(1, $ago);
 $sth->execute();
 
-build the json array
+//build the json array
 $data = array();
 while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
     $data["category"][] = date("H:i", $row["timestamp"]);
