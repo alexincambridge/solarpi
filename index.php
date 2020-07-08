@@ -21,94 +21,94 @@
  *
  * The version below is a highly modified version of that referred to by the headers above, the origninal can be found at https://github.com/toggio/PhpEpsolarTracer
  */
-
-require_once 'PhpEpsolarTracer.php';
-$tracer = new PhpEpsolarTracer('/dev/ttyXRUSB0');
-
-$tracerstatus_bgcolor = "#dedede";
-// $ecolor = "black";
-// $battSoc = 0;
-// Get Info and check if is connected
-if ($tracer->getInfoData()) {
-    $connection = "Connected";
-    $connection_bgcolor = "lime";
-} else {
-    $connection = "Disconnected";
-    $connection_bgcolor = "red";
-}
-
-// Get Real Time Data
-if ($tracer->getRealTimeData()) {
-    $tracerstatus_bgcolor = "lime";
-    $equipStatus = $tracer->realtimeData[16];
-    $chargStatus = 0b11 & ($equipStatus >> 2);
-    switch ($chargStatus) {
-        case 0: $eStatus = "Not charging";
-            break;
-        case 1: $eStatus = "Float (13.8V)";
-            break;
-        case 2: $eStatus = "Boost (14.4V)";
-            break;
-        case 3: $eStatus = "Equalization (14.6V)";
-            break;
-    };
-    if ($equipStatus >> 4) {
-        $eStatus = "<font color=\"red\">FAULT</font>";
-        $tracerstatus_bgcolor = "red";
-    }
-
-    $battStatus = $tracer->realtimeData[15];
-    $battLevel = 0b1111 & $battStatus;
-    switch ($battLevel) {
-        case 0: $bStatus = "Normal";
-            break;
-        case 1: $bStatus = "<font color=\"red\">Overvolt</font>";
-            break;
-        case 2: $bStatus = "<font color=\"yellow\">Undervolt</font>";
-            break;
-        case 3: $bStatus = "<font color=\"red\">Low volt disconnect</font>";
-            break;
-        case 4: {
-            $bStatus = "<font color=\"red\">FAULT</font>";
-            $tracerstatus_bgcolor = "red";
-            break;
-        }
-    }
-
-    $battSoc = $tracer->realtimeData[12];
-}
-
-//get data for the last 2 weeks
-//$ago = time() - 1209600;
-//get data for the last 24 hrs
-//$ago = time() - 86400;
-//get data for the last 48 hrs
-$ago = time() - (86400 * 2);
-
-$dsn = "mysql:host=localhost;dbname=Solardata";
-$user = "root";
-$passwd = "password";
-
-$pdo = new PDO($dsn, $user, $passwd);
-
-//$dbh = new PDO("mysql:host=localhost;dbname=solardata", "databaseusername", "databasepassword");
-$sth = $pdo->prepare("select `timestamp`,`PV array voltage`,`PV array current`,`PV array power`,`Battery voltage`,`Battery charging current`,`Battery charging power`,`Load voltage`,`Load current`,`Load power` from stats where `Controller` = 1 and `timestamp` > ? order by `timestamp` asc");
-$sth->bindParam(1, $ago);
-$sth->execute();
-
-//build the json array
-$data = array();
-while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
-    $data["category"][] = date("H:i", $row["timestamp"]);
-    while (list($key, $val) = each($row)) {
-        $data[$key][] = $val;
-    }
-}
-
-unset($data["timestamp"]);
-
-reset($data);
-?>
+//
+////require_once 'PhpEpsolarTracer.php';
+////$tracer = new PhpEpsolarTracer('/dev/ttyXRUSB0');
+//
+//$tracerstatus_bgcolor = "#dedede";
+//// $ecolor = "black";
+//// $battSoc = 0;
+//// Get Info and check if is connected
+//if ($tracer->getInfoData()) {
+//    $connection = "Connected";
+//    $connection_bgcolor = "lime";
+//} else {
+//    $connection = "Disconnected";
+//    $connection_bgcolor = "red";
+//}
+//
+//// Get Real Time Data
+//if ($tracer->getRealTimeData()) {
+//    $tracerstatus_bgcolor = "lime";
+//    $equipStatus = $tracer->realtimeData[16];
+//    $chargStatus = 0b11 & ($equipStatus >> 2);
+//    switch ($chargStatus) {
+//        case 0: $eStatus = "Not charging";
+//            break;
+//        case 1: $eStatus = "Float (13.8V)";
+//            break;
+//        case 2: $eStatus = "Boost (14.4V)";
+//            break;
+//        case 3: $eStatus = "Equalization (14.6V)";
+//            break;
+//    };
+//    if ($equipStatus >> 4) {
+//        $eStatus = "<font color=\"red\">FAULT</font>";
+//        $tracerstatus_bgcolor = "red";
+//    }
+//
+//    $battStatus = $tracer->realtimeData[15];
+//    $battLevel = 0b1111 & $battStatus;
+//    switch ($battLevel) {
+//        case 0: $bStatus = "Normal";
+//            break;
+//        case 1: $bStatus = "<font color=\"red\">Overvolt</font>";
+//            break;
+//        case 2: $bStatus = "<font color=\"yellow\">Undervolt</font>";
+//            break;
+//        case 3: $bStatus = "<font color=\"red\">Low volt disconnect</font>";
+//            break;
+//        case 4: {
+//            $bStatus = "<font color=\"red\">FAULT</font>";
+//            $tracerstatus_bgcolor = "red";
+//            break;
+//        }
+//    }
+//
+//    $battSoc = $tracer->realtimeData[12];
+//}
+//
+////get data for the last 2 weeks
+////$ago = time() - 1209600;
+////get data for the last 24 hrs
+////$ago = time() - 86400;
+////get data for the last 48 hrs
+//$ago = time() - (86400 * 2);
+//
+//$dsn = "mysql:host=localhost;dbname=Solardata";
+//$user = "root";
+//$passwd = "password";
+//
+//$pdo = new PDO($dsn, $user, $passwd);
+//
+////$dbh = new PDO("mysql:host=localhost;dbname=solardata", "databaseusername", "databasepassword");
+//$sth = $pdo->prepare("select `timestamp`,`PV array voltage`,`PV array current`,`PV array power`,`Battery voltage`,`Battery charging current`,`Battery charging power`,`Load voltage`,`Load current`,`Load power` from stats where `Controller` = 1 and `timestamp` > ? order by `timestamp` asc");
+//$sth->bindParam(1, $ago);
+//$sth->execute();
+//
+////build the json array
+//$data = array();
+//while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
+//    $data["category"][] = date("H:i", $row["timestamp"]);
+//    while (list($key, $val) = each($row)) {
+//        $data[$key][] = $val;
+//    }
+//}
+//
+//unset($data["timestamp"]);
+//
+//reset($data);
+//?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -133,7 +133,7 @@ reset($data);
     <script src="js/justgage.js"></script>
 
 <style>
-    #g1, #g2, #g3, #g4, #g5, #g6{
+    #g1, #g2, #g3, #g4, #g5, #g6, #g8, #g9, #g10{
         width:80px; height:80px;
         display: inline-block;
         margin: 0em;
@@ -296,6 +296,98 @@ reset($data);
         });
 
         document.getElementById('g6_refresh').addEventListener('click', function() {
+            g1.refresh(getRandomInt(0, 30));
+        });
+    });
+</script>
+<!-- DC Load information -->
+<script>
+    //DC Load V
+    var g6;
+    document.addEventListener("DOMContentLoaded", function(event) {
+        g6 = new JustGage({
+            id: "g8",
+            decimals: true,
+            value: "<?php echo $tracer->realtimeData[6]; ?>",
+            min: 0,
+            max: 50,
+            symbol: 'V',
+            pointer: true,
+            pointerOptions: {
+                toplength: 8,
+                bottomlength: -20,
+                bottomwidth: 6,
+                color: '#8e8e93'
+            },
+            gaugeWidthScale: 0.6,
+            counter: true,
+            label: "V"
+
+
+        });
+
+        document.getElementById('g8_refresh').addEventListener('click', function() {
+            g1.refresh(getRandomInt(0, 30));
+        });
+    });
+</script>
+<script>
+    //DC load Amper [9]
+    var g9;
+    document.addEventListener("DOMContentLoaded", function(event) {
+        g6 = new JustGage({
+            id: "g9",
+            decimals: true,
+            value: "<?php echo $tracer->realtimeData[7]; ?>",
+            min: 0,
+            max: 50,
+            symbol: 'A',
+            pointer: true,
+            pointerOptions: {
+                toplength: 8,
+                bottomlength: -20,
+                bottomwidth: 6,
+                color: '#8e8e93'
+            },
+            gaugeWidthScale: 0.6,
+            counter: true,
+            label: "A"
+
+
+        });
+
+        document.getElementById('g9_refresh').addEventListener('click', function() {
+            g1.refresh(getRandomInt(0, 30));
+        });
+    });
+</script>
+
+<script>
+    //DC  power
+    var g10;
+    document.addEventListener("DOMContentLoaded", function(event) {
+        g6 = new JustGage({
+            id: "g10",
+            decimals: true,
+            value: "<?php echo $tracer->realtimeData[8]; ?>",
+            min: 0,
+            max: 50,
+            symbol: 'W',
+            pointer: true,
+            pointerOptions: {
+                toplength: 8,
+                bottomlength: -20,
+                bottomwidth: 6,
+                color: '#8e8e93'
+            },
+            gaugeWidthScale: 0.6,
+            counter: true,
+            label: "W"
+
+
+        });
+
+        document.getElementById('g10_refresh').addEventListener('click', function() {
             g1.refresh(getRandomInt(0, 30));
         });
     });
@@ -593,7 +685,13 @@ reset($data);
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="chart-pie pt-4 pb-2">
-                    <canvas id="myPieChart"></canvas>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">DC Load Information</div>
+                      <div class="container">
+                          <div id="g8" class="gauge"></div>
+                          <div id="g9" class="gauge"></div>
+                          <div id="g10" class="gauge"></div>
+                      </div>
+
                   </div>
                   <div class="mt-4 text-center small">
                     <span class="mr-2">
