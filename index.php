@@ -152,8 +152,9 @@ reset($data);
     document.addEventListener("DOMContentLoaded", function(event) {
         g1 = new JustGage({
             id: "g1",
+            decimals: true,
             value: "<?php echo $tracer->realtimeData[0]; ?>",
-            min: 0,
+            min: 0.0,
             max: 50,
             gaugeWidthScale: 0.6,
             counter: true,
@@ -172,6 +173,7 @@ reset($data);
     document.addEventListener("DOMContentLoaded", function(event) {
         g2 = new JustGage({
             id: "g2",
+            decimals: true,
             value: "<?php echo $tracer->realtimeData[1]; ?>",
             min: 0,
             max: 30,
@@ -192,6 +194,7 @@ reset($data);
     document.addEventListener("DOMContentLoaded", function(event) {
         g2 = new JustGage({
             id: "g3",
+            decimals: true,
             value: "<?php echo $tracer->realtimeData[2]; ?>",
             min: 0,
             max: 30,
@@ -212,6 +215,7 @@ reset($data);
     document.addEventListener("DOMContentLoaded", function(event) {
         g4 = new JustGage({
             id: "g4",
+            decimals: true,
             value: "<?php echo $tracer->realtimeData[3]; ?>",
             min: 0,
             max: 50,
@@ -240,6 +244,7 @@ reset($data);
     document.addEventListener("DOMContentLoaded", function(event) {
         g4 = new JustGage({
             id: "g5",
+            decimals: true,
             value: "<?php echo $tracer->realtimeData[4]; ?>",
             min: 0,
             max: 8,
@@ -268,6 +273,7 @@ reset($data);
     document.addEventListener("DOMContentLoaded", function(event) {
         g6 = new JustGage({
             id: "g6",
+            decimals: true,
             value: "<?php echo $tracer->realtimeData[5]; ?>",
             min: 0,
             max: 50,
