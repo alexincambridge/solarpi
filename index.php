@@ -146,12 +146,13 @@ reset($data);
 
 <body id="page-top">
 
+<!-- Solar Panels info  g1 V, g2 A, g3 W #3300 [0]-->
 <script>
     var g1;
     document.addEventListener("DOMContentLoaded", function(event) {
         g1 = new JustGage({
             id: "g1",
-            value: 12,
+            value: "<?php echo $tracer->realtimeData[0]; ?>",
             min: 0,
             max: 50,
             gaugeWidthScale: 0.6,
@@ -171,7 +172,7 @@ reset($data);
     document.addEventListener("DOMContentLoaded", function(event) {
         g2 = new JustGage({
             id: "g2",
-            value: 5,
+            value: "<?php echo $tracer->realtimeData[1]; ?>",
             min: 0,
             max: 30,
             gaugeWidthScale: 0.6,
@@ -191,7 +192,7 @@ reset($data);
     document.addEventListener("DOMContentLoaded", function(event) {
         g2 = new JustGage({
             id: "g3",
-            value: 14,
+            value: "<?php echo $tracer->realtimeData[2]; ?>",
             min: 0,
             max: 30,
             gaugeWidthScale: 0.6,
@@ -204,13 +205,14 @@ reset($data);
         });
     });
 </script>
-
+<!-- Battery info  g4 V, g5 A, g6 W -->
 <script>
+    //battery voltage 3
     var g4;
     document.addEventListener("DOMContentLoaded", function(event) {
         g4 = new JustGage({
             id: "g4",
-            value: 12,
+            value: "<?php echo $tracer->realtimeData[3]; ?>",
             min: 0,
             max: 50,
             symbol: 'V',
@@ -233,11 +235,12 @@ reset($data);
     });
 </script>
 <script>
+    // battery current
     var g5;
     document.addEventListener("DOMContentLoaded", function(event) {
         g4 = new JustGage({
             id: "g5",
-            value: 5,
+            value: "<?php echo $tracer->realtimeData[4]; ?>",
             min: 0,
             max: 8,
             symbol: 'A',
@@ -260,11 +263,12 @@ reset($data);
     });
 </script>
 <script>
+    //Battery power [5]
     var g6;
     document.addEventListener("DOMContentLoaded", function(event) {
         g6 = new JustGage({
             id: "g6",
-            value: 12,
+            value: "<?php echo $tracer->realtimeData[5]; ?>",
             min: 0,
             max: 50,
             symbol: 'W',
@@ -287,6 +291,7 @@ reset($data);
         });
     });
 </script>
+<!-- Battery status % Ah remain -->
 <script>
     var g7;
     document.addEventListener("DOMContentLoaded", function(event) {
