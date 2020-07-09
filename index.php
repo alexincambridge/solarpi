@@ -31,10 +31,9 @@ $tracerstatus_bgcolor = "#dedede";
 // Get Info and check if is connected
 if ($tracer->getInfoData()) {
     $connection = "Connected";
-    $connection_bgcolor = "lime";
 } else {
     $connection = "Disconnected";
-    $connection_bgcolor = "red";
+
 }
 
 // Get Real Time Data
@@ -484,7 +483,8 @@ reset($data);
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"><?php echo "<p> <font color=blue size='4pt'> Status MPPT Tracer:</font> 
+       <font color=green size='4pt'>$connection</font></p>"; ?>
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -552,7 +552,7 @@ reset($data);
                             <div id="g2" class="gauge"></div>
                             <div id="g3" class="gauge"></div>
                             </div>
-
+                        <br>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">Solar Activity</div>
                     </div>
                     <div class="col-auto">
@@ -575,7 +575,10 @@ reset($data);
                         <div id="g5" class="gauge"></div>
                         <div id="g6" class="gauge"></div>
                         </div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Battery Activity</div>
+                        <br>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Battery Activity</div><?php echo $bStatus; ?>
+                        <hr>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Equipment Status</div><?php echo $eStatus; ?>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-car-battery fa-2x text-gray-300"></i>
