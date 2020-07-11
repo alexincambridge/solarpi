@@ -30,15 +30,16 @@ $tracerstatus_bgcolor = "#dedede";
 // $battSoc = 0;
 // Get Info and check if is connected
 if ($tracer->getInfoData()) {
-    $connection = "Connected";
+    $connection = "<font color=\"green\">Connected</font>";
 } else {
-    $connection = "Disconnected";
+    $connection = "<font color=\"red\">Disconnected</font>";
 
 }
 
+
 // Get Real Time Data
 if ($tracer->getRealTimeData()) {
-    $tracerstatus_bgcolor = "lime";
+    $tracerstatus_bgcolor = "green";
     $equipStatus = $tracer->realtimeData[16];
     $chargStatus = 0b11 & ($equipStatus >> 2);
     switch ($chargStatus) {
@@ -63,7 +64,7 @@ if ($tracer->getRealTimeData()) {
             break;
         case 1: $bStatus = "<font color=\"red\">Overvolt</font>";
             break;
-        case 2: $bStatus = "<font color=\"yellow\">Undervolt</font>";
+        case 2: $bStatus = "<font color=\"orange\">Undervolt</font>";
             break;
         case 3: $bStatus = "<font color=\"red\">Low volt disconnect</font>";
             break;
@@ -76,6 +77,28 @@ if ($tracer->getRealTimeData()) {
 
     $battSoc = $tracer->realtimeData[12];
 }
+
+
+////Statistic Data
+//Statistical Data ----------------------------------
+//00 Max input voltage today: 21.22V
+//01 Min input voltage today: 0V
+//02 Max battery voltage today: 13.44V
+//03 Min battery voltage today: 12.01V
+//04 Consumed energy today: 0KWH
+//05 Consumed energy this month: 0.18KWH
+//06 Consumed energy this year: 0.18KWH
+//07 Total consumed energy: 0.18KWH
+//08 Generated energy today: 0.02KWH
+//09 Generated energy this moth: 0.2KWH
+//10 Generated energy this year: 0.2KWH
+//11 Total generated energy: 0.2KWH
+//12 Carbon dioxide reduction: 0T
+//13 Net battery current: 0.36A
+//14 Battery temperature: 19.13°C
+//15 Ambient temperature: 19.13°C
+
+$enerGenTotal = $tracer->getStatData[12];
 
 //get data for the last 2 weeks
 //$ago = time() - 1209600;
@@ -130,6 +153,8 @@ reset($data);
 
     <script src="js/raphael-2.1.4.min.js"></script>
     <script src="js/justgage.js"></script>
+    <script src="js/chartjs-2.9.3/canvasjs.min.js.js"></script>
+    <script src="js/chartjs-2.9.3/jquery.canvasjs.min.js"></script>
 
 <style>
     #g1, #g2, #g3, #g4, #g5, #g6, #g8, #g9, #g10{
@@ -408,6 +433,11 @@ reset($data);
                 bottomwidth: 6,
                 color: '#8e8e93'
             },
+            levelColors: [
+                "#F50000",
+                "#F59400",
+                "#71D506"
+            ],
             gaugeWidthScale: 0.6,
             counter: true,
             label: "Ah"
@@ -420,6 +450,91 @@ reset($data);
         });
     });
 
+</script>
+
+<script>
+    window.onload = function () {
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            title:{
+                text: "Daily High Temperature at Different Beaches"
+            },
+            axisX: {
+                valueFormatString: "DD MMM,YY"
+            },
+            axisY: {
+                title: "Temperature (in °C)",
+                includeZero: false,
+                suffix: " °C"
+            },
+            legend:{
+                cursor: "pointer",
+                fontSize: 16,
+                itemclick: toggleDataSeries
+            },
+            toolTip:{
+                shared: true
+            },
+            data: [{
+                name: "Myrtle Beach",
+                type: "spline",
+                yValueFormatString: "#0.## °C",
+                showInLegend: true,
+                dataPoints: [
+                    { x: new Date(2017,6,24), y: 31 },
+                    { x: new Date(2017,6,25), y: 31 },
+                    { x: new Date(2017,6,26), y: 29 },
+                    { x: new Date(2017,6,27), y: 29 },
+                    { x: new Date(2017,6,28), y: 31 },
+                    { x: new Date(2017,6,29), y: 30 },
+                    { x: new Date(2017,6,30), y: 29 }
+                ]
+            },
+                {
+                    name: "Martha Vineyard",
+                    type: "spline",
+                    yValueFormatString: "#0.## °C",
+                    showInLegend: true,
+                    dataPoints: [
+                        { x: new Date(2017,6,24), y: 20 },
+                        { x: new Date(2017,6,25), y: 20 },
+                        { x: new Date(2017,6,26), y: 25 },
+                        { x: new Date(2017,6,27), y: 25 },
+                        { x: new Date(2017,6,28), y: 25 },
+                        { x: new Date(2017,6,29), y: 25 },
+                        { x: new Date(2017,6,30), y: 25 }
+                    ]
+                },
+                {
+                    name: "Nantucket",
+                    type: "spline",
+                    yValueFormatString: "#0.## °C",
+                    showInLegend: true,
+                    dataPoints: [
+                        { x: new Date(2017,6,24), y: 22 },
+                        { x: new Date(2017,6,25), y: 19 },
+                        { x: new Date(2017,6,26), y: 23 },
+                        { x: new Date(2017,6,27), y: 24 },
+                        { x: new Date(2017,6,28), y: 24 },
+                        { x: new Date(2017,6,29), y: 23 },
+                        { x: new Date(2017,6,30), y: 23 }
+                    ]
+                }]
+        });
+        chart.render();
+
+        function toggleDataSeries(e){
+            if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                e.dataSeries.visible = false;
+            }
+            else{
+                e.dataSeries.visible = true;
+            }
+            chart.render();
+        }
+
+    }
 </script>
 
   <!-- Page Wrapper -->
@@ -483,24 +598,20 @@ reset($data);
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"><?php echo "<p> <font color=blue size='4pt'> Status MPPT Tracer:</font> 
-       <font color=green size='4pt'>$connection</font></p>"; ?>
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"><?php echo "<p> <font color=blue size='4pt'> Status MPPT Tracer:$connection</p>";?>
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
 
-
           <ul class="navbar-nav ml-auto">
-
-
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo "The time is " . date("h:i:sa");?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo date("h:i:sa");?></span>
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -614,14 +725,14 @@ reset($data);
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">KiloWats Generated</div>
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total Energy Generated</div>
                         <div class="col-auto">
                             <i class="fas fa-charging-station fa-2x text-gray-300"></i>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">18Kws</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $EnerGenTotal;?>Kwh</div>
                         <hr>
                              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Temperature</div>
                             <i class="fas fa-thermometer-half fa-2x text-gray-300"></i>
-                               <div class="h5 mb-0 font-weight-bold text-gray-800">18ºC</div>
+                               <div class="h5 mb-0 font-weight-bold text-gray-800"><? echo $tracer->realtimeData[10];?> º C</div>
 
 
                     </div>
