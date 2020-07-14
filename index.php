@@ -150,7 +150,7 @@ reset($data);
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="js/raphael-2.1.4.min.js"></script>
     <script src="js/justgage.js"></script>
     <script src="js/chartjs-2.9.3/canvasjs.min.js.js"></script>
@@ -537,6 +537,17 @@ reset($data);
     }
 </script>
 
+<script type="text/javascript">
+    var timestamp = '<?=time();?>';
+    function updateTime(){
+        $('#time').html(Date(timestamp));
+        timestamp++;
+    }
+    $(function(){
+        setInterval(updateTime, 1000);
+    });
+</script>
+
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -568,7 +579,7 @@ reset($data);
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="charts.php">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Charts</span></a>
       </li>
@@ -611,7 +622,7 @@ reset($data);
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo date('d m Y | H:i:s', $_SESSION['time']);?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><p id="time"></p></span>
               </a>
 
             </li>
@@ -713,7 +724,7 @@ reset($data);
                         <hr>
                              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Temperature</div>
                             <i class="fas fa-thermometer-half fa-2x text-gray-300"></i>
-                               <div class="h5 mb-0 font-weight-bold text-gray-800"><? echo $tracer->realtimeData[10];?> º C</div>
+                               <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $tracer->realtimeData[10];?> º C</div>
 
 
                     </div>
