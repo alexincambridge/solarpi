@@ -621,8 +621,7 @@ reset($data);
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
             ['Net Current', '(A)'],
-            ['+ ve = to Battery',   '<?php echo $tracer->realtimeData[4];?>'],
-            ['- ve = from Battery',     '<?php $tracer->realtimeData[7];?>']
+            ['+ ve = to Battery - ve = from Battery',   '<?php echo $tracer->realtimeData[7] - $tracer->realtimeData[4];?>']
 
         ]);
 
