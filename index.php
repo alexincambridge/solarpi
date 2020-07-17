@@ -87,55 +87,55 @@ for ($i = 0; $i <count($tracer->realtimeData); $i++)
 
 switch($_GET['q']){
     case 0:
-        echo json_encode($pv_results[0]);
+        ($pv_results[0]);
         break;
     case 1:
-        echo json_encode($pv_results[1]);
+        ($pv_results[1]);
         break;
     case 2:
-        echo json_encode($pv_results[2]);
+        ($pv_results[2]);
         break;
     case 3:
-        echo json_encode($pv_results[3]);
+        ($pv_results[3]);
         break;
     case 4:
-        echo json_encode($pv_results[4]);
+        ($pv_results[4]);
         break;
     case 5:
-        echo json_encode($pv_results[5]);
+        ($pv_results[5]);
         break;
     case 6:
-        echo json_encode($pv_results[6]);
+        ($pv_results[6]);
         break;
     case 7:
-        echo json_encode($pv_results[7]);
+        ($pv_results[7]);
         break;
     case 8:
-        echo json_encode($pv_results[8]);
+        ($pv_results[8]);
         break;
     case 9:
-        echo json_encode($pv_results[9]);
+        ($pv_results[9]);
         break;
     case 10:
-        echo json_encode($pv_results[10]);
+        ($pv_results[10]);
         break;
     case 11:
-        echo json_encode($pv_results[11]);
+        ($pv_results[11]);
         break;
     case 12:
-        echo json_encode($pv_results[12]);
+        ($pv_results[12]);
         break;
     case 13:
-        echo json_encode($pv_results[13]);
+        ($pv_results[13]);
         break;
     case 14:
-        echo json_encode($pv_results[14]);
+        ($pv_results[14]);
         break;
     case 15:
-        echo json_encode($pv_results[15]);
+        ($pv_results[15]);
         break;
     case 16:
-        echo json_encode($pv_results[16]);
+        ($pv_results[16]);
         break;
 
 
@@ -236,7 +236,14 @@ reset($data);
 
 <body id="page-top">
 
-<!-- Solar Panels info  g1 V, g2 A, g3 W #3300 [0]-->
+//Solar Panels info  g1 V, g2 A, g3 W #3300 [0]-->
+//Voltaje x Corriente = Potencia
+//1V x 1A = 1 W
+
+//V x A = W
+//A =  W / V
+//100W/18V  = 5.55 amperios
+
 <script>
     var g1;
     document.addEventListener("DOMContentLoaded", function(event) {
@@ -246,7 +253,7 @@ reset($data);
             value: "<?php echo $tracer->realtimeData[0]; ?>",
             symbol: 'V',
             min: 0,
-            max: 30,
+            max: 24,
             gaugeWidthScale: 0.6,
             counter: true,
             label: "V"
@@ -268,7 +275,7 @@ reset($data);
             value: "<?php echo $tracer->realtimeData[1]; ?>",
             symbol: 'A',
             min: 0,
-            max: 30,
+            max: 7,
             gaugeWidthScale: 0.6,
             counter: true,
             label: "A",
@@ -290,7 +297,7 @@ reset($data);
             value: "<?php echo $tracer->realtimeData[2]; ?>",
             symbol: 'W',
             min: 0,
-            max: 30,
+            max: 100,
             gaugeWidthScale: 0.6,
             counter: true,
             label: "W",
@@ -311,7 +318,7 @@ reset($data);
             decimals: true,
             value: "<?php echo $tracer->realtimeData[3]; ?>",
             min: 0,
-            max: 50,
+            max: 24,
             symbol: 'V',
             pointer: true,
             pointerOptions: {
@@ -340,7 +347,7 @@ reset($data);
             decimals: true,
             value: "<?php echo $tracer->realtimeData[4]; ?>",
             min: 0,
-            max: 8,
+            max: 10,
             symbol: 'A',
             pointer: true,
             pointerOptions: {
@@ -369,7 +376,7 @@ reset($data);
             decimals: true,
             value: "<?php echo $tracer->realtimeData[5]; ?>",
             min: 0,
-            max: 50,
+            max: 24,
             symbol: 'W',
             pointer: true,
             pointerOptions: {
@@ -400,7 +407,7 @@ reset($data);
             decimals: true,
             value: "<?php echo $tracer->realtimeData[6]; ?>",
             min: 0,
-            max: 50,
+            max: 24,
             symbol: 'V',
             pointer: true,
             pointerOptions: {
@@ -430,7 +437,7 @@ reset($data);
             decimals: true,
             value: "<?php echo $tracer->realtimeData[7]; ?>",
             min: 0,
-            max: 50,
+            max: 8,
             symbol: 'A',
             pointer: true,
             pointerOptions: {
@@ -461,7 +468,7 @@ reset($data);
             decimals: true,
             value: "<?php echo $tracer->realtimeData[8]; ?>",
             min: 0,
-            max: 50,
+            max: 100,
             symbol: 'W',
             pointer: true,
             pointerOptions: {
@@ -494,14 +501,14 @@ reset($data);
             symbol: '%',
             pointer: true,
             pointerOptions: {
-                toplength: 8,
+                toplength: -8,
                 bottomlength: -20,
                 bottomwidth: 6,
                 color: '#8e8e93'
             },
             levelColors: [
                 "#F50000",
-                "#F59400",
+                "#ffcc00",
                 "#71D506"
             ],
             gaugeWidthScale: 0.6,
