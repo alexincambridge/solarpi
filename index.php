@@ -197,7 +197,7 @@ unset($data["timestamp"]);
 reset($data);
 
 //net value current from the battery load and download
-$net_bat_energy = ($tracer->realtimeData[7] - $tracer->realtimeData[4]);
+//$net_bat_energy = ($tracer->realtimeData[7] - $tracer->realtimeData[4]);
 
 <!DOCTYPE html>
 <html lang="en">
@@ -623,7 +623,8 @@ $net_bat_energy = ($tracer->realtimeData[7] - $tracer->realtimeData[4]);
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
             ['Net Current', '(A)'],
-            ['+ ve = to Battery - ve = from Battery',   '<?echo $net_bat_energy;?>']
+            ['+ ve = to Battery - ve = from Battery',   7],
+            ['+ ve = to Battery - ve = from Battery',   7]
 
         ]);
 
