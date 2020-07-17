@@ -78,6 +78,71 @@ if ($tracer->getRealTimeData()) {
     $battSoc = $tracer->realtimeData[12];
 }
 
+//"Real-time data" and "Real-time status" registers
+$tracer->getRealtimeData();
+
+for ($i = 0; $i <count($tracer->realtimeData); $i++)
+
+    $pv_results = $tracer->realtimeData;
+
+switch($_GET['q']){
+    case 0:
+        echo json_encode($pv_results[0]);
+        break;
+    case 1:
+        echo json_encode($pv_results[1]);
+        break;
+    case 2:
+        echo json_encode($pv_results[2]);
+        break;
+    case 3:
+        echo json_encode($pv_results[3]);
+        break;
+    case 4:
+        echo json_encode($pv_results[4]);
+        break;
+    case 5:
+        echo json_encode($pv_results[5]);
+        break;
+    case 6:
+        echo json_encode($pv_results[6]);
+        break;
+    case 7:
+        echo json_encode($pv_results[7]);
+        break;
+    case 8:
+        echo json_encode($pv_results[8]);
+        break;
+    case 9:
+        echo json_encode($pv_results[9]);
+        break;
+    case 10:
+        echo json_encode($pv_results[10]);
+        break;
+    case 11:
+        echo json_encode($pv_results[11]);
+        break;
+    case 12:
+        echo json_encode($pv_results[12]);
+        break;
+    case 13:
+        echo json_encode($pv_results[13]);
+        break;
+    case 14:
+        echo json_encode($pv_results[14]);
+        break;
+    case 15:
+        echo json_encode($pv_results[15]);
+        break;
+    case 16:
+        echo json_encode($pv_results[16]);
+        break;
+
+
+}
+
+
+
 
 ////Statistic Data
 //Statistical Data ----------------------------------
@@ -131,6 +196,7 @@ unset($data["timestamp"]);
 
 reset($data);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -536,7 +602,7 @@ reset($data);
 
     }
 </script>
-
+<!-- Current time on top bar-->
 <script type="text/javascript">
     var timestamp = '<?=time();?>';
     function updateTime(){
@@ -546,6 +612,30 @@ reset($data);
     $(function(){
         setInterval(updateTime, 1000);
     });
+</script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+            ['Work',     11],
+            ['Eat',      2],
+            ['Commute',  2],
+            ['Watch TV', 2],
+            ['Sleep',    7]
+        ]);
+
+        var options = {
+            title: 'My Daily Activities',
+            pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+    }
 </script>
 
   <!-- Page Wrapper -->
@@ -824,29 +914,12 @@ reset($data);
               <!-- Project Card Example -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Net Energy (A) Produced and Consumed</h6>
                 </div>
-                <div class="card-body">
-                  <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
-                  <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
+                  <div class="container">
+                  <div class="card-body">
+                    <div id="donutchart" style="width: 700px; height: 500px;"></div>
+                </div>
                 </div>
               </div>
              </div>
