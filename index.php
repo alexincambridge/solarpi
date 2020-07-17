@@ -195,7 +195,9 @@ while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
 unset($data["timestamp"]);
 
 reset($data);
-?>
+
+//net value current from the battery load and download
+$net_bat_energy = ($tracer->realtimeData[7] - $tracer->realtimeData[4]);
 
 <!DOCTYPE html>
 <html lang="en">
@@ -243,7 +245,7 @@ reset($data);
         g1 = new JustGage({
             id: "g1",
             decimals: true,
-            value: "<?php echo $tracer->realtimeData[0]; ?>",
+            value: "<?php echo $tracer->realtimeData[0];?>",
             symbol: 'V',
             min: 0,
             max: 30,
@@ -265,7 +267,7 @@ reset($data);
         g2 = new JustGage({
             id: "g2",
             decimals: true,
-            value: "<?php echo $tracer->realtimeData[1]; ?>",
+            value: "<?php echo $tracer->realtimeData[1];?>",
             symbol: 'A',
             min: 0,
             max: 30,
@@ -621,7 +623,7 @@ reset($data);
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
             ['Net Current', '(A)'],
-            ['+ ve = to Battery - ve = from Battery',   '<?php echo $tracer->realtimeData[7] - $tracer->realtimeData[4];?>']
+            ['+ ve = to Battery - ve = from Battery',   '<?echo $net_bat_energy;?>']
 
         ]);
 
