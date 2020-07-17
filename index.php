@@ -620,22 +620,21 @@ reset($data);
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['Task', 'Hours per Day'],
-            ['Work',     11],
-            ['Eat',      2],
-            ['Commute',  2],
-            ['Watch TV', 2],
-            ['Sleep',    7]
+            ['Net Current', '(A)'],
+            ['+ ve = to Battery',   '<?php echo $tracer->realtimeData[4];?>'],
+            ['- ve = from Battery',     '<?php $tracer->realtimeData[7];?>']
+
         ]);
 
         var options = {
-            title: 'My Daily Activities',
+            title: '- Voltage out of battery | Voltage in on battery ',
             pieHole: 0.4,
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
         chart.draw(data, options);
     }
+
 </script>
 
   <!-- Page Wrapper -->
