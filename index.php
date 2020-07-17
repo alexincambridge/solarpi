@@ -917,7 +917,7 @@ reset($data);
                 </div>
                   <div class="container">
                   <div class="card-body">
-                    <div id="donutchart" style="width: 700px; height: 500px;"></div>
+                    <div id="donutchart" style="width: 400px; height: 250px;"></div>
                 </div>
                 </div>
               </div>
