@@ -213,10 +213,13 @@ reset($data);
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+
+    <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
     <script src="js/raphael-2.1.4.min.js"></script>
     <script src="js/justgage.js"></script>
@@ -624,7 +627,8 @@ reset($data);
 
 
 <script>
-    // Visualization API with the 'corechart' package.
+
+// Visualization API with the 'corechart' package.
     google.charts.load('visualization', { packages: ['corechart'] });
     google.charts.setOnLoadCallback(drawLineChart);
     drawLineChart();
@@ -864,17 +868,14 @@ reset($data);
                              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Temperature</div>
                             <i class="fas fa-thermometer-half fa-2x text-gray-300"></i>
                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $tracer->realtimeData[10];?> º C</div>
-
-
                     </div>
-
-
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
           <!-- Content Row -->
 
@@ -892,7 +893,6 @@ reset($data);
                     </a>
                     </div>
                   </div>
-                </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="chart-area">
