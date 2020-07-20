@@ -621,6 +621,48 @@ reset($data);
     });
 </script>
 
+
+<script>
+    // Visualization API with the 'corechart' package.
+    google.charts.load('visualization', { packages: ['corechart'] });
+    google.charts.setOnLoadCallback(drawLineChart);
+    drawLineChart();
+    setInterval(drawLineChart, 50);
+    function drawLineChart() {
+        $.ajax({
+            url: "http://localhost/pi-solar-tracer/getDataStats.php?q=1",
+            dataType: "json",
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                var arrPv = [['Hours', 'Volts. (V)','Watts. (W)', 'Amps. (A)']];    // Define an array and assign columns for the chart.
+
+                // Loop through each data and populate the array.
+                $.each(data, function (index, value) {
+                    arrPv.push([value.Hour, value.PV_array_voltage, value.PV_array_current, value.PV_array_power]);
+                });
+
+                // Set chart Options.
+                var options = {
+                    title: 'Monthly Energy on Solar Panel',
+                    curveType: 'function',
+                    legend: { position: 'bottom', textStyle: { color: '#555', fontSize: 14} }  // You can position the legend on 'top' or at the 'bottom'.
+                };
+
+                // Create DataTable and add the array to it.
+                var figures = google.visualization.arrayToDataTable(arrPv)
+
+                // Define the chart type (LineChart) and the container (a DIV in our case).
+                var chart = new google.visualization.LineChart(document.getElementById('chart_line_div'));
+                chart.draw(figures, options);      // Draw the chart with Options.
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert('Got an Error on Chart');
+            }
+        });
+    }
+</script>
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
     google.charts.load("current", {packages:["corechart"]});
@@ -847,19 +889,15 @@ reset($data);
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                   </div>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
+                       <div>
+                          <div id="chart_line_div" style="width: 740px; height: 320px;"></div>
+                       </div>
                   </div>
                 </div>
               </div>
