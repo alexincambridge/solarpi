@@ -237,13 +237,13 @@ reset($data);
 
 <body id="page-top">
 
-//Solar Panels info  g1 V, g2 A, g3 W #3300 [0]-->
+<!--Solar Panels info  g1 V, g2 A, g3 W #3300 [0]
 //Voltaje x Corriente = Potencia
 //1V x 1A = 1 W
 
 //V x A = W
 //A =  W / V
-//100W/18V  = 5.55 amperios
+//100W/18V  = 5.55 amperios-->
 
 <script>
     var g1;
