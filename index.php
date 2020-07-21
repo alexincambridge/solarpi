@@ -632,24 +632,25 @@ reset($data);
     google.charts.load('visualization', { packages: ['corechart'] });
     google.charts.setOnLoadCallback(drawLineChart);
     drawLineChart();
-    setInterval(drawLineChart, 50);
+//check every 60 sec
+    setInterval(drawLineChart, 60000);
     function drawLineChart() {
         $.ajax({
-            url: "http://localhost/pi-solar-tracer/getDataStats.php?q=1",
+            url: "http://192.168.1.149/pi-solar-tracer/getDataStats.php?q=1",
             dataType: "json",
             type: "GET",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                var arrPv = [['Hours', 'Volts. (V)','Watts. (W)', 'Amps. (A)']];    // Define an array and assign columns for the chart.
+                var arrPv = [['Hours', 'Volts. (V)','Amp. (A)', 'Watts. (W)']];    // Define an array and assign columns for the chart.
 
                 // Loop through each data and populate the array.
                 $.each(data, function (index, value) {
-                    arrPv.push([value.Hour, value.PV_array_voltage, value.PV_array_current, value.PV_array_power]);
+                    arrPv.push([value.timestamp, value.PV_array_voltage, value.PV_array_current, value.PV_array_power]);
                 });
 
                 // Set chart Options.
                 var options = {
-                    title: 'Monthly Energy on Solar Panel',
+                    title: 'Daily Energy on Solar Panel',
                     curveType: 'function',
                     legend: { position: 'bottom', textStyle: { color: '#555', fontSize: 14} }  // You can position the legend on 'top' or at the 'bottom'.
                 };
@@ -662,7 +663,7 @@ reset($data);
                 chart.draw(figures, options);      // Draw the chart with Options.
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert('Got an Error on Chart');
+               // alert('Got an Error on Chart');
             }
         });
     }
@@ -881,7 +882,7 @@ reset($data);
 
           <div class="row">
 
-            <!-- Area Chart -->
+	<!-- Area Chart -->
             <div class="col-xl-8 col-lg-7">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
@@ -891,14 +892,14 @@ reset($data);
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                     </a>
-                    </div>
                   </div>
+                </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="chart-area">
-                       <div>
-                          <div id="chart_line_div" style="width: 740px; height: 320px;"></div>
-                       </div>
+                      <div>
+                          <div id="chart_line_div" style="width: 700px; height: 320px;"></div>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -917,7 +918,7 @@ reset($data);
                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                       <div class="dropdown-header">Dropdown Header:</div>
                       <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Another accion</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="#">Something else here</a>
                     </div>
@@ -932,7 +933,7 @@ reset($data);
                           <div id="g9" class="gauge"></div>
                           <div id="g10" class="gauge"></div>
                       </div>
-
+          </div>
                   </div>
                   <div class="mt-4 text-center small">
                     <span class="mr-2">
@@ -969,7 +970,6 @@ reset($data);
               </div>
              </div>
           </div>
-
         </div>
         <!-- /.container-fluid -->
 

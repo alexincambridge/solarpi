@@ -3,13 +3,7 @@
 <?php
 //harvest data and stores it in a database
 
-$dsn = "mysql:host=localhost;dbname=Solardata";
-$user = "root";
-$passwd = "password";
-
-$pdo = new PDO($dsn, $user, $passwd);
-
-//$dbh = new PDO(mysql:host=localhost;dbname="Solardata", "root", "password");
+$dbh = new PDO("mysql:host=localhost;dbname=solardata", "root", "password");
 
  
 //this is planning for future expansion, this array holds the wireless device connection details
@@ -18,10 +12,13 @@ $solararray["/dev/ttyXRUSB0"]["ip"] = '192.168.1.149';
 $solararray["/dev/ttyXRUSB0"]["port"] = '23';
 
 //eg expanded system with a second controller
-//$solararray["/dev/ttyUSB22"]["ip"] = '192.168.123.22';
-//$solararray["/dev/ttyUSB22"]["port"] = '23';
+//$solararray["/dev/ttyXRUSB0"]["ip"] = '192.168.1.149';
+//$solararray["/dev/ttyXRUSB0"]["port"] = '23';
 
 require_once 'PhpEpsolarTracer.php';
+
+$date = date("H:i:s");
+
 
 $time = time();
 
@@ -33,9 +30,9 @@ while (list ($key, $val) = each($solararray)) {
 
     if ($tracer->getRealtimeData()) {
  
-        $sth = $pdo->prepare("insert into stats (`Controller`,`timestamp`,`PV array voltage`,`PV array current`,`PV array power`,`Battery voltage`,`Battery charging current`,`Battery charging power`,`Load voltage`,`Load current`,`Load power`,`Charger temperature`, `Heat sink temperature`,`Battery status`,`Equipment status`) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $sth = $dbh->prepare("insert into status (`Controller`,`timestamp`,`PV_array_voltage`,`PV_array_current`,`PV_array_power`,`Battery_voltage`,`Battery_charging_current`,`Battery_charging_power`,`Load_voltage`,`Load_current`,`Load_power`,`Charger_temperature`, `Heat_sink_temperature`,`Battery_status`,`Equipment_status`) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         $sth->BindParam(1, $i);
-        $sth->BindParam(2, $time);
+        $sth->BindParam(2, $date);
         $sth->BindParam(3, $tracer->realtimeData[0]);
         $sth->BindParam(4, $tracer->realtimeData[1]);
         $sth->BindParam(5, $tracer->realtimeData[2]);
