@@ -9,7 +9,7 @@
 
 //data and stores it in a database
 
-$dbh = new PDO("mysql:host=localhost;dbname=solardata", "root", "toor");
+$dbh = new PDO("mysql:host=localhost;dbname=solardata", "root", "password");
 
 
 //this is planning for future expansion, this array holds the wireless device connection details
@@ -37,7 +37,7 @@ $tracer = new PhpEpsolarTracer($key);
 
 if ($tracer->getStatData()) {
 
-    $sth = $dbh->prepare("insert into status (`Controller`,`timestamp`,`PV_array_voltage`,`PV_array_current`,`PV_array_power`,`Battery_voltage`,`Battery_charging_current`,`Battery_charging_power`,`Load_voltage`,`Load_current`,`Load_power`,`Charger_temperature`, `Heat_sink_temperature`,`Battery_status`,`Equipment_status`) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $sth = $dbh->prepare("insert into stats_status (`Controller`,`timestamp`,`Max_volt_today`,`Min_volt_today`,`Max_batt_volt_today`,`Min_batt_volt_today`,`Consumed_ener_today`,`Consumed_energy_month`,`Consumed_energy_year`,`Total_generated_energy`) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
     $sth->BindParam(1, $i);
     $sth->BindParam(2, $date);
     $sth->BindParam(3, $tracer->statData[0]);
@@ -51,8 +51,6 @@ if ($tracer->getStatData()) {
     $sth->BindParam(11, $tracer->statData[8]);
     $sth->BindParam(12, $tracer->statData[10]);
     $sth->BindParam(13, $tracer->statData[11]);
-    $sth->BindParam(14, $tracer->statData[15]);
-    $sth->BindParam(15, $tracer->statData[16]);
 
     $sth->execute();
 

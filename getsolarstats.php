@@ -52,6 +52,6 @@ while (list ($key, $val) = each($solararray)) {
         //station id
         $i++;
     }
+    echo "realtime data committed"
 }
 ?>
-

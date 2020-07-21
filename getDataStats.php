@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-$pdo=new PDO("mysql:dbname=solardata;host=127.0.0.1","root","password");
+$pdo=new PDO("mysql:dbname=solardata;host=127.0.0.1","root","toor");
 
 switch($_GET['q']){
     // Buscar Último Dato
