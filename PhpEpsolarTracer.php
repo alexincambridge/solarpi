@@ -133,7 +133,7 @@ class PhpEpsolarTracer
 		"Turn on timing2 hour",				// 904A
 		"Turn off timing2 sec",				// 904B
 		"Turn off timing2 min",				// 904C
-		"Turn off timing2 hour",			// 904D,							
+		"Turn off timing2 hour",			// 904D
 		"Length of night min.",				// 9065
 		"Length of night hour",				// 9065
 		"Battery rated voltage code",		// 9067
@@ -189,7 +189,7 @@ class PhpEpsolarTracer
 	public $discreteData = Array ();
 	
 	// Initialize serial communication
-	public function __construct($port='/dev/ttyUSB0') {
+	public function __construct($port='/dev/ttyXRUSB0') {
 		$this->tracer = new PhpSerialModbus;
 		if (php_sapi_name() == "cli") file_exists($port) or die("Cannot open serial port $port\n");
 		$this->tracer->deviceInit($port,115200,'none',8,1,'none');
@@ -299,7 +299,7 @@ class PhpEpsolarTracer
 		$this->tracer->sendRawQuery("\x01\x43\x33\x00\x00\x76\xca\xa7",false);
 		$result = $this->tracer->getResponse(false,15,174);
 		if (!$result) return 0;					   
-		$this->statData = $this->convertData($result,array(4,6,8,10,12,14,16,18,20,22,24,27),array(27,29,30));
+		$this->statData = $this->convertData($result,array(4,6,8,10,11,12,14,16,18,20,22,24,27),array(27,29,30));
 		$this->removeUnused($this->statData,array(13,14,15));
 		$this->statData = array_map(array($this,'divide'),$this->statData,$this->statDiv);
 		if (count($this->statData) != 16) return 0;

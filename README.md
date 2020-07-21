@@ -1,92 +1,31 @@
-Php EpSolar Tracer Class
-======
+# EpSolar Tracer Class Models:
+                     
+      1.Tracer1206AN, 
+      2.Tracer2206AN, 
+      3.Tracer1210AN, 
+      4.Tracer2210AN, 
+      5.Tracer3210AN,
+      6.Tracer4210AN
+==================================
 
-Library for communicating with Epsolar/Epever Tracer BN MPPT Solar Charger Controller
+This project is just an improvement that I found on 
+<li><b>http://randomsporadicprojects.blogspot.com/ <li> https://github.com/toggio/PhpEpsolarTracer</b>
+base on opensource Dashboard on Rpi Zero but you can use it for whatever Rpi version. 
+Library for communicating with Epsolar/Epever Tracer 1206AN MPPT Solar Charger Controller
 
 Features
 -------
-This library connects via RS485 port to the widely known Epsolar/Epever Tracer BN Series MPPT solar charger controller (like mine Tracer 2215 BN) allowing users to get data such as Battery Voltage, Load Current, Panel Power and base on the [Tracer protocol] [protocol] (Modbus).
+This library connects via RS485 port to the widely known Epsolar/Epever Tracer AN Series MPPT solar charger controller (mine is Tracer1206AN) allowing users to get data such as:
+ 1. Battery Voltage 
+ 2. Load Current 
+ 3. Panel Power and base on the [Tracer protocol] [protocol] (Modbus).
+ 
 In order to get it to work you just need tu use a cheap USB/RS485 converter and connect one side to your PC/Raspberry USB port and the other to the solar charger's connector.
 
-Class methods and properties
--------
-For better understanding take a look at the "Quick start example"
-
-**getInfoData()** , **getRatedData()** , **getRealtimeData()** , **getStatData()** , **getSettingData()** , **getCoilData()** , **getDiscreteData()**
->These functions get the various data from solar charger and put them in their rispective data arrays. The returned value is TRUE if data received or FALSE if not
-
-**$infoData** , **$ratedData** , **$realtimeData** , **$statData** , **$settingData** , **$coilData** , **$dicreteData**
->These arrays are populated after calling the respective function with the data received from solar charger. The data acquired are rispectively: Info Registers, Rated Data Registers, Real-time Data/Status Registers, Statistical Data Registers, Settings Parameter Registers, Coils Registers, Discrete Input Registers. For example $realtimeData[3] could be 12.23 (Volts). These data are updated everytime you call the connected method, i.e. for updating $realtimeData you have to call getRatedData()
-
-**$infoKey** , **$ratedKey** , **$realtimeKey** , **statKey** , **$settingKey** , **$coilKey** , **$discreteKey**
->These fixed arrays contains the "Key" (the label) of the specific data. For example $realtimeKey[3] is "Battery voltage" 
-
-**$ratedSym** , **$realtimeSym** , **$statSym** , **$settingSym**
->This fixed array contains the "Symbol" conected to the value. For example $realtimeSym[3] is "V" (Volts) 
-
-
-Quick start example (example_cli.php)
-------
-This example will print all datas received from solar  charger
-```php
-<?php
-require_once 'PhpEpsolarTracer.php';
-
-$tracer = new PhpEpsolarTracer('/dev/ttyUSB0');
-
-if ($tracer->getInfoData()) {
-	print "Info Data\n";
-	print "----------------------------------\n";
-	for ($i = 0; $i < count($tracer->infoData); $i++)
-		print str_pad($i, 2, '0', STR_PAD_LEFT)." ".$tracer->infoKey[$i].": ".$tracer->infoData[$i]."\n";
-	} else print "Cannot get Info Data\n";
-
-if ($tracer->getRatedData()) {
-	print "Rated Data\n";
-	print "----------------------------------\n";
-	for ($i = 0; $i < count($tracer->ratedData); $i++)
-		print str_pad($i, 2, '0', STR_PAD_LEFT)." ".$tracer->ratedKey[$i].": ".$tracer->ratedData[$i].$tracer->ratedSym[$i]."\n";
-	} else print "Cannot get Rated Data\n";
-
-if ($tracer->getRealtimeData()) {
-	print "\nRealTime Data\n";
-	print "----------------------------------\n";
-	for ($i = 0; $i < count($tracer->realtimeData); $i++)
-		print str_pad($i, 2, '0', STR_PAD_LEFT)." ".$tracer->realtimeKey[$i].": ".$tracer->realtimeData[$i].$tracer->realtimeSym[$i]."\n";
-	} else print "Cannot get RealTime Data\n";
-
-if ($tracer->getStatData()) {
-	print "\nStatistical Data\n";
-	print "----------------------------------\n";
-	for ($i = 0; $i < count($tracer->statData); $i++)
-		print str_pad($i, 2, '0', STR_PAD_LEFT)." ".$tracer->statKey[$i].": ".$tracer->statData[$i].$tracer->statSym[$i]."\n";
-	} else print "Cannot get Statistical Data\n";
-	
-if ($tracer->getSettingData()) {
-	print "\nSettings Data\n";
-	print "----------------------------------\n";
-	for ($i = 0; $i < count($tracer->settingData); $i++)
-		print str_pad($i, 2, '0', STR_PAD_LEFT)." ".$tracer->settingKey[$i].": ".$tracer->settingData[$i].$tracer->settingSym[$i]."\n";
-	} else print "Cannot get Settings Data\n";
-
-if ($tracer->getCoilData()) {
-	print "\nCoils Data\n";
-	print "----------------------------------\n";
-	for ($i = 0; $i < count($tracer->coilData); $i++)
-		print str_pad($i, 2, '0', STR_PAD_LEFT)." ".$tracer->coilKey[$i].": ".$tracer->coilData[$i]."\n";
-	} else print "Cannot get Coil Data\n";
-
-if ($tracer->getDiscreteData()) {
-	print "\nDiscrete Data\n";
-	print "----------------------------------\n";
-	for ($i = 0; $i < count($tracer->discreteData); $i++)
-		print str_pad($i, 2, '0', STR_PAD_LEFT)." ".$tracer->discreteKey[$i].": ".$tracer->discreteData[$i]."\n";
-	} else print "Cannot get Discrete Data\n";
-?>
-```
 and will produce the following output on my solar charger:
 
-```SH
+1. On this file is possible to query the protocols to use pi-solar-tracer/pdf/1733_modbus_protocol.pdf
+
 Info Data
 ----------------------------------
 00 Manufacturer: EPsolar Tech co., Ltd
