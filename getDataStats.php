@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-$pdo=new PDO("mysql:dbname=solardata;host=127.0.0.1","root","toor");
+$pdo=new PDO("mysql:dbname=solardata;host=127.0.0.1","root","password");
 
 switch($_GET['q']){
     // Buscar Último Dato
@@ -12,8 +12,28 @@ switch($_GET['q']){
         $json=json_encode($results, JSON_NUMERIC_CHECK);
         echo $json;
         break;
+
+    // Buscar datos battery
+    case 2:
+        $statement=$pdo->prepare("SELECT `timestamp`,`Battery_voltage`,`Battery_charging_current`,`Battery_charging_power` FROM `status`");
+        $statement->execute();
+        $results=$statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $json=json_encode($results, JSON_NUMERIC_CHECK);
+        echo $json;
+        break;
+
+    // Buscar datos load DC
+    case 3:
+        $statement=$pdo->prepare("SELECT `timestamp`,`Load_voltage`,`Load_current`,`Load_power` FROM `status`");
+        $statement->execute();
+        $results=$statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $json=json_encode($results, JSON_NUMERIC_CHECK);
+        echo $json;
+        break;
 }
-    // Buscar Todos los datos
+
 ?>
 
 
