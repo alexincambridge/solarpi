@@ -41,7 +41,7 @@
             type: "GET",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                var arrPv = [['Hours', 'Volts. (V)','Watts. (W)', 'Amps. (A)']];    // Define an array and assign columns for the chart.
+                var arrPv = [['Hours', 'Volts. (V)','Amps. (A)', 'Watts. (W)']];    // Define an array and assign columns for the chart.
 
                 // Loop through each data and populate the array.
                 $.each(data, function (index, value) {
@@ -82,7 +82,7 @@
             type: "GET",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                var arrPv = [['Hours', 'Volts. (V)','Watts. (W)', 'Amps. (A)']];    // Define an array and assign columns for the chart.
+                var arrPv = [['Hours', 'Volts. (V)','Amps. (A)', 'Watts. (W)']];    // Define an array and assign columns for the chart.
 
                 // Loop through each data and populate the array.
                 $.each(data, function (index, value) {
