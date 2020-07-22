@@ -36,7 +36,6 @@ if ($tracer->getInfoData()) {
 
 }
 
-
 // Get Real Time Data
 if ($tracer->getRealTimeData()) {
     $tracerstatus_bgcolor = "green";
@@ -141,60 +140,8 @@ switch($_GET['q']){
 
 }
 
+$enerGenTotal = $tracer->getStatData[7];
 
-
-
-////Statistic Data
-//Statistical Data ----------------------------------
-//00 Max input voltage today: 21.22V
-//01 Min input voltage today: 0V
-//02 Max battery voltage today: 13.44V
-//03 Min battery voltage today: 12.01V
-//04 Consumed energy today: 0KWH
-//05 Consumed energy this month: 0.18KWH
-//06 Consumed energy this year: 0.18KWH
-//07 Total consumed energy: 0.18KWH
-//08 Generated energy today: 0.02KWH
-//09 Generated energy this moth: 0.2KWH
-//10 Generated energy this year: 0.2KWH
-//11 Total generated energy: 0.2KWH
-//12 Carbon dioxide reduction: 0T
-//13 Net battery current: 0.36A
-//14 Battery temperature: 19.13°C
-//15 Ambient temperature: 19.13°C
-
-$enerGenTotal = $tracer->getStatData[12];
-
-//get data for the last 2 weeks
-//$ago = time() - 1209600;
-//get data for the last 24 hrs
-//$ago = time() - 86400;
-//get data for the last 48 hrs
-$ago = time() - (86400 * 2);
-
-$dsn = "mysql:host=localhost;dbname=Solardata";
-$user = "root";
-$passwd = "password";
-
-$pdo = new PDO($dsn, $user, $passwd);
-
-//$dbh = new PDO("mysql:host=localhost;dbname=solardata", "databaseusername", "databasepassword");
-$sth = $pdo->prepare("select `timestamp`,`PV array voltage`,`PV array current`,`PV array power`,`Battery voltage`,`Battery charging current`,`Battery charging power`,`Load voltage`,`Load current`,`Load power` from stats where `Controller` = 1 and `timestamp` > ? order by `timestamp` asc");
-$sth->bindParam(1, $ago);
-$sth->execute();
-
-//build the json array
-$data = array();
-while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
-    $data["category"][] = date("H:i", $row["timestamp"]);
-    while (list($key, $val) = each($row)) {
-        $data[$key][] = $val;
-    }
-}
-
-unset($data["timestamp"]);
-
-reset($data);
 ?>
 
 <!DOCTYPE html>
@@ -669,28 +616,6 @@ reset($data);
     }
 </script>
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-    google.charts.load("current", {packages:["corechart"]});
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-            ['Net Current', '(A)'],
-            ['+ ve = to Battery',   '<?php echo $tracer->realtimeData[4];?>'],
-            ['- ve = from Battery',     '<?php $tracer->realtimeData[7];?>']
-
-        ]);
-
-        var options = {
-            title: '- Voltage out of battery | Voltage in on battery ',
-            pieHole: 0.4,
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-        chart.draw(data, options);
-    }
-
-</script>
 <script>
     google.charts.load('current', {packages: ['corechart', 'bar']});
     google.charts.setOnLoadCallback(drawBarColors);
