@@ -48,7 +48,7 @@
     setInterval(drawLineChart, 50000);
     function drawLineChart() {
         $.ajax({
-            url: "http://192.168.1.149/pi-solar-tracer/getDataStats.php?q=2",
+            url: "http://experiments.ddns.net/pi-solar-tracer/getDataStats.php?q=2",
             dataType: "json",
             type: "GET",
             contentType: "application/json; charset=utf-8",
@@ -89,7 +89,7 @@
     setInterval(drawLineChart, 50000);
     function drawLineChart() {
         $.ajax({
-            url: "http://192.168.1.149/pi-solar-tracer/getDataStats.php?q=1",
+            url: "http://experiments.ddns.net/pi-solar-tracer/getDataStats.php?q=3",
             dataType: "json",
             type: "GET",
             contentType: "application/json; charset=utf-8",
@@ -98,7 +98,7 @@
 
                 // Loop through each data and populate the array.
                 $.each(data, function (index, value) {
-                    arrPv.push([value.Hour, value.PV_array_voltage, value.PV_array_current, value.PV_array_power]);
+                    arrPv.push([value.Hour, value.Load_voltage, value.Load_current, value.Load_power]);
                 });
 
                 // Set chart Options.
