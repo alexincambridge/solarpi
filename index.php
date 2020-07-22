@@ -77,70 +77,11 @@ if ($tracer->getRealTimeData()) {
     $battSoc = $tracer->realtimeData[12];
 }
 
-//"Real-time data" and "Real-time status" registers
-$tracer->getRealtimeData();
-
-for ($i = 0; $i <count($tracer->realtimeData); $i++)
-
-    $pv_results = $tracer->realtimeData;
-
-switch($_GET['q']){
-    case 0:
-        ($pv_results[0]);
-        break;
-    case 1:
-        ($pv_results[1]);
-        break;
-    case 2:
-        ($pv_results[2]);
-        break;
-    case 3:
-        ($pv_results[3]);
-        break;
-    case 4:
-        ($pv_results[4]);
-        break;
-    case 5:
-        ($pv_results[5]);
-        break;
-    case 6:
-        ($pv_results[6]);
-        break;
-    case 7:
-        ($pv_results[7]);
-        break;
-    case 8:
-        ($pv_results[8]);
-        break;
-    case 9:
-        ($pv_results[9]);
-        break;
-    case 10:
-        ($pv_results[10]);
-        break;
-    case 11:
-        ($pv_results[11]);
-        break;
-    case 12:
-        ($pv_results[12]);
-        break;
-    case 13:
-        ($pv_results[13]);
-        break;
-    case 14:
-        ($pv_results[14]);
-        break;
-    case 15:
-        ($pv_results[15]);
-        break;
-    case 16:
-        ($pv_results[16]);
-        break;
+//energy generated total
+$tracer->getStatData();
+$tracer->statData[7];
 
 
-}
-
-$enerGenTotal = $tracer->getStatData[7];
 
 ?>
 
@@ -580,7 +521,7 @@ $enerGenTotal = $tracer->getStatData[7];
     google.charts.setOnLoadCallback(drawLineChart);
     drawLineChart();
 //check every 60 sec
-    setInterval(drawLineChart, 60000);
+    setInterval(drawLineChart, 600000);
     function drawLineChart() {
         $.ajax({
             url: "http://192.168.1.149/pi-solar-tracer/getDataStats.php?q=1",
@@ -817,7 +758,7 @@ $enerGenTotal = $tracer->getStatData[7];
                       <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total Energy Generated</div>
                         <div class="col-auto">
                             <i class="fas fa-charging-station fa-2x text-gray-300"></i>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $EnerGenTotal;?>Kwh</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $tracer->statData[7]; ?> Kwh</div>
                         <hr>
                              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Temperature</div>
                             <i class="fas fa-thermometer-half fa-2x text-gray-300"></i>
