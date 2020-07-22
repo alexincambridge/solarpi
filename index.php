@@ -691,6 +691,34 @@ reset($data);
     }
 
 </script>
+<script>
+    google.charts.load('current', {packages: ['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawBarColors);
+
+    function drawBarColors() {
+        var data = google.visualization.arrayToDataTable([
+            ['Current', '+ ve', '- ve'],
+            ['+ ve, - ve', <?php echo $tracer->realtimeData[4];?>,<?php echo $tracer->realtimeData[7];?>]
+
+        ]);
+
+        var options = {
+            title: 'Net Current on Battery',
+            chartArea: {width: '50%'},
+            colors: ['#b0120a', '#ffab91'],
+            hAxis: {
+                title: '+ ve / - ve = to Battery',
+                minValue: 0
+            },
+            vAxis: {
+                title: 'VE'
+            }
+        };
+        var chart = new google.visualization.BarChart(document.getElementById('chart_net_div'));
+        chart.draw(data, options);
+    }
+
+</script>
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -964,7 +992,7 @@ reset($data);
                 </div>
                   <div class="container">
                   <div class="card-body">
-                    <div id="donutchart" style="width: 400px; height: 250px;"></div>
+                      <div id="chart_net_div" style="width: 400px; height: 250px;"></div>
                 </div>
                 </div>
               </div>
