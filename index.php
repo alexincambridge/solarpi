@@ -128,6 +128,19 @@ $tracer->statData[7];
 
 <body id="page-top">
 
+<!-- Current time on top bar-->
+<script type="text/javascript">
+    var timestamp = '<?=time();?>';
+    function updateTime(){
+        $('#time').html(Date(timestamp));
+        timestamp++;
+    }
+    $(function(){
+        setInterval(updateTime, 1000);
+    });
+</script>
+
+
 <!--Solar Panels info  g1 V, g2 A, g3 W #3300 [0]
 //Voltaje x Corriente = Potencia
 //1V x 1A = 1 W
@@ -501,18 +514,6 @@ $tracer->statData[7];
 
     }
 </script>
-<!-- Current time on top bar-->
-<script type="text/javascript">
-    var timestamp = '<?=time();?>';
-    function updateTime(){
-        $('#time').html(Date(timestamp));
-        timestamp++;
-    }
-    $(function(){
-        setInterval(updateTime, 1000);
-    });
-</script>
-
 
 <script>
 
@@ -612,7 +613,7 @@ $tracer->statData[7];
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Options
+        options
       </div>
 
       <!-- Nav Item - Charts -->

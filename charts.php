@@ -28,6 +28,18 @@
 
 </head>
 
+<!-- Current time on top bar-->
+<script type="text/javascript">
+    var timestamp = '<?=time();?>';
+    function updateTime(){
+        $('#time').html(Date(timestamp));
+        timestamp++;
+    }
+    $(function(){
+        setInterval(updateTime, 1000);
+    });
+</script>
+
 <script>
     // Visualization API with the 'corechart' package.
     google.charts.load('visualization', { packages: ['corechart'] });
@@ -189,7 +201,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo date('d m Y | H:i:s', $_SESSION['time']);?></span>
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><p id="time"></p></span>
               </a>
 
             </li>
