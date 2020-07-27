@@ -30,9 +30,9 @@ $tracerstatus_bgcolor = "#dedede";
 // $battSoc = 0;
 // Get Info and check if is connected
 if ($tracer->getInfoData()) {
-    $connection = "<font color=\"green\">Connected </font><img src='images/test.png'>";
+    $connection = "<font color=\"green\">Connected </font><img src='images/usb-conectado.png'>";
 } else {
-    $connection = "<font color=\"red\">Disconnected </font><img src='images/test.png'>";
+    $connection = "<font color=\"red\">Disconnected </font><img src='images/usb-desconectado.png'>";
 
 }
 
