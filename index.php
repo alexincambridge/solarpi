@@ -30,9 +30,9 @@ $tracerstatus_bgcolor = "#dedede";
 // $battSoc = 0;
 // Get Info and check if is connected
 if ($tracer->getInfoData()) {
-    $connection = "<font color=\"green\">Connected</font>";
+    $connection = "<font color=\"green\">Connected </font><img src='images/test.png'>";
 } else {
-    $connection = "<font color=\"red\">Disconnected</font>";
+    $connection = "<font color=\"red\">Disconnected </font><img src='images/test.png'>";
 
 }
 
@@ -42,7 +42,7 @@ if ($tracer->getRealTimeData()) {
     $equipStatus = $tracer->realtimeData[16];
     $chargStatus = 0b11 & ($equipStatus >> 2);
     switch ($chargStatus) {
-        case 0: $eStatus = "Not charging";
+        case 0: $eStatus = "<font color=\"red\">Not charging</font>";
             break;
         case 1: $eStatus = "Float (13.8V)";
             break;
@@ -525,7 +525,7 @@ $tracer->statData[7];
     setInterval(drawLineChart, 600000);
     function drawLineChart() {
         $.ajax({
-            url: "http://experiments.ddns.net/pi-solar-tracer/getDataStats.php?q=1",
+            url: "http://192.168.1.149/pi-solar-tracer/getDataStats.php?q=1",
             dataType: "json",
             type: "GET",
             contentType: "application/json; charset=utf-8",
@@ -649,6 +649,7 @@ $tracer->statData[7];
 
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"><?php echo "<p> <font color=blue size='4pt'> Status MPPT Tracer:$connection</p>";?>
+
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
