@@ -79,9 +79,10 @@ if ($tracer->getRealTimeData()) {
 
 //energy generated total
 $tracer->getStatData();
+//total energy consumed
 $tracer->statData[7];
-
-
+//total energy generated
+$tracer->statData[9];
 
 ?>
 
@@ -180,7 +181,7 @@ $tracer->statData[7];
             value: "<?php echo $tracer->realtimeData[1]; ?>",
             symbol: 'A',
             min: 0,
-            max: 7,
+            max: 10,
             gaugeWidthScale: 0.6,
             counter: true,
             label: "A",
@@ -202,7 +203,7 @@ $tracer->statData[7];
             value: "<?php echo $tracer->realtimeData[2]; ?>",
             symbol: 'W',
             min: 0,
-            max: 100,
+            max: 200,
             gaugeWidthScale: 0.6,
             counter: true,
             label: "W",
@@ -281,7 +282,7 @@ $tracer->statData[7];
             decimals: true,
             value: "<?php echo $tracer->realtimeData[5]; ?>",
             min: 0,
-            max: 24,
+            max: 100,
             symbol: 'W',
             pointer: true,
             pointerOptions: {
@@ -678,6 +679,43 @@ $tracer->statData[7];
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+
+<?php 
+//detect the epever model
+$tracermodel1206AN = "Tracer1206AN";
+$tracermodel2206AN = "Tracer2206AN";
+$tracermodel1210AN = "Tracer1210AN";
+$tracermodel2210AN = "Tracer2210AN";
+$tracermodel3210AN = "Tracer3210AN";
+$tracermodel4210AN = "Tracer4210AN";
+
+    if ($tracer->getRatedData()) {
+
+$rate_voltage = $tracer->ratedData[0];
+$rate_charging_current = $tracer->ratedData[4];
+
+
+    if ($rate_voltage == 60 && $rate_charging_current == 10) {
+        echo $tracermodel1206AN;
+    }
+    if ($rate_voltage == 60 && $rate_charging_current == 20) {
+        echo $tracermodel2206AN;
+    }
+    if ($rate_voltage == 100 && $rate_charging_current == 10) {
+        echo $tracermodel1210AN;
+    }
+    if ($rate_voltage == 100 && $rate_charging_current == 20) {
+        echo $tracermodel2210AN;
+    }
+    if ($rate_voltage == 100 && $rate_charging_current == 30) {
+        echo $tracermodel3210AN;
+    }
+    if ($rate_voltage == 100 && $rate_charging_current == 40) {
+        echo $tracermodel4210AN;
+
+  }
+}
+?>
           </div>
 
           <!-- Content Row -->
@@ -760,12 +798,17 @@ $tracer->statData[7];
                       <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total Energy Generated</div>
                         <div class="col-auto">
                             <i class="fas fa-charging-station fa-2x text-gray-300"></i>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $tracer->statData[7]; ?> Kwh</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $tracer->statData[9]; ?> Kwh</div>
                         <hr>
-                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Temperature</div>
+			<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total Energy Consumed</div>
+                        <div class="col-auto">
+                            <i class="fas fa-charging-station fa-2x text-gray-300"></i>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $tracer->statData[7]; ?> Kwh</div>
+			<hr>
+				<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Temperature</div>
                             <i class="fas fa-thermometer-half fa-2x text-gray-300"></i>
                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $tracer->realtimeData[10];?> º C</div>
-                    </div>
+
                     </div>
                   </div>
                 </div>
@@ -794,7 +837,7 @@ $tracer->statData[7];
                 <div class="card-body">
                   <div class="chart-area">
                       <div>
-                          <div id="chart_line_div" style="width: 700px; height: 320px;"></div>
+                          <div id="2chart_line_div" style="width: 700px; height: 320px;"></div>
                       </div>
                   </div>
                 </div>
