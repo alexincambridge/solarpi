@@ -84,6 +84,15 @@ $tracer->statData[7];
 //total energy generated
 $tracer->statData[9];
 
+//day and night info
+if ($tracer->getDiscreteData()) {
+    $day_night = $tracer->discreteData[0];
+    $day_night = "<img src='images/icon-sol.png'>";
+} else {
+    $day_night = "<img src='images/icon-luna.png'>";
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -651,10 +660,10 @@ $tracer->statData[9];
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"><?php echo "<p> <font color=blue size='4pt'> Status MPPT Tracer:$connection</p>";?>
 
-
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
+
           </button>
 
           <ul class="navbar-nav ml-auto">
@@ -665,7 +674,6 @@ $tracer->statData[9];
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><p id="time"></p></span>
               </a>
-
             </li>
 
           </ul>
@@ -678,7 +686,7 @@ $tracer->statData[9];
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            <h1 class="h3 mb-0 text-gray-800">Dashboard <?php echo $day_night;?> </h1>
 
 <?php 
 //detect the epever model
