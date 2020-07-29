@@ -84,15 +84,6 @@ $tracer->statData[7];
 //total energy generated
 $tracer->statData[9];
 
-//day and night info
-if ($tracer->getDiscreteData()) {
-    $day_night = $tracer->discreteData[0];
-    $day_night = "<img src='images/icon-sol.png'>";
-} else {
-    $day_night = "<img src='images/icon-luna.png'>";
-
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -686,7 +677,20 @@ if ($tracer->getDiscreteData()) {
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard <?php echo $day_night;?> </h1>
+            <h1 class="h3 mb-0 text-gray-800">Dashboard <?php
+		//day or night time request
+           if ($tracer->getDiscreteData()) {
+
+               $day_night = $tracer->discreteData[1];
+           if ($day_night == 0){
+               echo "<img src='images/icon-sol.png'>";
+               }else {
+               echo "<img src='images/icon-luna.png'>";
+           }
+          }
+
+          ?>
+ </h1>
 
 <?php 
 //detect the epever model
