@@ -1,7 +1,41 @@
+
+<?php
+
+
+require_once 'PhpEpsolarTracer.php';
+$tracer = new PhpEpsolarTracer('/dev/ttyXRUSB0');
+
+//Info device
+$tracer->getRateData();
+
+$voltage = $tracer->rateData[0];
+$current = $tracer->rateData[1];
+$power = $tracer->rateData[2];
+$batt_voltage = $tracer->rateData[3];
+$batt_current = $tracer->rateData[4];
+$rate_charg_current = $tracer->rateData[5];
+$rate_charg_power = $tracer->rateData[6];
+$charg_mode = $tracer->rateData[6];
+$rate_load_current = $tracer->rateData[7];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
+    <!-- Current time on top bar-->
+    <script type="text/javascript">
+        var timestamp = '<?=time();?>';
+        function updateTime(){
+            $('#time').html(Date(timestamp));
+            timestamp++;
+        }
+        $(function(){
+            setInterval(updateTime, 1000);
+        });
+    </script>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,6 +69,7 @@
 
         th {text-align: left;}
     </style>
+
 </head>
 
 <body id="page-top">
@@ -113,7 +148,7 @@
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><p id="time"></p></span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo date('d m Y | H:i:s', $_SESSION['time']);?></p></span>
                         </a>
 
                     </li>
@@ -139,81 +174,27 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
+                      <th>PV Voltage</th>
+                      <th>PV Current</th>
+                      <th>PV Power</th>
+                      <th>Batt Voltage</th>
+                      <th>Charg Current</th>
+                      <th>Charg Power</th>
+                      <th>Charg Mode</th>
+                      <th>Load Current</th>
                     </tr>
                   </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
-                    </tr>
-                  </tfoot>
                   <tbody>
-                  <?php
-                  $volts = 5;
-                  $amp = 5;
-                  $watts = 5;
-
-                  ?>
-                  <?php
-                  $q = intval($_GET['q']);
-
-                  $con = mysqli_connect('localhost','root','toor','solardata');
-                  if (!$con) {
-                      die('Could not connect: ' . mysqli_error($con));
-                  }
-
-                  mysqli_select_db($con,"ajax_demo");
-                  $sql="SELECT Controller,Max_volt_today,Min_volt_today,Max_batt_volt_today, Min_batt_volt_today FROM stats_status WHERE 1";
-                  $result = mysqli_query($con,$sql);
-
-                  echo "<table>
-<tr>
-<th>Max input</th>
-<th>Min input</th>
-<th>Max batt volt today</th>
-<th>Min batt volt today</th>
-<th>Consume today today</th>
-<th>COnsume month today</th>
-<th>Consume year today</th>
-<th>Total consume</th>
-<th>Energy today</th>
-<th>Energy month</th>
-<th>Energy year</th>
-<th>Total generated</th>
-<th>Co2 reduction</th>
-</tr>";
-
-
-                  while($row = mysqli_fetch_array($result)) {
-                      echo "<tr>";
-                      echo "<td>" . $row['Max_volt_today'] ."V". "</td>";
-                      echo "<td>" . $row['Min_volt_today'] . "</td>";
-                      echo "<td>" . $row['Max_batt_volt_today'] . "</td>";
-                      echo "<td>" . $row['Min_batt_volt_today'] . "</td>";
-                      echo "<td>" . $row['Min_batt_volt_today'] . "</td>";
-                      echo "<td>" . $row['Min_batt_volt_today'] . "</td>";
-                      echo "<td>" . $row['Min_batt_volt_today'] . "</td>";
-                      echo "<td>" . $row['Min_batt_volt_today'] . "</td>";
-                      echo "<td>" . $row['Min_batt_volt_today'] . "</td>";
-                      echo "<td>" . $row['Min_batt_volt_today'] . "</td>";
-                      echo "<td>" . $row['Min_batt_volt_today'] . "</td>";
-                      echo "<td>" . $row['Min_batt_volt_today'] . "</td>";
-                      echo "<td>" . $row['Min_batt_volt_today'] . "</td>";
-                      echo "</tr>";
-                  }
-                  echo "</table>";
-                  mysqli_close($con);
-                  ?>
+                    <tr>
+                      <td><?php echo $voltage ?>;</td>
+                      <td><?php echo $current ?>;</td>
+                      <td><?php echo $power ?>;</td>
+                      <td><?php echo $batt_voltage ?>;</td>
+                      <td><?php echo $rate_charg_current ?>;</td>
+                      <td><?php echo $rate_charg_power ?>;</td>
+                      <td><?php echo $charg_mode ?>;</td>
+                      <td><?php echo $rate_load_current ?>;</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
