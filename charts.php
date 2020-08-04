@@ -15,6 +15,7 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
+
     <style>
         .chart-area {
             width: 640px;
@@ -57,7 +58,7 @@
 
                 // Loop through each data and populate the array.
                 $.each(data, function (index, value) {
-                    arrPv.push([value.Hour, value.Battery_voltage, value.Battery_charging_current, value.Battery_charging_power]);
+                    arrPv.push([value.timestamp, value.Battery_voltage, value.Battery_charging_current, value.Battery_charging_power]);
                 });
 
                 // Set chart Options.
@@ -98,7 +99,7 @@
 
                 // Loop through each data and populate the array.
                 $.each(data, function (index, value) {
-                    arrPv.push([value.Hour, value.Load_voltage, value.Load_current, value.Load_power]);
+                    arrPv.push([value.timestamp, value.Load_voltage, value.Load_current, value.Load_power]);
                 });
 
                 // Set chart Options.
@@ -121,8 +122,6 @@
         });
     }
 </script>
-
-
 
 <body id="page-top">
 
@@ -201,7 +200,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><p id="time"></p></span>
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo date('d m Y | H:i:s', $_SESSION['time']);?></p></span>
               </a>
 
             </li>
@@ -230,7 +229,7 @@
                 </div>
                 <div class="card-body">
                     <div class="chart-container">
-                        <div id="chart_line__battery_div" style="width: 740px; height: 400px"></div>
+                        <div id="chart_line__battery_div" style="width: 700px; height: 320px"></div>
                     </div>
                   <hr>
 
@@ -244,35 +243,14 @@
                 </div>
                 <div class="card-body">
                         <div id="chart-container">
-                            <div id="chart_line__load_div" style="width: 740px; height: 400px"></div>
+                            <div id="chart_line__load_div" style="width: 700px; height: 320px"></div>
                         </div>
                    <hr>
-
                 </div>
               </div>
 
             </div>
 
-            <!-- Donut Chart -->
-            <div class="col-xl-4 col-lg-5">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="chart-pie pt-4">
-                    <canvas id="myPieChart"></canvas>
-                  </div>
-                  <hr>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <!-- /.container-fluid -->
 
       </div>
       <!-- End of Main Content -->
@@ -281,7 +259,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>Copyright &copy; 2020</span>
           </div>
         </div>
       </footer>

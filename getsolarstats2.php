@@ -25,7 +25,6 @@ require_once 'PhpEpsolarTracer.php';
 
 $date = date("H:i:s");
 
-
 $time = time();
 
 $i = 1;
@@ -48,9 +47,6 @@ if ($tracer->getStatData()) {
     $sth->BindParam(8, $tracer->statData[5]);
     $sth->BindParam(9, $tracer->statData[6]);
     $sth->BindParam(10, $tracer->statData[7]);
-    //$sth->BindParam(11, $tracer->statData[8]);
-    //$sth->BindParam(12, $tracer->statData[10]);
-    //$sth->BindParam(13, $tracer->statData[11]);
 
     $sth->execute();
 
