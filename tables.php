@@ -1,22 +1,19 @@
-
 <?php
-
 
 require_once 'PhpEpsolarTracer.php';
 $tracer = new PhpEpsolarTracer('/dev/ttyXRUSB0');
 
 //Info device
-$tracer->getRateData();
+$tracer->getRatedData();
 
-$voltage = $tracer->rateData[0];
-$current = $tracer->rateData[1];
-$power = $tracer->rateData[2];
-$batt_voltage = $tracer->rateData[3];
-$batt_current = $tracer->rateData[4];
-$rate_charg_current = $tracer->rateData[5];
-$rate_charg_power = $tracer->rateData[6];
-$charg_mode = $tracer->rateData[6];
-$rate_load_current = $tracer->rateData[7];
+$voltage = $tracer->ratedData[0];;
+$current = $tracer->ratedData[1];
+$power = $tracer->ratedData[2];
+$batt_voltage = $tracer->ratedData[3];
+$rate_charg_current = $tracer->ratedData[4];
+$rate_charg_power = $tracer->ratedData[5];
+$charg_mode = $tracer->ratedData[6];
+$rate_load_current = $tracer->ratedData[7];
 
 ?>
 
@@ -186,14 +183,14 @@ $rate_load_current = $tracer->rateData[7];
                   </thead>
                   <tbody>
                     <tr>
-                      <td><?php echo $voltage ?>;</td>
-                      <td><?php echo $current ?>;</td>
-                      <td><?php echo $power ?>;</td>
-                      <td><?php echo $batt_voltage ?>;</td>
-                      <td><?php echo $rate_charg_current ?>;</td>
-                      <td><?php echo $rate_charg_power ?>;</td>
-                      <td><?php echo $charg_mode ?>;</td>
-                      <td><?php echo $rate_load_current ?>;</td>
+                      <td><?php echo $voltage ?>V</td>
+                      <td><?php echo $current ?>A</td>
+                      <td><?php echo $power ?>W</td>
+                      <td><?php echo $batt_voltage ?>V</td>
+                      <td><?php echo $rate_charg_current ?>A</td>
+                      <td><?php echo $rate_charg_power ?>W</td>
+                      <td><?php echo $charg_mode ?></td>
+                      <td><?php echo $rate_load_current ?>A</td>
                     </tr>
                   </tbody>
                 </table>
