@@ -24,7 +24,7 @@ $rate_load_current = $tracer->ratedData[7];
 
     <!-- Current time on top bar-->
     <script type="text/javascript">
-        var timestamp = '<?=time();?>';
+        var timestamp = '<?php=time();?>';
         function updateTime(){
             $('#time').html(Date(timestamp));
             timestamp++;
@@ -164,7 +164,7 @@ $rate_load_current = $tracer->ratedData[7];
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Statistic Table</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Info Device Table</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
