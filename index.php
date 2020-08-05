@@ -631,6 +631,13 @@ $tracer->statData[9];
           <span>Tables</span></a>
       </li>
 
+        <!-- Nav Item - Info -->
+        <li class="nav-item">
+            <a class="nav-link" href="info.php">
+                <i class="fas fa-fw fa-info"></i>
+                <span>Info</span></a>
+        </li>
+
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

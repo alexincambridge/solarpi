@@ -1,19 +1,21 @@
 <?php
 
-require_once 'PhpEpsolarTracer.php';
-$tracer = new PhpEpsolarTracer('/dev/ttyXRUSB0');
+//require_once 'PhpEpsolarTracer.php';
+//$tracer = new PhpEpsolarTracer('/dev/ttyXRUSB0');
+//
+////Info device
+//$tracer->getRatedData();
+//
+//$voltage = $tracer->ratedData[0];;
+//$current = $tracer->ratedData[1];
+//$power = $tracer->ratedData[2];
+//$batt_voltage = $tracer->ratedData[3];
+//$rate_charg_current = $tracer->ratedData[4];
+//$rate_charg_power = $tracer->ratedData[5];
+//$charg_mode = $tracer->ratedData[6];
+//$rate_load_current = $tracer->ratedData[7];
 
-//Info device
-$tracer->getRatedData();
-
-$voltage = $tracer->ratedData[0];;
-$current = $tracer->ratedData[1];
-$power = $tracer->ratedData[2];
-$batt_voltage = $tracer->ratedData[3];
-$rate_charg_current = $tracer->ratedData[4];
-$rate_charg_power = $tracer->ratedData[5];
-$charg_mode = $tracer->ratedData[6];
-$rate_load_current = $tracer->ratedData[7];
+$voltage = 0;
 
 ?>
 
@@ -24,7 +26,7 @@ $rate_load_current = $tracer->ratedData[7];
 
     <!-- Current time on top bar-->
     <script type="text/javascript">
-        var timestamp = '<?php=time();?>';
+        var timestamp = '<?=time();?>';
         function updateTime(){
             $('#time').html(Date(timestamp));
             timestamp++;
@@ -112,6 +114,13 @@ $rate_load_current = $tracer->ratedData[7];
             <a class="nav-link" href="tables.php">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Tables</span></a>
+        </li>
+
+        <!-- Nav Item - Info -->
+        <li class="nav-item">
+            <a class="nav-link" href="info.php">
+                <i class="fas fa-fw fa-info"></i>
+                <span>Info</span></a>
         </li>
 
         <!-- Divider -->
@@ -224,25 +233,6 @@ $rate_load_current = $tracer->ratedData[7];
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
