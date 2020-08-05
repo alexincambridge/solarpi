@@ -25,6 +25,9 @@
 require_once 'PhpEpsolarTracer.php';
 $tracer = new PhpEpsolarTracer('/dev/ttyXRUSB0');
 
+include "./php/tracer_model_detect.php"
+
+
 $tracerstatus_bgcolor = "#dedede";
 // $ecolor = "black";
 // $battSoc = 0;
