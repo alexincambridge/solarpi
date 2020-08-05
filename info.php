@@ -179,7 +179,8 @@ $rate_load_current = $tracer->ratedData[7];
                             <table>
                                 <tr>
                                     <img src="images/tracer.png" alt="Device" width="160" height="120">
-                                    <th>info</th>
+                                    <th>Model: <?php include "./php/tracer_model_dectect.php" ?>
+                                    </th>
 
                                 </tr>
                                 <tr>
