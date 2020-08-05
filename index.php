@@ -656,7 +656,7 @@ $tracer->statData[9];
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"><?php echo "<p> <font color=blue size='4pt'> Status MPPT Tracer:$connection</p>";?>
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"><?php echo "<p> <font color=blue size='4pt'> Status MPPT Tracer: $connection</p>";?>
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -821,7 +821,7 @@ $tracer->statData[9];
                 <div class="card-body">
                   <div class="chart-area">
                       <div>
-                          <div id="2chart_line_div" style="width: 700px; height: 320px;"></div>
+                          <div id="chart_line_div" style="width: 700px; height: 320px;"></div>
                       </div>
                   </div>
                 </div>
