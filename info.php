@@ -183,18 +183,18 @@ $rate_load_current = $tracer->ratedData[7];
 
                                 </tr>
                                 <tr>
-                                    <td><?php echo $voltage ?>V</td>
-                                    <td><?php echo $current ?>A</td>
-                                    <td><?php echo $power ?>W</td>
+                                    <td>PV Volt:<?php echo $voltage ?>V</td>
+                                    <td>PV Current:<?php echo $current ?>A</td>
+                                    <td>PV Power:<?php echo $power ?>W</td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo $batt_voltage ?>V</td>
-                                    <td><?php echo $rate_charg_current ?>A</td>
-                                    <td><?php echo $rate_charg_power ?>W</td>
+                                    <td>Battery Voltage:<?php echo $batt_voltage ?>V</td>
+                                    <td>Charge Current:<?php echo $rate_charg_current ?>A</td>
+                                    <td>Charge Power:<?php echo $rate_charg_power ?>W</td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo $charg_mode ?></td>
-                                    <td><?php echo $rate_load_current ?>A</td>
+                                    <td>Charge Mode:<?php echo $charg_mode ?></td>
+                                    <td>Load DC:<?php echo $rate_load_current ?>A</td>
                                     <td></td>
                                 </tr>
                             </table>
