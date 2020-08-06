@@ -6,22 +6,26 @@ $tracer = new PhpEpsolarTracer('/dev/ttyXRUSB0');
 //Info device
 $tracer->getStatData();
 
-$max_voltage = $tracer->statData[0];;
+$max_voltage = $tracer->statData[0];
 $min_voltage = $tracer->statData[1];
+
 $max_bat_voltage = $tracer->statData[2];
 $min_bat_voltage = $tracer->statData[3];
-$consume_en_today = $tracer->statData[4];
-$consume_en_month = $tracer->statData[5];
-$consume_en_year = $tracer->statData[6;
-$generate_energy_today = $tracer->statData[7];
-$generate_energy_month = $tracer->statData[8];
-$generate_energy_year = $tracer->statData[9];
-$total_generated = $tracer->statData[10];
-$carbon_diox = $tracer->statData[11];
-$net_battery_current = $tracer->statData[12];
-$battery_temp = $tracer->statData[13];
+
+$consume_energy_today = $tracer->statData[4];
+$consume_energy_month = $tracer->statData[5];
+$consume_energy_year = $tracer->statData[6];
+$total_consume_energy = $tracer->statData[7];
+
+$generate_energy_today = $tracer->statData[8];
+$generate_energy_month = $tracer->statData[9];
+$generate_energy_year = $tracer->statData[10];
+$total_generated = $tracer->statData[11];
+
+$carbon_diox = $tracer->statData[12];
+$net_battery_current = $tracer->statData[13];
 $battery_temperature = $tracer->statData[14];
-$atmosph_temperature = $tracer->statData[15];
+$ambient_temperature = $tracer->statData[15];
 
 
 
@@ -199,10 +203,10 @@ $atmosph_temperature = $tracer->statData[15];
                           <td>Max battery voltage today: <?php echo $max_bat_voltage ?>V</td><tr>
                           <td>Min battery voltage today:<?php echo $min_bat_voltage ?>V</td><tr>
 
-                          <td>Consumed energy today: <?php echo $consume_en_today ?>KWH</td><tr>
-                          <td>Consumed energy this month: <?php echo $consume_en_month ?>KWH</td><tr>
-                          <td>Consumed energy this year:<?php echo $consume_en_year ?>KWH</td><tr>
-                          <td>Total consumed energy:<?php echo $rate_load_current ?>KWH</td><tr>
+                          <td>Consumed energy today: <?php echo $consume_energy_today ?>KWH</td><tr>
+                          <td>Consumed energy this month: <?php echo $consume_energy_month ?>KWH</td><tr>
+                          <td>Consumed energy this year:<?php echo $consume_energy_year ?>KWH</td><tr>
+                          <td>Total consumed energy:<?php $total_consume_energy ?>KWH</td><tr>
 
                           <td>Generated energy today <?php echo $generate_energy_today ?>KWH</td><tr>
                           <td>Generated energy this month: <?php echo $generate_energy_month ?>KWH</td><tr>
@@ -211,8 +215,8 @@ $atmosph_temperature = $tracer->statData[15];
                           <td>Total generated energy: <?php echo $total_generated ?>KWH</td><tr>
                           <td>Carbon dioxide reduction: <?php echo $carbon_diox ?>T</td><tr>
                           <td>Net battery current: <?php echo $net_battery_current ?>A</td><tr>
-                          <td>Battery temperature: <?php echo $battery_temp ?>C</td><tr>
-                          <td>Ambient temperature: <?php echo $atmosph_temperature ?>C</td><tr>
+                          <td>Battery temperature: <?php echo $battery_temperature ?>C</td><tr>
+                          <td>Ambient temperature: <?php echo $ambient_temperature ?>C</td><tr>
                       </tr>
                   </table>
                   </tbody>
