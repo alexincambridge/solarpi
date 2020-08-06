@@ -1,21 +1,30 @@
 <?php
 
-//require_once 'PhpEpsolarTracer.php';
-//$tracer = new PhpEpsolarTracer('/dev/ttyXRUSB0');
-//
-////Info device
-//$tracer->getRatedData();
-//
-//$voltage = $tracer->ratedData[0];;
-//$current = $tracer->ratedData[1];
-//$power = $tracer->ratedData[2];
-//$batt_voltage = $tracer->ratedData[3];
-//$rate_charg_current = $tracer->ratedData[4];
-//$rate_charg_power = $tracer->ratedData[5];
-//$charg_mode = $tracer->ratedData[6];
-//$rate_load_current = $tracer->ratedData[7];
+require_once 'PhpEpsolarTracer.php';
+$tracer = new PhpEpsolarTracer('/dev/ttyXRUSB0');
 
-$voltage = 0;
+//Info device
+$tracer->getStatData();
+
+$max_voltage = $tracer->statData[0];;
+$min_voltage = $tracer->statData[1];
+$max_bat_voltage = $tracer->statData[2];
+$min_bat_voltage = $tracer->statData[3];
+$consume_en_today = $tracer->statData[4];
+$consume_en_month = $tracer->statData[5];
+$consume_en_year = $tracer->statData[6;
+$generate_energy_today = $tracer->statData[7];
+$generate_energy_month = $tracer->statData[8];
+$generate_energy_year = $tracer->statData[9];
+$total_generated = $tracer->statData[10];
+$carbon_diox = $tracer->statData[11];
+$net_battery_current = $tracer->statData[12];
+$battery_temp = $tracer->statData[13];
+$battery_temperature = $tracer->statData[14];
+$atmosph_temperature = $tracer->statData[15];
+
+
+
 
 ?>
 
@@ -57,18 +66,21 @@ $voltage = 0;
 
     <style>
         table {
-            width: 100%;
-            border-collapse: collapse;
+             font-family: arial, sans-serif;
+             border-collapse: collapse;
+             width: 100%;
+         }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
         }
 
-        table, td, th {
-            border: 1px solid black;
-            padding: 5px;
+        tr:nth-child(even) {
+            background-color: #dddddd;
         }
-
-        th {text-align: left;}
     </style>
-
 </head>
 
 <body id="page-top">
@@ -141,7 +153,7 @@ $voltage = 0;
         <div id="content">
 
             <!-- Topbar -->
-            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"><?php echo "<p> <font color=blue size='4pt'> Status MPPT Tracer:$connection</p>";?>
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"><?php echo "<p> <font color=SlateBlue size='4pt'> Status MPPT Tracer:$connection</p>";?>
 
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -177,36 +189,37 @@ $voltage = 0;
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
+                <table>
                     <tr>
-                      <th>PV Voltage</th>
-                      <th>PV Current</th>
-                      <th>PV Power</th>
-                      <th>Batt Voltage</th>
-                      <th>Charg Current</th>
-                      <th>Charg Power</th>
-                      <th>Charg Mode</th>
-                      <th>Load Current</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><?php echo $voltage ?>V</td>
-                      <td><?php echo $current ?>A</td>
-                      <td><?php echo $power ?>W</td>
-                      <td><?php echo $batt_voltage ?>V</td>
-                      <td><?php echo $rate_charg_current ?>A</td>
-                      <td><?php echo $rate_charg_power ?>W</td>
-                      <td><?php echo $charg_mode ?></td>
-                      <td><?php echo $rate_load_current ?>A</td>
-                    </tr>
+
+                    <tr>Statistic Table </tr>
+
+                          <td>Max input voltage today:  <?php echo $max_voltage ?>V</td><tr>
+                          <td>Min input voltage today: <?php echo $min_voltage ?>V</td><tr>
+                          <td>Max battery voltage today: <?php echo $max_bat_voltage ?>V</td><tr>
+                          <td>Min battery voltage today:<?php echo $min_bat_voltage ?>V</td><tr>
+
+                          <td>Consumed energy today: <?php echo $consume_en_today ?>KWH</td><tr>
+                          <td>Consumed energy this month: <?php echo $consume_en_month ?>KWH</td><tr>
+                          <td>Consumed energy this year:<?php echo $consume_en_year ?>KWH</td><tr>
+                          <td>Total consumed energy:<?php echo $rate_load_current ?>KWH</td><tr>
+
+                          <td>Generated energy today <?php echo $generate_energy_today ?>KWH</td><tr>
+                          <td>Generated energy this month: <?php echo $generate_energy_month ?>KWH</td><tr>
+                          <td>Generated energy this year:<?php echo $generate_energy_year ?>KWH</td><tr>
+
+                          <td>Total generated energy: <?php echo $total_generated ?>KWH</td><tr>
+                          <td>Carbon dioxide reduction: <?php echo $carbon_diox ?>T</td><tr>
+                          <td>Net battery current: <?php echo $net_battery_current ?>A</td><tr>
+                          <td>Battery temperature: <?php echo $battery_temp ?>C</td><tr>
+                          <td>Ambient temperature: <?php echo $atmosph_temperature ?>C</td><tr>
+                      </tr>
+                  </table>
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
-
         </div>
         <!-- /.container-fluid -->
 
