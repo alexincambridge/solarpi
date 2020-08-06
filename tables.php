@@ -28,8 +28,6 @@ $battery_temperature = $tracer->statData[14];
 $ambient_temperature = $tracer->statData[15];
 
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -72,13 +70,13 @@ $ambient_temperature = $tracer->statData[15];
         table {
              font-family: arial, sans-serif;
              border-collapse: collapse;
-             width: 100%;
+             width: 99%;
          }
 
         td, th {
             border: 1px solid #dddddd;
             text-align: left;
-            padding: 8px;
+            padding: 5px;
         }
 
         tr:nth-child(even) {
@@ -189,14 +187,14 @@ $ambient_temperature = $tracer->statData[15];
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Info Device Table</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Statistic informacion Device Table</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table>
                     <tr>
 
-                    <tr>Statistic Table </tr>
+                    <tr>Statistic</tr>
 
                           <td>Max input voltage today:  <?php echo $max_voltage ?>V</td><tr>
                           <td>Min input voltage today: <?php echo $min_voltage ?>V</td><tr>
@@ -234,7 +232,7 @@ $ambient_temperature = $tracer->statData[15];
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>Copyright &copy;  SolarPi 2020</span>
           </div>
         </div>
       </footer>

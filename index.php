@@ -903,7 +903,7 @@ $tracer->statData[9];
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; 2020</span>
+            <span>Copyright &copy; SolarPi 2020</span>
           </div>
         </div>
       </footer>
