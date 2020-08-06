@@ -53,4 +53,5 @@ while (list ($key, $val) = each($solararray)) {
         $i++;
     }
 }
+
 ?>
