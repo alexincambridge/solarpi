@@ -67,7 +67,6 @@ $rate_load_current = $tracer->ratedData[7];
 
         th {text-align: left;}
     </style>
-
 </head>
 
 <body id="page-top">
@@ -153,7 +152,7 @@ $rate_load_current = $tracer->ratedData[7];
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo date('d m Y | H:i:s', $_SESSION['time']);?></p></span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo date('d m Y | H:i:s');?></p></span>
                         </a>
 
                     </li>
@@ -213,7 +212,7 @@ $rate_load_current = $tracer->ratedData[7];
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy;  SolarPi 2020</span>
+                    <span>SolarPi 2020</span>
                 </div>
             </div>
         </footer>

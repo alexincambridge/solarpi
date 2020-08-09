@@ -27,20 +27,8 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+
 </head>
-
-<!-- Current time on top bar-->
-<script type="text/javascript">
-    var timestamp = '<?=time();?>';
-    function updateTime(){
-        $('#time').html(Date(timestamp));
-        timestamp++;
-    }
-    $(function(){
-        setInterval(updateTime, 1000);
-    });
-</script>
-
 <script>
     // Visualization API with the 'corechart' package.
     google.charts.load('visualization', { packages: ['corechart'] });
@@ -49,7 +37,7 @@
     setInterval(drawLineChart, 50000);
     function drawLineChart() {
         $.ajax({
-            url: "http://192.168.1.149/pi-solar-tracer/getDataStats.php?q=2",
+            url: "http://experiments.ddns.net/pi-solar-tracer/getDataStats.php?q=2",
             dataType: "json",
             type: "GET",
             contentType: "application/json; charset=utf-8",
@@ -90,7 +78,7 @@
     setInterval(drawLineChart, 50000);
     function drawLineChart() {
         $.ajax({
-            url: "http://192.168.1.149/pi-solar-tracer/getDataStats.php?q=3",
+            url: "http://experiments.ddns.net/pi-solar-tracer/getDataStats.php?q=3",
             dataType: "json",
             type: "GET",
             contentType: "application/json; charset=utf-8",
@@ -207,7 +195,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo date('d m Y | H:i:s', $_SESSION['time']);?></p></span>
+              <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo date('d m Y | H:i:s');?></p></span>
               </a>
 
             </li>
@@ -266,7 +254,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; SolarPi 2020</span>
+            <span>SolarPi <?php echo date("Y");?></span>
           </div>
         </div>
       </footer>

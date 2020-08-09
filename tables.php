@@ -168,7 +168,7 @@ $ambient_temperature = $tracer->statData[15];
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo date('d m Y | H:i:s', $_SESSION['time']);?></p></span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo date('d m Y | H:i:s');?></p></span>
                         </a>
 
                     </li>
@@ -204,7 +204,7 @@ $ambient_temperature = $tracer->statData[15];
                           <td>Consumed energy today: <?php echo $consume_energy_today ?>KWH</td><tr>
                           <td>Consumed energy this month: <?php echo $consume_energy_month ?>KWH</td><tr>
                           <td>Consumed energy this year:<?php echo $consume_energy_year ?>KWH</td><tr>
-                          <td>Total consumed energy:<?php $total_consume_energy ?>KWH</td><tr>
+                          <td>Total consumed energy:<?php echo $total_consume_energy ?>KWH</td><tr>
 
                           <td>Generated energy today <?php echo $generate_energy_today ?>KWH</td><tr>
                           <td>Generated energy this month: <?php echo $generate_energy_month ?>KWH</td><tr>
@@ -232,7 +232,7 @@ $ambient_temperature = $tracer->statData[15];
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy;  SolarPi 2020</span>
+            <span>SolarPi 2020</span>
           </div>
         </div>
       </footer>

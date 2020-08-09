@@ -160,16 +160,21 @@ $tracer->statData[9];
             symbol: 'V',
             min: 0,
             max: 24,
-            gaugeWidthScale: 0.6,
             counter: true,
-            label: "V"
+	    pointer: true,
+            pointerOptions: {
+                toplength: 2,
+                bottomlength: -20,
+                bottomwidth: 6,
+                color: '#8e8e93'
+            },
 
+            label: "V",
+            gaugeWidthScale: 0.6,
         });
 
-        document.getElementById('g1_refresh').addEventListener('click', function() {
-            g1.refresh(getRandomInt(0, 30));
-        });
-    });
+  });
+
 </script>
 
 <script>
@@ -184,6 +189,13 @@ $tracer->statData[9];
             max: 10,
             gaugeWidthScale: 0.6,
             counter: true,
+	    pointer: true,
+            pointerOptions: {
+                toplength: 2,
+                bottomlength: -20,
+                bottomwidth: 6,
+                color: '#8e8e93'
+            },
             label: "A",
 
         });
@@ -205,7 +217,14 @@ $tracer->statData[9];
             min: 0,
             max: 200,
             gaugeWidthScale: 0.6,
-            counter: true,
+	    counter: true,
+            pointer: true,
+            pointerOptions: {
+                toplength: 2,
+                bottomlength: -20,
+                bottomwidth: 6,
+                color: '#8e8e93'
+            },
             label: "W",
         });
 
@@ -228,7 +247,7 @@ $tracer->statData[9];
             symbol: 'V',
             pointer: true,
             pointerOptions: {
-                toplength: 8,
+                toplength: 2,
                 bottomlength: -20,
                 bottomwidth: 6,
                 color: '#8e8e93'
@@ -248,7 +267,7 @@ $tracer->statData[9];
     // battery current
     var g5;
     document.addEventListener("DOMContentLoaded", function(event) {
-        g4 = new JustGage({
+        g5 = new JustGage({
             id: "g5",
             decimals: true,
             value: "<?php echo $tracer->realtimeData[4]; ?>",
@@ -257,7 +276,7 @@ $tracer->statData[9];
             symbol: 'A',
             pointer: true,
             pointerOptions: {
-                toplength: 8,
+                toplength: 2,
                 bottomlength: -20,
                 bottomwidth: 6,
                 color: '#8e8e93'
@@ -286,7 +305,7 @@ $tracer->statData[9];
             symbol: 'W',
             pointer: true,
             pointerOptions: {
-                toplength: 8,
+                toplength: 2,
                 bottomlength: -20,
                 bottomwidth: 6,
                 color: '#8e8e93'
@@ -317,7 +336,7 @@ $tracer->statData[9];
             symbol: 'V',
             pointer: true,
             pointerOptions: {
-                toplength: 8,
+                toplength: 2,
                 bottomlength: -20,
                 bottomwidth: 6,
                 color: '#8e8e93'
@@ -347,7 +366,7 @@ $tracer->statData[9];
             symbol: 'A',
             pointer: true,
             pointerOptions: {
-                toplength: 8,
+                toplength: 2,
                 bottomlength: -20,
                 bottomwidth: 6,
                 color: '#8e8e93'
@@ -378,7 +397,7 @@ $tracer->statData[9];
             symbol: 'W',
             pointer: true,
             pointerOptions: {
-                toplength: 8,
+                toplength: 2,
                 bottomlength: -20,
                 bottomwidth: 6,
                 color: '#8e8e93'
@@ -407,8 +426,8 @@ $tracer->statData[9];
             symbol: '%',
             pointer: true,
             pointerOptions: {
-                toplength: -8,
-                bottomlength: -20,
+                toplength: 2,
+                bottomlength: 2,
                 bottomwidth: 6,
                 color: '#8e8e93'
             },
@@ -424,9 +443,6 @@ $tracer->statData[9];
 
         });
 
-        document.getElementById('g7_refresh').addEventListener('click', function() {
-            g1.refresh(getRandomInt(0, 30));
-        });
     });
 
 </script>
@@ -526,7 +542,7 @@ $tracer->statData[9];
     setInterval(drawLineChart, 600000);
     function drawLineChart() {
         $.ajax({
-            url: "http://192.168.1.149/pi-solar-tracer/getDataStats.php?q=1",
+            url: "http://experiments.ddns.net/pi-solar-tracer/getDataStats.php?q=1",
             dataType: "json",
             type: "GET",
             contentType: "application/json; charset=utf-8",
@@ -704,7 +720,6 @@ $tracer->statData[9];
 
           <!-- Content Row -->
           <div class="row">
-
             <!-- Metemos Gauges aqui -->
              <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
@@ -903,7 +918,7 @@ $tracer->statData[9];
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; SolarPi 2020</span>
+            <span>SolarPi 2020</span>
           </div>
         </div>
       </footer>
