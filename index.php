@@ -116,7 +116,7 @@ $tracer->statData[9];
     <script src="js/chartjs-2.9.3/jquery.canvasjs.min.js"></script>
 
 <style>
-    #g1, #g2, #g3, #g4, #g5, #g6, #g8, #g9, #g10{
+    #g1, #g2, #g3, #g4, #g5, #g6, #g7, #g8, #g9, #g10{
         width:80px; height:80px;
         display: inline-block;
         margin: 0em;
@@ -182,7 +182,7 @@ $tracer->statData[9];
     document.addEventListener("DOMContentLoaded", function(event) {
         g2 = new JustGage({
             id: "g2",
-            decimals: true,
+            decimals: 2,
             value: "<?php echo $tracer->realtimeData[1]; ?>",
             symbol: 'A',
             min: 0,
@@ -211,7 +211,7 @@ $tracer->statData[9];
     document.addEventListener("DOMContentLoaded", function(event) {
         g2 = new JustGage({
             id: "g3",
-            decimals: true,
+            decimals: 2,
             value: "<?php echo $tracer->realtimeData[2]; ?>",
             symbol: 'W',
             min: 0,
@@ -269,7 +269,7 @@ $tracer->statData[9];
     document.addEventListener("DOMContentLoaded", function(event) {
         g5 = new JustGage({
             id: "g5",
-            decimals: true,
+            decimals: 2,
             value: "<?php echo $tracer->realtimeData[4]; ?>",
             min: 0,
             max: 10,
@@ -298,7 +298,7 @@ $tracer->statData[9];
     document.addEventListener("DOMContentLoaded", function(event) {
         g6 = new JustGage({
             id: "g6",
-            decimals: true,
+            decimals: 2,
             value: "<?php echo $tracer->realtimeData[5]; ?>",
             min: 0,
             max: 100,
@@ -359,7 +359,7 @@ $tracer->statData[9];
     document.addEventListener("DOMContentLoaded", function(event) {
         g6 = new JustGage({
             id: "g9",
-            decimals: true,
+            decimals: 2,
             value: "<?php echo $tracer->realtimeData[7]; ?>",
             min: 0,
             max: 8,
@@ -390,7 +390,7 @@ $tracer->statData[9];
     document.addEventListener("DOMContentLoaded", function(event) {
         g6 = new JustGage({
             id: "g10",
-            decimals: true,
+            decimals: 2,
             value: "<?php echo $tracer->realtimeData[8]; ?>",
             min: 0,
             max: 100,
