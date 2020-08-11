@@ -27,13 +27,20 @@ Library for communicating with Epsolar/Epever Tracer 1206AN MPPT Solar Charger C
 
 Features
 -------
-This library connects via RS485 port to the widely known Epsolar/Epever Tracer AN Series MPPT solar charger controller (mine is Tracer1206AN) allowing users to get data such as:
+This library connects via RS485 port to the widely known Epsolar/Epever Tracer AN Series MPPT solar charger controller 
+(mine is Tracer1206AN) allowing users to get data such as:
  1. Battery Voltage 
  2. Load Current 
  3. Panel Power and base on the [Tracer protocol] [protocol] (Modbus).
  
-In order to get it to work you just need tu use a cheap USB/RS485 converter and connect one side to your PC/Raspberry USB port and the other to the solar charger's connector.
+In order to get it to work you just need tu use a cheap USB/RS485 converter and connect one side to your PC/Raspberry USB
+port and the other to the solar charger's connector.
 and will produce the following output on my solar charger:
+
+sudo crontab -e
+
+add the following  * * * * * /var/www/html/epsolar/getsolarstats.php
+
 
 1. On this file is possible to query the protocols to use pi-solar-tracer/pdf/1733_modbus_protocol.pdf
 
@@ -160,20 +167,16 @@ The number at the beginning of every line rapresent the array index
 
 Note
 ------
-If you use this class in HTTPD and not CLI don't forget to give the user the permssion to use serial port (for example with Apache on Debian: usermod -a -G dialout www-data)
+If you use this class in HTTPD and not CLI don't forget to give the user the permssion to use serial port (for example
+with Apache on Debian: usermod -a -G dialout www-data)
 
 Contributors
 --------
-Luca Soltoggio
 
 http://arduinoelectronics.wordpress.com/ ~ http://minibianpi.wordpress.com
 
-PhpSerial by Rémy Sanchez and Rizwan Kassim
-
-License
-------
-Copyright (C) 2016 Luca Soltoggio
-
+ * THIS PROGRAM COMES WITH ABSOLUTELY NO WARRANTIES !
+ * USE IT AT YOUR OWN RISKS !
 
 [//]: #
 [protocol]: <http://www.solar-elektro.cz/data/dokumenty/1733_modbus_protocol.pdf>

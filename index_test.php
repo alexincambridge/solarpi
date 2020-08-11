@@ -1,90 +1,160 @@
 <?php
+//
+///*
+// * PHP EpSolar Tracer Class (PhpEpsolarTracer) v0.9
+// *
+// * Library for communicating with
+// * Epsolar/Epever Tracer BN MPPT Solar Charger Controller
+// *
+// * THIS PROGRAM COMES WITH ABSOLUTELY NO WARRANTIES !
+// * USE IT AT YOUR OWN RISKS !
+// *
+// * Copyright (C) 2016 under GPL v. 2 license
+// * 13 March 2016
+// *
+// * @author Luca Soltoggio
+// * http://www.arduinoelettronica.com/
+// * https://arduinoelectronics.wordpress.com/
+// *
+// * This is an example on how to use the library
+// * It creates a web page with tracer data
+// *
+// * The version below is a highly modified version of that referred to by the headers above, the origninal can be found at https://github.com/toggio/PhpEpsolarTracer
+// */
+//
+//require_once 'PhpEpsolarTracer.php';
+//$tracer = new PhpEpsolarTracer('/dev/ttyXRUSB0');
+//
+//$tracerstatus_bgcolor = "#dedede";
+//// $ecolor = "black";
+//// $battSoc = 0;
+//// Get Info and check if is connected
+//if ($tracer->getInfoData()) {
+//    $connection = "<font color=\"green\">Connected</font>";
+//} else {
+//    $connection = "<font color=\"red\">Disconnected</font>";
+//
+//}
+//
+//// Get Real Time Data
+//if ($tracer->getRealTimeData()) {
+//    $tracerstatus_bgcolor = "green";
+//    $equipStatus = $tracer->realtimeData[16];
+//    $chargStatus = 0b11 & ($equipStatus >> 2);
+//    switch ($chargStatus) {
+//        case 0: $eStatus = "Not charging";
+//            break;
+//        case 1: $eStatus = "Float (13.8V)";
+//            break;
+//        case 2: $eStatus = "Boost (14.4V)";
+//            break;
+//        case 3: $eStatus = "Equalization (14.6V)";
+//            break;
+//    };
+//    if ($equipStatus >> 4) {
+//        $eStatus = "<font color=\"red\">FAULT</font>";
+//        $tracerstatus_bgcolor = "red";
+//    }
+//
+//    $battStatus = $tracer->realtimeData[15];
+//    $battLevel = 0b1111 & $battStatus;
+//    switch ($battLevel) {
+//        case 0: $bStatus = "Normal";
+//            break;
+//        case 1: $bStatus = "<font color=\"red\">Overvolt</font>";
+//            break;
+//        case 2: $bStatus = "<font color=\"orange\">Undervolt</font>";
+//            break;
+//        case 3: $bStatus = "<font color=\"red\">Low volt disconnect</font>";
+//            break;
+//        case 4: {
+//            $bStatus = "<font color=\"red\">FAULT</font>";
+//            $tracerstatus_bgcolor = "red";
+//            break;
+//        }
+//    }
+//
+//    $battSoc = $tracer->realtimeData[12];
+//}
+//
+////get data for the last 2 weeks
+////$ago = time() - 1209600;
+////get data for the last 24 hrs
+////$ago = time() - 86400;
+////get data for the last 48 hrs
+//$ago = time() - (86400 * 2);
+//
+//$dsn = "mysql:host=localhost;dbname=Solardata";
+//$user = "root";
+//$passwd = "password";
+//
+//$pdo = new PDO($dsn, $user, $passwd);
+//
+////$dbh = new PDO("mysql:host=localhost;dbname=solardata", "databaseusername", "databasepassword");
+//$sth = $pdo->prepare("select `timestamp`,`PV array voltage`,`PV array current`,`PV array power`,`Battery voltage`,`Battery charging current`,`Battery charging power`,`Load voltage`,`Load current`,`Load power` from stats where `Controller` = 1 and `timestamp` > ? order by `timestamp` asc");
+//$sth->bindParam(1, $ago);
+//$sth->execute();
+//
+////build the json array
+//$data = array();
+//while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
+//    $data["category"][] = date("H:i", $row["timestamp"]);
+//    while (list($key, $val) = each($row)) {
+//        $data[$key][] = $val;
+//    }
+//}
+//
+//unset($data["timestamp"]);
+//
+//reset($data);
+//
 
-/*
- * PHP EpSolar Tracer Class (PhpEpsolarTracer) v0.9
- *
- * Library for communicating with
- * Epsolar/Epever Tracer BN MPPT Solar Charger Controller
- *
- * THIS PROGRAM COMES WITH ABSOLUTELY NO WARRANTIES !
- * USE IT AT YOUR OWN RISKS !
- *
- * Copyright (C) 2016 under GPL v. 2 license
- * 13 March 2016
- *
- * @author Luca Soltoggio
- * http://www.arduinoelettronica.com/
- * https://arduinoelectronics.wordpress.com/
- *
- * This is an example on how to use the library
- * It creates a web page with tracer data
- *
- * The version below is a highly modified version of that referred to by the headers above, the origninal can be found at https://github.com/toggio/PhpEpsolarTracer
- */
+$var1 = (rand(0,30));
 
-require_once 'PhpEpsolarTracer.php';
-$tracer = new PhpEpsolarTracer('/dev/ttyXRUSB0');
 
-$tracerstatus_bgcolor = "#dedede";
-// $ecolor = "black";
-// $battSoc = 0;
-// Get Info and check if is connected
-if ($tracer->getInfoData()) {
-    $connection = "<font color=\"green\">Connected </font><img src='images/usb-conectado.png'>";
-} else {
-    $connection = "<font color=\"red\">Disconnected </font><img src='images/usb-desconectado.png'>";
+session_start();
+if(!isset($_Session['timedateRefreshCount']))
+    $SESSION['timedateRefreshCount']=0;
 
-}
 
-// Get Real Time Data
-if ($tracer->getRealTimeData()) {
-    $tracerstatus_bgcolor = "green";
-    $equipStatus = $tracer->realtimeData[16];
-    $chargStatus = 0b11 & ($equipStatus >> 2);
-    switch ($chargStatus) {
-        case 0: $eStatus = "<font color=\"red\">Not charging</font>";
-            break;
-        case 1: $eStatus = "Float (13.8V)";
-            break;
-        case 2: $eStatus = "Boost (14.4V)";
-            break;
-        case 3: $eStatus = "Equalization (14.6V)";
-            break;
-    };
-    if ($equipStatus >> 4) {
-        $eStatus = "<font color=\"red\">FAULT</font>";
-        $tracerstatus_bgcolor = "red";
-    }
 
-    $battStatus = $tracer->realtimeData[15];
-    $battLevel = 0b1111 & $battStatus;
-    switch ($battLevel) {
-        case 0: $bStatus = "Normal";
-            break;
-        case 1: $bStatus = "<font color=\"red\">Overvolt</font>";
-            break;
-        case 2: $bStatus = "<font color=\"orange\">Undervolt</font>";
-            break;
-        case 3: $bStatus = "<font color=\"red\">Low volt disconnect</font>";
-            break;
-        case 4: {
-            $bStatus = "<font color=\"red\">FAULT</font>";
-            $tracerstatus_bgcolor = "red";
-            break;
-        }
-    }
 
-    $battSoc = $tracer->realtimeData[12];
-}
-
-//energy generated total
-$tracer->getStatData();
-//total energy consumed
-$tracer->statData[7];
-//total energy generated
-$tracer->statData[9];
+$from_bat = 100;
+$to_bat = 10;
 
 ?>
+
+<script>
+    var request = null;
+    function getCurrentTime()
+    {
+        request = new XMLHttpRequest();
+        var url = 'time.php';
+        request.open("GET", url, true);
+        request.onreadystatechange = updatePage;
+        request.send(null);
+
+
+    }
+
+    function updatePage()
+    {
+        if (request.readyState == 4)
+        {
+            var dateDisplay = document.getElementById("datetime");
+            dateDisplay.inneHTML = request.responseText;
+            var hiddenParagraph = document.getElementById("colorChoice");
+            dateDIsplay.Style.color = hiddenParagraph.inneHTML;
+
+        }
+    }
+    </script>
+
+
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -102,7 +172,6 @@ $tracer->statData[9];
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
@@ -112,69 +181,69 @@ $tracer->statData[9];
 
     <script src="js/raphael-2.1.4.min.js"></script>
     <script src="js/justgage.js"></script>
-    <script src="js/chartjs-2.9.3/canvasjs.min.js.js"></script>
-    <script src="js/chartjs-2.9.3/jquery.canvasjs.min.js"></script>
+    <script src="js/chartjs-2.9.3/Chart.min.js"></script>
+    <script src="js/chartjs-2.9.3/utils.js"></script>
+
 
 <style>
-    #g1, #g2, #g3, #g4, #g5, #g6, #g7, #g8, #g9, #g10{
+    #g1, #g2, #g3, #g4, #g5, #g6, #g8, #g9, #g10{
         width:80px; height:80px;
         display: inline-block;
         margin: 0em;
     }
 
+    canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+
 </style>
+<!--    <script>-->
+<!--        window.setInterval(function(){-->
+<!--            var xhttp = new XMLHttpRequest();-->
+<!--            xhttp.onreadystatechange = function() {-->
+<!--                if (this.readyState == 4 && this.status == 200) {-->
+<!--                    // Typical action to be performed when the document is ready:-->
+<!--                    document.getElementById("g01").innerHTML = xhttp.responseText;-->
+<!--                }-->
+<!--            };-->
+<!--            xhttp.open("GET", "http://localhost/pi-solar-tracer/getDataStats.php?q=1", true);-->
+<!--            xhttp.send();-->
+<!---->
+<!--        }, 5000);-->
+<!--    </script>-->
+
+    <script>
+        var data = <?php echo json_encode("9", JSON_HEX_TAG); ?>; // Don't forget the extra semicolon!
+    </script>
 
 
 </head>
 
 <body id="page-top">
 
-<!-- Current time on top bar-->
-<script type="text/javascript">
-    var timestamp = '<?=time();?>';
-    function updateTime(){
-        $('#time').html(Date(timestamp));
-        timestamp++;
-    }
-    $(function(){
-        setInterval(updateTime, 1000);
-    });
-</script>
-
-
-<!--Solar Panels info  g1 V, g2 A, g3 W #3300 [0]
-//Voltaje x Corriente = Potencia
-//1V x 1A = 1 W
-
-//V x A = W
-//A =  W / V
-//100W/18V  = 5.55 amperios-->
-
-<script>
+<!-- Solar Panels info  g1 V, g2 A, g3 W #3300 [0]-->
+    <script>
     var g1;
     document.addEventListener("DOMContentLoaded", function(event) {
         g1 = new JustGage({
             id: "g1",
             decimals: true,
-            value: "<?php echo $tracer->realtimeData[0]; ?>",
-            symbol: 'V',
+            value: data,
+            symbol: 'A',
             min: 0,
-            max: 24,
-            counter: true,
-	    pointer: true,
-            pointerOptions: {
-                toplength: 2,
-                bottomlength: -20,
-                bottomwidth: 6,
-                color: '#8e8e93'
-            },
-
-            label: "V",
+            max: 30,
             gaugeWidthScale: 0.6,
+            counter: true,
+            label: "A",
+
         });
 
-  });
-
+        document.getElementById('g1_refresh').addEventListener('click', function() {
+            g1.refresh(getRandomInt(0, 30));
+        });
+    });
 </script>
 
 <script>
@@ -182,20 +251,13 @@ $tracer->statData[9];
     document.addEventListener("DOMContentLoaded", function(event) {
         g2 = new JustGage({
             id: "g2",
-            decimals: 2,
-            value: "<?php echo $tracer->realtimeData[1]; ?>",
+            decimals: true,
+            value: 12,
             symbol: 'A',
             min: 0,
-            max: 10,
+            max: 30,
             gaugeWidthScale: 0.6,
             counter: true,
-	    pointer: true,
-            pointerOptions: {
-                toplength: 2,
-                bottomlength: -20,
-                bottomwidth: 6,
-                color: '#8e8e93'
-            },
             label: "A",
 
         });
@@ -211,20 +273,13 @@ $tracer->statData[9];
     document.addEventListener("DOMContentLoaded", function(event) {
         g2 = new JustGage({
             id: "g3",
-            decimals: 2,
-            value: "<?php echo $tracer->realtimeData[2]; ?>",
+            decimals: true,
+            value: 12,
             symbol: 'W',
             min: 0,
-            max: 200,
+            max: 30,
             gaugeWidthScale: 0.6,
-	    counter: true,
-            pointer: true,
-            pointerOptions: {
-                toplength: 2,
-                bottomlength: -20,
-                bottomwidth: 6,
-                color: '#8e8e93'
-            },
+            counter: true,
             label: "W",
         });
 
@@ -241,13 +296,13 @@ $tracer->statData[9];
         g4 = new JustGage({
             id: "g4",
             decimals: true,
-            value: "<?php echo $tracer->realtimeData[3]; ?>",
+            value: 12,
             min: 0,
-            max: 24,
+            max: 50,
             symbol: 'V',
             pointer: true,
             pointerOptions: {
-                toplength: 2,
+                toplength: 8,
                 bottomlength: -20,
                 bottomwidth: 6,
                 color: '#8e8e93'
@@ -267,16 +322,16 @@ $tracer->statData[9];
     // battery current
     var g5;
     document.addEventListener("DOMContentLoaded", function(event) {
-        g5 = new JustGage({
+        g4 = new JustGage({
             id: "g5",
-            decimals: 2,
-            value: "<?php echo $tracer->realtimeData[4]; ?>",
+            decimals: true,
+            value: 33,
             min: 0,
-            max: 10,
+            max: 8,
             symbol: 'A',
             pointer: true,
             pointerOptions: {
-                toplength: 2,
+                toplength: 8,
                 bottomlength: -20,
                 bottomwidth: 6,
                 color: '#8e8e93'
@@ -298,14 +353,14 @@ $tracer->statData[9];
     document.addEventListener("DOMContentLoaded", function(event) {
         g6 = new JustGage({
             id: "g6",
-            decimals: 2,
-            value: "<?php echo $tracer->realtimeData[5]; ?>",
+            decimals: true,
+            value: 44,
             min: 0,
-            max: 100,
+            max: 50,
             symbol: 'W',
             pointer: true,
             pointerOptions: {
-                toplength: 2,
+                toplength: 8,
                 bottomlength: -20,
                 bottomwidth: 6,
                 color: '#8e8e93'
@@ -330,13 +385,13 @@ $tracer->statData[9];
         g6 = new JustGage({
             id: "g8",
             decimals: true,
-            value: "<?php echo $tracer->realtimeData[6]; ?>",
+            value: 34,
             min: 0,
-            max: 24,
+            max: 50,
             symbol: 'V',
             pointer: true,
             pointerOptions: {
-                toplength: 2,
+                toplength: 8,
                 bottomlength: -20,
                 bottomwidth: 6,
                 color: '#8e8e93'
@@ -359,14 +414,14 @@ $tracer->statData[9];
     document.addEventListener("DOMContentLoaded", function(event) {
         g6 = new JustGage({
             id: "g9",
-            decimals: 2,
-            value: "<?php echo $tracer->realtimeData[7]; ?>",
+            decimals: true,
+            value: 23,
             min: 0,
-            max: 8,
+            max: 50,
             symbol: 'A',
             pointer: true,
             pointerOptions: {
-                toplength: 2,
+                toplength: 8,
                 bottomlength: -20,
                 bottomwidth: 6,
                 color: '#8e8e93'
@@ -390,14 +445,14 @@ $tracer->statData[9];
     document.addEventListener("DOMContentLoaded", function(event) {
         g6 = new JustGage({
             id: "g10",
-            decimals: 2,
-            value: "<?php echo $tracer->realtimeData[8]; ?>",
+            decimals: true,
+            value: 22,
             min: 0,
-            max: 100,
+            max: 50,
             symbol: 'W',
             pointer: true,
             pointerOptions: {
-                toplength: 2,
+                toplength: 8,
                 bottomlength: -20,
                 bottomwidth: 6,
                 color: '#8e8e93'
@@ -420,20 +475,20 @@ $tracer->statData[9];
     document.addEventListener("DOMContentLoaded", function(event) {
         g7 = new JustGage({
             id: "g7",
-            value: <?php echo $battSoc; ?>,
+            value:20,
             min: 0,
             max: 100,
             symbol: '%',
             pointer: true,
             pointerOptions: {
-                toplength: 2,
-                bottomlength: 2,
+                toplength: 8,
+                bottomlength: -20,
                 bottomwidth: 6,
-                color: '#8e8e93'
+
             },
             levelColors: [
                 "#F50000",
-                "#ffcc00",
+                "#F59400",
                 "#71D506"
             ],
             gaugeWidthScale: 0.6,
@@ -443,120 +498,36 @@ $tracer->statData[9];
 
         });
 
+        document.getElementById('g7_refresh').addEventListener('click', function() {
+            g1.refresh(getRandomInt(0, 30));
+        });
     });
 
 </script>
 
 <script>
-    window.onload = function () {
-
-        var chart = new CanvasJS.Chart("chartContainer", {
-            animationEnabled: true,
-            title:{
-                text: "Daily High Temperature at Different Beaches"
-            },
-            axisX: {
-                valueFormatString: "DD MMM,YY"
-            },
-            axisY: {
-                title: "Temperature (in °C)",
-                includeZero: false,
-                suffix: " °C"
-            },
-            legend:{
-                cursor: "pointer",
-                fontSize: 16,
-                itemclick: toggleDataSeries
-            },
-            toolTip:{
-                shared: true
-            },
-            data: [{
-                name: "Myrtle Beach",
-                type: "spline",
-                yValueFormatString: "#0.## °C",
-                showInLegend: true,
-                dataPoints: [
-                    { x: new Date(2017,6,24), y: 31 },
-                    { x: new Date(2017,6,25), y: 31 },
-                    { x: new Date(2017,6,26), y: 29 },
-                    { x: new Date(2017,6,27), y: 29 },
-                    { x: new Date(2017,6,28), y: 31 },
-                    { x: new Date(2017,6,29), y: 30 },
-                    { x: new Date(2017,6,30), y: 29 }
-                ]
-            },
-                {
-                    name: "Martha Vineyard",
-                    type: "spline",
-                    yValueFormatString: "#0.## °C",
-                    showInLegend: true,
-                    dataPoints: [
-                        { x: new Date(2017,6,24), y: 20 },
-                        { x: new Date(2017,6,25), y: 20 },
-                        { x: new Date(2017,6,26), y: 25 },
-                        { x: new Date(2017,6,27), y: 25 },
-                        { x: new Date(2017,6,28), y: 25 },
-                        { x: new Date(2017,6,29), y: 25 },
-                        { x: new Date(2017,6,30), y: 25 }
-                    ]
-                },
-                {
-                    name: "Nantucket",
-                    type: "spline",
-                    yValueFormatString: "#0.## °C",
-                    showInLegend: true,
-                    dataPoints: [
-                        { x: new Date(2017,6,24), y: 22 },
-                        { x: new Date(2017,6,25), y: 19 },
-                        { x: new Date(2017,6,26), y: 23 },
-                        { x: new Date(2017,6,27), y: 24 },
-                        { x: new Date(2017,6,28), y: 24 },
-                        { x: new Date(2017,6,29), y: 23 },
-                        { x: new Date(2017,6,30), y: 23 }
-                    ]
-                }]
-        });
-        chart.render();
-
-        function toggleDataSeries(e){
-            if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-                e.dataSeries.visible = false;
-            }
-            else{
-                e.dataSeries.visible = true;
-            }
-            chart.render();
-        }
-
-    }
-</script>
-
-<script>
-
-// Visualization API with the 'corechart' package.
+    // Visualization API with the 'corechart' package.
     google.charts.load('visualization', { packages: ['corechart'] });
     google.charts.setOnLoadCallback(drawLineChart);
     drawLineChart();
-//check every 60 sec
-    setInterval(drawLineChart, 600000);
+    setInterval(drawLineChart, 50);
     function drawLineChart() {
         $.ajax({
-            url: "http://experiments.ddns.net/pi-solar-tracer/getDataStats.php?q=1",
+            url: "http://localhost/pi-solar-tracer/getDataStats.php?q=1",
             dataType: "json",
             type: "GET",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                var arrPv = [['Hours', 'Volts. (V)','Amp. (A)', 'Watts. (W)']];    // Define an array and assign columns for the chart.
+                var arrPv = [['Hours', 'Volts. (V)','Watts. (W)', 'Amps. (A)']];    // Define an array and assign columns for the chart.
 
                 // Loop through each data and populate the array.
                 $.each(data, function (index, value) {
-                    arrPv.push([value.timestamp, value.PV_array_voltage, value.PV_array_current, value.PV_array_power]);
+                    arrPv.push([value.Hour, value.PV_array_voltage, value.PV_array_current, value.PV_array_power]);
                 });
 
                 // Set chart Options.
                 var options = {
-                    title: 'Daily Energy on Solar Panel',
+                    title: 'Monthly Energy on Solar Panel',
                     curveType: 'function',
                     legend: { position: 'bottom', textStyle: { color: '#555', fontSize: 14} }  // You can position the legend on 'top' or at the 'bottom'.
                 };
@@ -567,42 +538,121 @@ $tracer->statData[9];
                 // Define the chart type (LineChart) and the container (a DIV in our case).
                 var chart = new google.visualization.LineChart(document.getElementById('chart_line_div'));
                 chart.draw(figures, options);      // Draw the chart with Options.
-            },
+                },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-               // alert('Got an Error on Chart');
+                alert('Got an Error on Chart');
             }
         });
     }
 </script>
 
+
 <script>
-    google.charts.load('current', {packages: ['corechart', 'bar']});
-    google.charts.setOnLoadCallback(drawBarColors);
+    var lineChartData = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'PV Volts Generation',
+            borderColor: window.chartColors.red,
+            backgroundColor: window.chartColors.red,
+            fill: false,
+            data: [17, 15, 34, 56],
+            yAxisID: 'y-axis-1',
+        }, {
+            label: 'PV Power Generation',
+            borderColor: window.chartColors.blue,
+            backgroundColor: window.chartColors.blue,
+            fill: false,
+            data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor()
+            ],
+            yAxisID: 'y-axis-2'
+        }]
+    };
 
-    function drawBarColors() {
-        var data = google.visualization.arrayToDataTable([
-            ['Current', '+ ve', '- ve'],
-            ['+ ve, - ve', <?php echo $tracer->realtimeData[4];?>,<?php echo $tracer->realtimeData[7];?>]
 
-        ]);
+    window.onload = function() {
+        var ctx = document.getElementById('canvas').getContext('2d');
+        window.myLine = Chart.Line(ctx, {
+            data: lineChartData,
+            options: {
+                responsive: true,
+                hoverMode: 'index',
+                stacked: false,
+                title: {
+                    display: true,
+                    text: 'Solar Energy Generated'
+                },
+                scales: {
+                    yAxes: [{
+                        type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                        display: true,
+                        position: 'left',
+                        id: 'y-axis-1',
+                    }, {
+                        type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                        display: true,
+                        position: 'right',
+                        id: 'y-axis-2',
 
-        var options = {
-            title: 'Net Current on Battery',
-            chartArea: {width: '50%'},
-            colors: ['#b0120a', '#ffab91'],
-            hAxis: {
-                title: '+ ve / - ve = to Battery',
-                minValue: 0
-            },
-            vAxis: {
-                title: 'VE'
+                        // grid line settings
+                        gridLines: {
+                            drawOnChartArea: false, // only want the grid lines for one axis to show up
+                        },
+                    }],
+                }
             }
-        };
-        var chart = new google.visualization.BarChart(document.getElementById('chart_net_div'));
-        chart.draw(data, options);
-    }
+        });
+    };
+
+
+    document.getElementById('randomizeData').addEventListener('click', function() {
+        lineChartData.datasets.forEach(function(dataset) {
+            dataset.data = dataset.data.map(function() {
+                return randomScalingFactor();
+            });
+        });
+
+        window.myLine.update();
+    });
+</script>
+
+<script>
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawBarColors);
+
+function drawBarColors() {
+var data = google.visualization.arrayToDataTable([
+['Current', '+ ve', '- ve'],
+['+ ve, - ve', <?php echo $from_bat; ?>, <?php echo $from_bat; ?>]
+
+]);
+
+var options = {
+title: 'Net Current on Battery',
+chartArea: {width: '50%'},
+colors: ['#b87333', '#ffab91'],
+hAxis: {
+title: '+ ve / - ve = to Battery',
+minValue: 0
+},
+vAxis: {
+title: 'VE'
+}
+};
+var chart = new google.visualization.BarChart(document.getElementById('chart_net_div'));
+chart.draw(data, options);
+}
 
 </script>
+<html>
+<head>
+
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -630,29 +680,22 @@ $tracer->statData[9];
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        options
+        Options
       </div>
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="charts.php">
+        <a class="nav-link" href="charts.html">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Charts</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="tables.php">
+        <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-table"></i>
           <span>Tables</span></a>
       </li>
-
-        <!-- Nav Item - Info -->
-        <li class="nav-item">
-            <a class="nav-link" href="info.php">
-                <i class="fas fa-fw fa-info"></i>
-                <span>Info</span></a>
-        </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -672,22 +715,26 @@ $tracer->statData[9];
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"><?php echo "<p> <font color=blue size='4pt'> Status MPPT Tracer: $connection</p>";?>
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"><?php echo "<p> <font color=blue size='4pt'> Status MPPT Tracer:</font> 
+       <font color=green size='4pt'>$connection</font></p>"; ?>
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
-
           </button>
 
+
           <ul class="navbar-nav ml-auto">
+
+
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><p id="time"></p></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo date('d m Y | H:i:s', $_SESSION['time']);?></span>
               </a>
+
             </li>
 
           </ul>
@@ -700,26 +747,13 @@ $tracer->statData[9];
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard <?php
-		//day or night time request
-           if ($tracer->getDiscreteData()) {
-
-               $day_night = $tracer->discreteData[1];
-           if ($day_night == 0){
-               echo "<img src='images/icon-sol.png'>";
-               }else {
-               echo "<img src='images/icon-luna.png'>";
-           }
-          }
-
-          ?>
-                <?php include "./php/tracer_model_dectect.php" ?>
-        </h1>
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
 
           </div>
 
           <!-- Content Row -->
           <div class="row">
+
             <!-- Metemos Gauges aqui -->
              <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
@@ -794,33 +828,27 @@ $tracer->statData[9];
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total Energy Generated</div>
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">KiloWats Generated</div>
                         <div class="col-auto">
                             <i class="fas fa-charging-station fa-2x text-gray-300"></i>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $tracer->statData[10]; ?> Kwh</div>
-                        <hr>
-			<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total Energy Consumed</div>
-                        <div class="col-auto">
-                            <i class="fas fa-charging-station fa-2x text-gray-300"></i>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $tracer->statData[7]; ?> Kwh</div>
-			<hr>
-				<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Temperature</div>
-                            <i class="fas fa-thermometer-half fa-2x text-gray-300"></i>
-                               <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $tracer->realtimeData[10];?> º C</div>
-
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">18Kws</div>
+                             <hr>
+                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Temperature</div>
+                             <i class="fas fa-thermometer-half fa-2x text-gray-300"></i>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">18ºC</div>
+                        </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
           <!-- Content Row -->
 
           <div class="row">
 
-	<!-- Area Chart -->
+            <!-- Area Chart -->
             <div class="col-xl-8 col-lg-7">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
@@ -836,7 +864,7 @@ $tracer->statData[9];
                 <div class="card-body">
                   <div class="chart-area">
                       <div>
-                          <div id="chart_line_div" style="width: 700px; height: 320px;"></div>
+                          <div id="chart_line_div" style="width: 740px; height: 320px;"></div>
                       </div>
                   </div>
                 </div>
@@ -856,7 +884,7 @@ $tracer->statData[9];
                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                       <div class="dropdown-header">Dropdown Header:</div>
                       <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another accion</a>
+                      <a class="dropdown-item" href="#">Another action</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="#">Something else here</a>
                     </div>
@@ -871,7 +899,7 @@ $tracer->statData[9];
                           <div id="g9" class="gauge"></div>
                           <div id="g10" class="gauge"></div>
                       </div>
-          </div>
+
                   </div>
                   <div class="mt-4 text-center small">
                     <span class="mr-2">
@@ -895,19 +923,22 @@ $tracer->statData[9];
             <!-- Content Column -->
             <div class="col-lg-6 mb-4">
 
-              <!-- Project Card Example -->
+              <!-- Project Net Current Example -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Net Energy (A) Produced and Consumed</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Net Current + / -</h6>
                 </div>
                   <div class="container">
                   <div class="card-body">
-                      <div id="chart_net_div" style="width: 400px; height: 250px;"></div>
+                    <div id="chart_net_div" style="width: 400px; height: 250px;"></div>
+
+
                 </div>
                 </div>
               </div>
              </div>
           </div>
+
         </div>
         <!-- /.container-fluid -->
 
@@ -918,7 +949,7 @@ $tracer->statData[9];
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>SolarPi <?php echo date("Y");?></span>
+            <span>Copyright &copy; 2020</span>
           </div>
         </div>
       </footer>

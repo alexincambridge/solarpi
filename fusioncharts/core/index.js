@@ -1,1 +1,0 @@
-import FusionCharts from"@fusioncharts/constructor/src/constructor";import defaultFeatures from"../features";FusionCharts.addDep(defaultFeatures);export default FusionCharts;
