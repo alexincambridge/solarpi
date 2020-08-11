@@ -918,7 +918,7 @@ $tracer->statData[9];
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>SolarPi 2020</span>
+            <span>SolarPi <?php echo date("Y");?><</span>
           </div>
         </div>
       </footer>
