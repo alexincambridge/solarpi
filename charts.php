@@ -37,7 +37,7 @@
     setInterval(drawLineChart, 50000);
     function drawLineChart() {
         $.ajax({
-            url: "http://experiments.ddns.net/pi-solar-tracer/getDataStats.php?q=2",
+            url: "http://youripaddress/pi-solar-tracer/getDataStats.php?q=2",
             dataType: "json",
             type: "GET",
             contentType: "application/json; charset=utf-8",
@@ -78,7 +78,7 @@
     setInterval(drawLineChart, 50000);
     function drawLineChart() {
         $.ajax({
-            url: "http://experiments.ddns.net/pi-solar-tracer/getDataStats.php?q=3",
+            url: "http://youripaddress/pi-solar-tracer/getDataStats.php?q=3",
             dataType: "json",
             type: "GET",
             contentType: "application/json; charset=utf-8",
