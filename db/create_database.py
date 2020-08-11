@@ -27,7 +27,6 @@ def open_database_connection():
 
 #CREATE DATABASE IF NOT EXISTS solardata;
 
-//realtime table
 CREATE TABLE `status` (
   `Controller` int(2) NOT NULL,
   `timestamp` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,

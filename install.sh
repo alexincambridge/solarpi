@@ -11,16 +11,31 @@ if [ "$(id -nu)" != "root" ]; then
     exit 1
 fi
 
-sudo apt-get update
-sudo apt-get upgrade
+cat << "EOF"
+----------------------------------------------------------------------------
+
+
+     Welcome to Installation of SolarPi
+   _____       __           ____  _
+  / ___/____  / /___ ______/ __ \(_)
+  \__ \/ __ \/ / __ `/ ___/ /_/ / /
+ ___/ / /_/ / / /_/ / /  / ____/ /
+/____/\____/_/\__,_/_/  /_/   /_/   2020
+
+
+
+----------------------------------------------------------------------------
+
+EOF
+
+sudo apt-get update && upgrade
 
 sudo apt-get install socat 
 
 sudo apt install apache2 -y
 sudo apt install libapache2-mod-php -y
-#sudo apt install ./mysql-apt-config_0.8.13-1_all.deb
+sudo apt install ./mysql-apt-config_0.8.13-1_all.deb
 sudo apt install mysql-server
-python pi-solar-tracer/db/create_database.py
 
 chmod 755 /var/www/html/pi-solar-tracer
 lsusb
@@ -29,6 +44,7 @@ sudo chmod 777 /dev/ttyXRUSB0
 
 
 echo "!!! The App is currently now running !!!"
+
 
 
 
