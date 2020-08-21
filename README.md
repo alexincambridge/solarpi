@@ -26,23 +26,18 @@ You can use it for whatever Rpi version.
 Library for communicating with Epsolar/Epever Tracer 1206AN MPPT Solar Charger Controller
 
 Features
--------
+--------------------------------------
 This library connects via RS485 port to the widely known Epsolar/Epever Tracer AN Series MPPT solar charger controller 
 (mine is Tracer1206AN) allowing users to get data such as:
  1. Battery Voltage 
  2. Load Current 
  3. Panel Power and base on the [Tracer protocol] [protocol] (Modbus).
  
+1. On this file is possible to query the protocols to use solarpi/pdf/1733_modbus_protocol.pdf
+
+
 In order to get it to work you just need tu use a cheap USB/RS485 converter and connect one side to your PC/Raspberry USB
-port and the other to the solar charger's connector.
-and will produce the following output on my solar charger:
-
-sudo crontab -e
-
-add the following  * * * * * /var/www/html/epsolar/getsolarstats.php
-
-
-1. On this file is possible to query the protocols to use pi-solar-tracer/pdf/1733_modbus_protocol.pdf
+port and the other to the solar charger's connector and will produce the following output on my solar charger:
 
 Info Data
 ----------------------------------
@@ -164,6 +159,15 @@ Settings Data
 * 59 Management mode: 0
 
 The number at the beginning of every line rapresent the array index
+
+Steps to install the website
+
+1. Clone the repository in your www folder 
+2. Execute ./install.sh 
+3. Copy from solarpi/db/create_database.txt and paste in your SQL editor
+4. Execute crontab -e and add */30 * * * * sudo /var/www/html/solarpi/getsolarstats.php
+
+Enjoy!! 
 
 Note
 ------

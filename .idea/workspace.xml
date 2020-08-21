@@ -2,234 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e60abfde-9010-4233-97ce-7ac6a36ddf9d" name="Default" comment="updte current">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/LICENSE.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/charts/.gitkeep" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/charts/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/core/fc-backward-compatibility.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/core/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/datastore/aggregators/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/datastore/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/datastore/operators/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/es/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/es/module-dependencies.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/alertmanager.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/annotation.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/batchexport.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/center-label-extension.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/consolidated-tooltip.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/crossline.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/csv-transcoder.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/data-skipping.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/debugger.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/default-theme.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/excelexport.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/export-module.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/highlighter.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/ignore-case-ext.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/input-ext.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/json-url-transcoder.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/legend-event-manager-linker.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/linkedcharts.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/logo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/messagelogger.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/multicanvas-crossline-manager.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/regression-extension.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/support-old-themes-ext.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/theme-engine.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/tooltip-controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/xml-transcoder.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/features/xml-url-transcoder.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.charts.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.charts.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.excelexport.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.excelexport.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.gantt.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.gantt.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.maps.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.maps.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.msstackedcolumn2dsplinedy.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.msstackedcolumn2dsplinedy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.overlappedbar2d.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.overlappedbar2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.overlappedcolumn2d.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.overlappedcolumn2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.powercharts.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.powercharts.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.timeseries.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.timeseries.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.treemap.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.treemap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.vml.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.vml.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.widgets.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.widgets.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.zoomline.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.zoomline.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.zoomscatter.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/fusioncharts.zoomscatter.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/gantt/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/index.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/maps/es/fusioncharts.usa.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/maps/es/fusioncharts.world.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/maps/fusioncharts.usa.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/maps/fusioncharts.usa.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/maps/fusioncharts.world.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/maps/fusioncharts.world.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/maps/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/msstackedcolumn2dsplinedy/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/overlappedbar2d/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/overlappedcolumn2d/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/powercharts/.gitkeep" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/powercharts/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/es/fusioncharts.theme.candy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/es/fusioncharts.theme.carbon.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/es/fusioncharts.theme.fint.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/es/fusioncharts.theme.fusion.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/es/fusioncharts.theme.gammel.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/es/fusioncharts.theme.ocean.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/es/fusioncharts.theme.umber.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/es/fusioncharts.theme.zune.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/fusioncharts.theme.candy.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/fusioncharts.theme.candy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/fusioncharts.theme.carbon.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/fusioncharts.theme.carbon.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/fusioncharts.theme.fint.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/fusioncharts.theme.fint.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/fusioncharts.theme.fusion.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/fusioncharts.theme.fusion.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/fusioncharts.theme.gammel.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/fusioncharts.theme.gammel.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/fusioncharts.theme.ocean.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/fusioncharts.theme.ocean.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/fusioncharts.theme.umber.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/fusioncharts.theme.umber.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/fusioncharts.theme.zune.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/themes/fusioncharts.theme.zune.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/timeseries/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/treemap/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/utils/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/angulargauge.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/area2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/bar2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/bar3d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/boxandwhisker2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/bubble.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/bulb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/candlestick.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/chord.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/column2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/column3d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/cylinder.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/doughnut2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/doughnut3d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/dragarea.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/dragcolumn2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/dragline.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/dragnode.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/errorbar2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/errorline.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/errorscatter.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/funnel.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/gantt.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/hbullet.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/heatmap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/hled.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/hlineargauge.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/inversemsarea.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/inversemscolumn2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/inversemsline.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/kagi.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/line.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/logmscolumn2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/logmsline.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/logstackedcolumn2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/marimekko.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/msarea.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/msbar2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/msbar3d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/mscolumn2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/mscolumn3d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/mscolumn3dlinedy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/mscolumnline3d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/mscombi2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/mscombi3d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/mscombidy2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/mscombidy3d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/msline.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/msspline.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/mssplinearea.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/mssplinedy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/msstackedcolumn2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/msstackedcolumn2dlinedy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/msstackedcolumn2dsplinedy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/msstepline.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/multiaxisline.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/multilevelpie.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/overlappedbar2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/overlappedcolumn2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/pareto2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/pareto3d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/pie2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/pie3d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/pyramid.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/radar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/realtimearea.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/realtimecolumn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/realtimeline.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/realtimelinedy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/realtimestackedarea.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/realtimestackedcolumn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/sankey.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/scatter.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/scrollarea2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/scrollbar2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/scrollcolumn2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/scrollcombi2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/scrollcombidy2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/scrollline2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/scrollmsstackedcolumn2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/scrollmsstackedcolumn2dlinedy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/scrollstackedbar2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/scrollstackedcolumn2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/selectscatter.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/sparkcolumn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/sparkline.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/sparkwinloss.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/spline.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/splinearea.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/stackedarea2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/stackedarea2dlinedy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/stackedbar2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/stackedbar3d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/stackedcolumn2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/stackedcolumn2dline.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/stackedcolumn2dlinedy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/stackedcolumn3d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/stackedcolumn3dline.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/stackedcolumn3dlinedy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/sunburst.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/thermometer.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/timeseries.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/treemap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/vbullet.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/vled.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/waterfall2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/zoomline.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/zoomlinedy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/viz/zoomscatter.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/widgets/.gitkeep" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/widgets/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/zoomline/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fusioncharts/zoomscatter/index.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/db/create_database.py" afterPath="$PROJECT_DIR$/db/create_database.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/pi-solar-tracer.iml" afterPath="$PROJECT_DIR$/.idea/SolarPi.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index1.php" afterPath="$PROJECT_DIR$/index1.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index2.php" afterPath="$PROJECT_DIR$/index2.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/charts.php" afterPath="$PROJECT_DIR$/charts.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -251,18 +27,89 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="create_database.txt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/db/create_database.txt">
+      <file leaf-file-name="info.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/info.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="40" lean-forward="true" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
+            <state relative-caret-position="-45">
+              <caret line="224" column="57" lean-forward="false" selection-start-line="224" selection-start-column="57" selection-end-line="224" selection-end-column="57" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LICENSE" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/LICENSE">
+      <file leaf-file-name="install.sh" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/install.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index_test.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index_test.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1635">
+              <caret line="734" column="128" lean-forward="false" selection-start-line="734" selection-start-column="74" selection-end-line="734" selection-end-column="128" />
+              <folding>
+                <marker date="1595426028952" expanded="true" signature="5631:6276" ph="..." />
+                <marker date="1595426028952" expanded="true" signature="5677:6248" ph="{...}" />
+                <marker date="1595426028952" expanded="true" signature="5789:6088" ph="{...}" />
+                <marker date="1595426028952" expanded="true" signature="5862:6067" ph="{...}" />
+                <marker date="1595426028952" expanded="true" signature="11926:12540" ph="{...}" />
+                <marker date="1595426028952" expanded="true" signature="16159:17835" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="8160">
+              <caret line="544" column="38" lean-forward="false" selection-start-line="544" selection-start-column="38" selection-end-line="544" selection-end-column="38" />
+              <folding>
+                <element signature="e#7#685#0#PHP" expanded="true" />
+                <marker date="1597185489172" expanded="true" signature="916:967" ph="..." />
+                <marker date="1597185489172" expanded="true" signature="30636:30690" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gettracerinfo.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gettracerinfo.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-373">
+              <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="getsolarstats2.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/getsolarstats2.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-223">
+              <caret line="25" column="22" lean-forward="false" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="getsolarstats.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/getsolarstats.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="52" lean-forward="false" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="example_cli.dat" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/example_cli.dat">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -271,89 +118,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="info.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/info.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="224" column="58" lean-forward="false" selection-start-line="224" selection-start-column="58" selection-end-line="224" selection-end-column="58" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="install.sh" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/install.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="database_connect.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/database_connect.php">
+      <file leaf-file-name="example_cli.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/example_cli.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PhpEpsolarTracer.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PhpEpsolarTracer.php">
+      <file leaf-file-name="getDataStats.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/getDataStats.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="53" column="72" lean-forward="true" selection-start-line="53" selection-start-column="72" selection-end-line="53" selection-end-column="72" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tables.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tables.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="234" column="50" lean-forward="false" selection-start-line="234" selection-start-column="50" selection-end-line="234" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="555">
-                <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="920" column="50" lean-forward="false" selection-start-line="920" selection-start-column="50" selection-end-line="920" selection-end-column="50" />
+            <state relative-caret-position="-195">
+              <caret line="7" column="124" lean-forward="false" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="121" />
               <folding>
-                <element signature="e#7#685#0#PHP" expanded="true" />
-                <marker date="1597129857677" expanded="true" signature="916:967" ph="..." />
-                <marker date="1597129857677" expanded="true" signature="30643:30698" ph="..." />
+                <marker date="1596723196562" expanded="true" signature="202:324" ph="..." />
+                <marker date="1596723196562" expanded="true" signature="1021:1205" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="charts.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/charts.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="268" column="30" lean-forward="true" selection-start-line="268" selection-start-column="30" selection-end-line="268" selection-end-column="30" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -422,13 +205,14 @@
         <option value="$PROJECT_DIR$/getsolarstats2.php" />
         <option value="$PROJECT_DIR$/php/tracer_model_dectect.php" />
         <option value="$PROJECT_DIR$/getDataStats.php" />
-        <option value="$PROJECT_DIR$/charts.php" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/info.php" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/tables.php" />
         <option value="$PROJECT_DIR$/install.sh" />
         <option value="$PROJECT_DIR$/db/create_database.py" />
+        <option value="$PROJECT_DIR$/db/create_database.txt" />
+        <option value="$PROJECT_DIR$/info.php" />
+        <option value="$PROJECT_DIR$/charts.php" />
+        <option value="$PROJECT_DIR$/index.php" />
       </list>
     </option>
   </component>
@@ -478,18 +262,8 @@
         <subPane>
           <expand>
             <path>
-              <item name="pi-solar-tracer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SolarPi" type="b2602c69:ProjectViewProjectNode" />
               <item name="pi-solar-tracer" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="pi-solar-tracer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pi-solar-tracer" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="db" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="pi-solar-tracer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pi-solar-tracer" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="website" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -531,7 +305,8 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/info.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/db/create_database.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/install.sh</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -539,7 +314,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/install.sh</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -656,7 +430,7 @@
       <workItem from="1595022860608" duration="2089000" />
       <workItem from="1595171811591" duration="46050000" />
       <workItem from="1595867985585" duration="55742000" />
-      <workItem from="1596753438528" duration="7555000" />
+      <workItem from="1596753438528" duration="9465000" />
     </task>
     <task id="LOCAL-00001" summary="tables page added">
       <created>1595454950402</created>
@@ -676,7 +450,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="242658000" />
+    <option name="totallyTimeSpent" value="244568000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="40" width="1440" height="809" extended-state="0" />
@@ -690,7 +464,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290735" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4081042" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4081042" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -721,93 +495,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/images/usb-conectado.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gettracerinfo_2.php" />
-    <entry file="file://$PROJECT_DIR$/gulpfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="28" lean-forward="true" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sampleData.json" />
-    <entry file="file://$PROJECT_DIR$/robots.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example_cli.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="636">
-          <caret line="115" column="31" lean-forward="true" selection-start-line="115" selection-start-column="31" selection-end-line="115" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gettracerinfo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="14" lean-forward="true" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index_test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="734" column="128" lean-forward="false" selection-start-line="734" selection-start-column="74" selection-end-line="734" selection-end-column="128" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/getsolarstats.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="32" column="50" lean-forward="false" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/sb-admin-2.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="9" column="75266" lean-forward="false" selection-start-line="9" selection-start-column="75266" selection-end-line="9" selection-end-column="75266" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/tracer.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/icon-luna.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/icon-luna2.png" />
-    <entry file="file://$PROJECT_DIR$/images/icon-sol.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/getsolarstats2.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="25" column="22" lean-forward="false" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example_cli.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="52" column="95" lean-forward="false" selection-start-line="52" selection-start-column="87" selection-end-line="52" selection-end-column="95" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/table2.php" />
     <entry file="file://$PROJECT_DIR$/test.php" />
     <entry file="file://$PROJECT_DIR$/getData.php" />
     <entry file="file://$PROJECT_DIR$/getData2.php" />
@@ -890,14 +577,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pv_app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="18" column="54" lean-forward="false" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bootstrap/rss/README.markdown">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -922,14 +601,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/getDataStats.php">
+    <entry file="file://$PROJECT_DIR$/website/database_connect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/create_database.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="7" column="124" lean-forward="false" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="121" />
-          <folding>
-            <marker date="1596723196562" expanded="true" signature="202:324" ph="..." />
-            <marker date="1596723196562" expanded="true" signature="1021:1205" ph="..." />
-          </folding>
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -941,14 +625,128 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pv_app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-58">
+          <caret line="18" column="54" lean-forward="false" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="555">
-            <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <first_editor relative-caret-position="328">
+            <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
             <folding />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/linegraphs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/raphael-2.1.4.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/justgage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2715">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index1.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1380">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robots.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="11" lean-forward="true" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tables.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="77">
+          <caret line="234" column="50" lean-forward="false" selection-start-line="234" selection-start-column="50" selection-end-line="234" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PhpSerialModbus.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2353">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PhpSerial.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6105">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PhpEpsolarTracer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1716">
+          <caret line="53" column="72" lean-forward="false" selection-start-line="53" selection-start-column="72" selection-end-line="53" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -962,68 +760,102 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/charts.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="268" column="30" lean-forward="true" selection-start-line="268" selection-start-column="30" selection-end-line="268" selection-end-column="30" />
+        <state relative-caret-position="-435">
+          <caret line="80" column="38" lean-forward="false" selection-start-line="80" selection-start-column="38" selection-end-line="80" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example_cli.dat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example_cli.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getDataStats.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-195">
+          <caret line="7" column="124" lean-forward="false" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="121" />
+          <folding>
+            <marker date="1596723196562" expanded="true" signature="202:324" ph="..." />
+            <marker date="1596723196562" expanded="true" signature="1021:1205" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getsolarstats.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="52" lean-forward="false" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getsolarstats2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-223">
+          <caret line="25" column="22" lean-forward="false" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gettracerinfo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-373">
+          <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="920" column="50" lean-forward="false" selection-start-line="920" selection-start-column="50" selection-end-line="920" selection-end-column="50" />
+        <state relative-caret-position="8160">
+          <caret line="544" column="38" lean-forward="false" selection-start-line="544" selection-start-column="38" selection-end-line="544" selection-end-column="38" />
           <folding>
             <element signature="e#7#685#0#PHP" expanded="true" />
-            <marker date="1597129857677" expanded="true" signature="916:967" ph="..." />
-            <marker date="1597129857677" expanded="true" signature="30643:30698" ph="..." />
+            <marker date="1597185489172" expanded="true" signature="916:967" ph="..." />
+            <marker date="1597185489172" expanded="true" signature="30636:30690" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PhpEpsolarTracer.php">
+    <entry file="file://$PROJECT_DIR$/index_test.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="53" column="72" lean-forward="true" selection-start-line="53" selection-start-column="72" selection-end-line="53" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tables.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="234" column="50" lean-forward="false" selection-start-line="234" selection-start-column="50" selection-end-line="234" selection-end-column="50" />
-          <folding />
+        <state relative-caret-position="1635">
+          <caret line="734" column="128" lean-forward="false" selection-start-line="734" selection-start-column="74" selection-end-line="734" selection-end-column="128" />
+          <folding>
+            <marker date="1595426028952" expanded="true" signature="5631:6276" ph="..." />
+            <marker date="1595426028952" expanded="true" signature="5677:6248" ph="{...}" />
+            <marker date="1595426028952" expanded="true" signature="5789:6088" ph="{...}" />
+            <marker date="1595426028952" expanded="true" signature="5862:6067" ph="{...}" />
+            <marker date="1595426028952" expanded="true" signature="11926:12540" ph="{...}" />
+            <marker date="1595426028952" expanded="true" signature="16159:17835" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/info.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="224" column="58" lean-forward="false" selection-start-line="224" selection-start-column="58" selection-end-line="224" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/database_connect.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+        <state relative-caret-position="-45">
+          <caret line="224" column="57" lean-forward="false" selection-start-line="224" selection-start-column="57" selection-end-line="224" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/install.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/create_database.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="40" lean-forward="true" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
+        <state relative-caret-position="345">
+          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
           <folding />
         </state>
       </provider>

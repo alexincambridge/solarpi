@@ -542,7 +542,7 @@ $tracer->statData[9];
     setInterval(drawLineChart, 600000);
     function drawLineChart() {
         $.ajax({
-            url: "http://youripaddress/pi-solar-tracer/getDataStats.php?q=1",
+            url: "http://experiments.ddns.net/solarpi/getDataStats.php?q=1",
             dataType: "json",
             type: "GET",
             contentType: "application/json; charset=utf-8",

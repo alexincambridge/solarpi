@@ -32,7 +32,8 @@ sudo apt-get update && upgrade
 
 sudo apt-get install socat 
 
-sudo apt install apache2 -y
+sudo apt-get install apache2 apache2-utils -y
+sudo apt-get install libapache2-mod-php5 php5 php-pear php5-xcache php5-mysql php5-curl php5-gd
 sudo apt install libapache2-mod-php -y
 sudo apt install ./mysql-apt-config_0.8.13-1_all.deb
 sudo apt install mysql-server

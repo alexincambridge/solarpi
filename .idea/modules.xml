@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/pi-solar-tracer.iml" filepath="$PROJECT_DIR$/.idea/pi-solar-tracer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SolarPi.iml" filepath="$PROJECT_DIR$/.idea/SolarPi.iml" />
     </modules>
   </component>
 </project>

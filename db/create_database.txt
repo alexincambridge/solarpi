@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS `status` (
   `Heat_sink_temperature` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Battery_status` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Equipment_status` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Month` VARCHAR(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL;
   PRIMARY KEY (`Controller`,`timestamp`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -58,8 +59,11 @@ CREATE TABLE `tracer` (
   `Rate_charging_power` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Charging_mode` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Rate_load_current` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Month` VARCHAR(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`Controller`,`timestamp`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 ALTER TABLE `tracer` CHANGE `timestamp` `timestamp` TIMESTAMP(6) NOT NULL;
 
+CREATE TABLE `solardata`.`energy_chart_year` ( `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY, `year` VARCHAR(50) NOT NULL , `month` VARCHAR(50) NOT NULL ,
+ `Consumed_energy_month` VARCHAR(50) NOT NULL , `Generated_energy_month` VARCHAR(50) NOT NULL ) ENGINE = InnoDB;
