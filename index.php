@@ -22,6 +22,7 @@
  * The version below is a highly modified version of that referred to by the headers above, the origninal can be found at https://github.com/toggio/PhpEpsolarTracer
  */
 
+
 require_once 'PhpEpsolarTracer.php';
 $tracer = new PhpEpsolarTracer('/dev/ttyXRUSB0');
 
@@ -448,91 +449,6 @@ $tracer->statData[9];
 </script>
 
 <script>
-    window.onload = function () {
-
-        var chart = new CanvasJS.Chart("chartContainer", {
-            animationEnabled: true,
-            title:{
-                text: "Daily High Temperature at Different Beaches"
-            },
-            axisX: {
-                valueFormatString: "DD MMM,YY"
-            },
-            axisY: {
-                title: "Temperature (in °C)",
-                includeZero: false,
-                suffix: " °C"
-            },
-            legend:{
-                cursor: "pointer",
-                fontSize: 16,
-                itemclick: toggleDataSeries
-            },
-            toolTip:{
-                shared: true
-            },
-            data: [{
-                name: "Myrtle Beach",
-                type: "spline",
-                yValueFormatString: "#0.## °C",
-                showInLegend: true,
-                dataPoints: [
-                    { x: new Date(2017,6,24), y: 31 },
-                    { x: new Date(2017,6,25), y: 31 },
-                    { x: new Date(2017,6,26), y: 29 },
-                    { x: new Date(2017,6,27), y: 29 },
-                    { x: new Date(2017,6,28), y: 31 },
-                    { x: new Date(2017,6,29), y: 30 },
-                    { x: new Date(2017,6,30), y: 29 }
-                ]
-            },
-                {
-                    name: "Martha Vineyard",
-                    type: "spline",
-                    yValueFormatString: "#0.## °C",
-                    showInLegend: true,
-                    dataPoints: [
-                        { x: new Date(2017,6,24), y: 20 },
-                        { x: new Date(2017,6,25), y: 20 },
-                        { x: new Date(2017,6,26), y: 25 },
-                        { x: new Date(2017,6,27), y: 25 },
-                        { x: new Date(2017,6,28), y: 25 },
-                        { x: new Date(2017,6,29), y: 25 },
-                        { x: new Date(2017,6,30), y: 25 }
-                    ]
-                },
-                {
-                    name: "Nantucket",
-                    type: "spline",
-                    yValueFormatString: "#0.## °C",
-                    showInLegend: true,
-                    dataPoints: [
-                        { x: new Date(2017,6,24), y: 22 },
-                        { x: new Date(2017,6,25), y: 19 },
-                        { x: new Date(2017,6,26), y: 23 },
-                        { x: new Date(2017,6,27), y: 24 },
-                        { x: new Date(2017,6,28), y: 24 },
-                        { x: new Date(2017,6,29), y: 23 },
-                        { x: new Date(2017,6,30), y: 23 }
-                    ]
-                }]
-        });
-        chart.render();
-
-        function toggleDataSeries(e){
-            if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-                e.dataSeries.visible = false;
-            }
-            else{
-                e.dataSeries.visible = true;
-            }
-            chart.render();
-        }
-
-    }
-</script>
-
-<script>
 
 // Visualization API with the 'corechart' package.
     google.charts.load('visualization', { packages: ['corechart'] });
@@ -565,7 +481,7 @@ $tracer->statData[9];
                 var figures = google.visualization.arrayToDataTable(arrPv)
 
                 // Define the chart type (LineChart) and the container (a DIV in our case).
-                var chart = new google.visualization.LineChart(document.getElementById('chart_line_div'));
+                var chart = new google.visualization.LineChart(document.getElementById('chart_line_d'));
                 chart.draw(figures, options);      // Draw the chart with Options.
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -574,6 +490,52 @@ $tracer->statData[9];
         });
     }
 </script>
+
+<script>
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawTopX);
+
+function drawTopX() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('timeofday', 'Consume of Day');
+      data.addColumn('number', 'Kwh Generated');
+
+      data.addRows([
+        [{v: [16, 0, 0], f: '4 pm'}],
+                [{v: [16, 0, 0], f: '4 pm'}]
+
+
+      ]);
+
+      var options = {
+        chart: {
+          title: 'Energy Produced and Consumed',
+          subtitle: 'Energy Consumed this month:',
+        },
+        axes: {
+          x: {
+            0: {side: 'bottom'}
+          }
+        },
+        hAxis: {
+          title: 'Time of Day',
+          format: 'h:mm a',
+          viewWindow: {
+            min: [7, 30, 0],
+            max: [17, 30, 0]
+          }
+        },
+        vAxis: {
+          title: 'Rating (scale of 1-10)'
+        }
+      };
+
+      var materialChart = new google.charts.Bar(document.getElementById('chart_line_div'));
+      materialChart.draw(data, options);
+    }
+</script>
+
+
 
 <script>
     google.charts.load('current', {packages: ['corechart', 'bar']});
@@ -589,7 +551,7 @@ $tracer->statData[9];
         var options = {
             title: 'Net Current on Battery',
             chartArea: {width: '50%'},
-            colors: ['#b0120a', '#ffab91'],
+            colors: ['#FA2828', '#289BFA'],
             hAxis: {
                 title: '+ ve / - ve = to Battery',
                 minValue: 0
@@ -825,7 +787,7 @@ $tracer->statData[9];
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Energy Produced</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Energy Consumed Every Month</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>

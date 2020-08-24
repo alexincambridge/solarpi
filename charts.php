@@ -1,3 +1,47 @@
+<?php
+
+include("db/database_connection.php");
+
+$query = '
+SELECT PV_array_voltage,
+UNIX_TIMESTAMP(CONCAT_WS(" ", PV_array_voltage, timestamp)) AS datetime 
+FROM status ORDER BY timestamp ASC';
+
+
+$result = mysqli_query($connect, $query);
+$rows = array();
+$table = array();
+
+$table['cols'] = array(
+ array(
+  'label' => 'Date Time', 
+  'type' => 'datetime'
+ ),
+ array(
+  'label' => 'Voltage (V)', 
+  'type' => 'number'
+ )
+);
+
+while($row = mysqli_fetch_array($result))
+{
+ $sub_array = array();
+ $timestamp = explode(".", $row["timestamp"]);
+ $sub_array[] =  array(
+      "v" => 'Date(' . $timestamp[0] . '000)'
+     );
+ $sub_array[] =  array(
+      "v" => $row["PV_array_voltage"]
+     );
+ $rows[] =  array(
+     "c" => $sub_array
+    );
+}
+$table['rows'] = $rows;
+$jsonTable = json_encode($table);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +81,7 @@
     setInterval(drawLineChart, 50000);
     function drawLineChart() {
         $.ajax({
-            url: "http://experiments.ddns.net/solarpi/getDataStats.php?q=2",
+            url: "http://experiments.ddns.net/pi-solar-tracer/getDataStats.php?q=2",
             dataType: "json",
             type: "GET",
             contentType: "application/json; charset=utf-8",
@@ -78,7 +122,7 @@
     setInterval(drawLineChart, 50000);
     function drawLineChart() {
         $.ajax({
-            url: "http://experiments.ddns.net/solarpi/getDataStats.php?q=3",
+            url: "http://experiments.ddns.net/pi-solar-tracer/getDataStats.php?q=3",
             dataType: "json",
             type: "GET",
             contentType: "application/json; charset=utf-8",
@@ -110,6 +154,45 @@
         });
     }
 </script>
+
+
+  <!-- Voltage GRAPH -->
+    <script type="text/javascript">
+        google.load("visualization", "1", {packages: ["corechart"]});
+        google.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['TIME', 'Volts (V)',],
+
+                <?php
+                $db = mysql_connect("localhost", "root", "password") or die("DB Connect error");
+                mysql_select_db("solardata");
+                        $q = "select PV_array_voltage from status where timestamp < NOW() - INTERVAL 600 MINUTE";
+                $ds = mysql_query($q);
+                while ($r = mysql_fetch_object($ds)) {
+                    echo "['" . $r->timestamp . "', ";
+                    echo " " . $r->PV_array_voltage . " ],";
+
+                }
+                ?>
+            ]);
+
+            var options = {
+                title: 'VOLTAGE LAST 10 HOURS',
+                curveType: 'function',
+                legend: {position: 'bottom'},
+                hAxis: {textPosition: 'none', direction: '-1'},
+                vAxis: { title: 'PV Voltage' },
+                colors: ['green'],
+
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('chart_line_div'));
+
+            chart.draw(data, options);
+        }
+    </script>
 
 <body id="page-top">
 
@@ -230,6 +313,20 @@
 
                 </div>
               </div>
+	 <!-- Voltage Chart -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Solar Voltage last 12H</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <div id="chart_line_div" style="width: 700px; height: 320px"></div>
+                    </div>
+                  <hr>
+
+                </div>
+              </div>
+
 
               <!-- Bar Chart -->
               <div class="card shadow mb-4">
