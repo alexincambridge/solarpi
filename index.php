@@ -26,6 +26,17 @@
 require_once 'PhpEpsolarTracer.php';
 $tracer = new PhpEpsolarTracer('/dev/ttyXRUSB0');
 
+//load On/Off 
+
+//do this first so we can see the result in the collected data
+if ($_GET["load"] == 'on') {
+    $tracer->setLoadOn();
+}
+if ($_GET["load"] == 'off') {
+    $tracer->setLoadOff();
+}
+
+
 $tracerstatus_bgcolor = "#dedede";
 // $ecolor = "black";
 // $battSoc = 0;

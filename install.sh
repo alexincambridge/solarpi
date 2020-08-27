@@ -42,7 +42,7 @@ sudo apt install mysql-server
 sudo usermod -a -G www-data pi
 sudo chown -R -f www-data:www-data /var/www/html
 
-chmod 755 /var/www/html/pi-solar-tracer
+chmod 755 /var/www/html/solarpi
 lsusb
 ls /dev/ttyXRUSB0
 sudo chmod 777 /dev/ttyXRUSB0

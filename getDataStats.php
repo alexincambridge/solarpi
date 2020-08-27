@@ -32,6 +32,16 @@ switch($_GET['q']){
         $json=json_encode($results, JSON_NUMERIC_CHECK);
         echo $json;
         break;
+
+	// Buscar voltage DC
+    case 4:
+        $statement=$pdo->prepare("SELECT `timestamp`,`PV_array_voltage` FROM `status`");
+        $statement->execute();
+        $results=$statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $json=json_encode($results, JSON_NUMERIC_CHECK);
+        echo $json;
+        break;
 }
 
 ?>
