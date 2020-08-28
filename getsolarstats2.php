@@ -36,17 +36,19 @@ $tracer = new PhpEpsolarTracer($key);
 
 if ($tracer->getStatData()) {
 
-    $sth = $dbh->prepare("insert into stats_status (`Controller`,`timestamp`,`Max_volt_today`,`Min_volt_today`,`Max_batt_volt_today`,`Min_batt_volt_today`,`Consumed_ener_today`,`Consumed_energy_month`,`Consumed_energy_year`,`Total_generated_energy`) values (?,?,?,?,?,?,?,?,?,?)");
-    $sth->BindParam(1, $i);
-    $sth->BindParam(2, $date);
-    $sth->BindParam(3, $tracer->statData[0]);
-    $sth->BindParam(4, $tracer->statData[1]);
-    $sth->BindParam(5, $tracer->statData[2]);
-    $sth->BindParam(6, $tracer->statData[3]);
-    $sth->BindParam(7, $tracer->statData[4]);
-    $sth->BindParam(8, $tracer->statData[5]);
-    $sth->BindParam(9, $tracer->statData[6]);
-    $sth->BindParam(10, $tracer->statData[7]);
+    $sth = $dbh->prepare("insert into stats_status (`Controller`,`timestamp`,`Max_volt_today`,`Min_volt_today`,`Max_batt_volt_today`,`Min_batt_volt_today`,`Consumed_energy_today`,`Consumed_energy_month`,`Consumed_energy_year`,`Generated_energy_today`, `Generated_energy_month`, `Total_generated_energy`) values (?,?,?,?,?,?,?,?,?,?,?,?)");
+    $sth->BindParam(1, $i); //Controller
+    $sth->BindParam(2, $date); //timestamp
+    $sth->BindParam(3, $tracer->statData[0]);  //max volt
+    $sth->BindParam(4, $tracer->statData[1]);  //min volt
+    $sth->BindParam(5, $tracer->statData[2]);  //mix batt
+    $sth->BindParam(6, $tracer->statData[3]);  //max batt
+    $sth->BindParam(7, $tracer->statData[4]);  //consumed today
+    $sth->BindParam(8, $tracer->statData[5]);  //consumed month
+    $sth->BindParam(9, $tracer->statData[6]);  //consumed year
+    $sth->BindParam(10, $tracer->statData[8]);  //generated today
+    $sth->BindParam(11, $tracer->statData[9]);  //generated month
+    $sth->BindParam(12, $tracer->statData[11]); //total generated
 
     $sth->execute();
 
@@ -54,5 +56,6 @@ if ($tracer->getStatData()) {
     $i++;
 
   }
+echo "he";
 }
 ?>

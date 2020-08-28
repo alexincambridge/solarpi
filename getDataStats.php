@@ -42,6 +42,28 @@ switch($_GET['q']){
         $json=json_encode($results, JSON_NUMERIC_CHECK);
         echo $json;
         break;
+
+       // Buscar generated and consumed
+    case 5:
+        $statement=$pdo->prepare("SELECT `timestamp`,`Generated_energy_month`, `Consumed_energy_month` FROM `stats_status` WHERE timestamp < NOW() - INTERVAL 1 MONTH");
+        $statement->execute();
+        $results=$statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $json=json_encode($results, JSON_NUMERIC_CHECK);
+        echo $json;
+        break;
+
+
+       // Buscar generated and consumed
+    case 6:
+        $statement=$pdo->prepare("SELECT `timestamp`,`Generated_energy_today`, `Consumed_energy_today` FROM `stats_status` WHERE timestamp < NOW() - INTERVAL 600 MINUTE");
+        $statement->execute();
+        $results=$statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $json=json_encode($results, JSON_NUMERIC_CHECK);
+        echo $json;
+        break;
+
 }
 
 ?>

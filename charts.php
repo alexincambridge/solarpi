@@ -196,6 +196,98 @@ $jsonTable = json_encode($table);
 </script>
 
 
+<script>
+    // Visualization API with the 'corechart' package.
+    google.charts.load('visualization', { packages: ['corechart'] });
+    google.charts.setOnLoadCallback(drawLineChart);
+    drawLineChart();
+    setInterval(drawLineChart, 5000);
+    function drawLineChart() {
+        $.ajax({
+            url: "http://experiments.ddns.net/solarpi/getDataStats.php?q=5",
+            dataType: "json",
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                var arrPv = [['Hours', 'Generated_energy_month', 'Consumed_energy_month']];    // Define an array and assign columns for the chart.
+
+                // Loop through each data and populate the array.
+                $.each(data, function (index, value) {
+                    arrPv.push([value.timestamp, value.Consumed_energy_month, value.Generated_energy_month]);
+                });
+
+                // Set chart Options.
+                var options = {
+                    title: 'Energy Generated and Consumed',
+                    curveType: 'function',
+                    legend: { position: 'bottom', textStyle: { color: '#555', fontSize: 14} }  // You can position the legend on 'top' or at the 'bottom'.
+                };
+
+                // Create DataTable and add the array to it.
+                var figures = google.visualization.arrayToDataTable(arrPv)
+
+                // Define the chart type (LineChart) and the container (a DIV in our case).
+                var chart = new google.visualization.LineChart(document.getElementById('chart_multipleline_div'));
+                chart.draw(figures, options);      // Draw the chart with Options.
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert('Got an Error on Chart');
+            }
+        });
+    }
+</script>
+
+<script>
+    // Visualization API with the 'corechart' package.
+    google.charts.load('visualization', { packages: ['corechart'] });
+    google.charts.setOnLoadCallback(drawLineChart);
+    drawLineChart();
+    setInterval(drawLineChart, 5000);
+    function drawLineChart() {
+        $.ajax({
+            url: "http://experiments.ddns.net/solarpi/getDataStats.php?q=6",
+            dataType: "json",
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                var arrPv = [['Hours', 'Generated_energy_today', 'Consumed_energy_today']];    // Define anarray and assign columns for the chart.
+
+                // Loop through each data and populate the array.
+                $.each(data, function (index, value) {
+                    arrPv.push([value.timestamp, value.Consumed_energy_today, value.Generated_energy_today])
+;
+                });
+
+                // Set chart Options.
+                var options = {
+                    title: 'Energy Generated and Consumed',
+                    curveType: 'function',
+                    legend: { position: 'bottom', textStyle: { color: '#555', fontSize: 14} }  // You can position the legend on 'top' or at the 'bottom'.
+                };
+
+                // Create DataTable and add the array to it.
+                var figures = google.visualization.arrayToDataTable(arrPv)
+
+                // Define the chart type (LineChart) and the container (a DIV in our case).
+                var chart = new google.visualization.LineChart(document.getElementById('chart_gen_consume_daily_div'));
+                chart.draw(figures, options);      // Draw the chart with Options.
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert('Got an Error on Chart');
+            }
+        });
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
     <!-- Voltage GRAPH -->
     <script type="text/javascript">
         google.load("visualization", "1", {packages: ["corechart"]});
@@ -366,7 +458,33 @@ $jsonTable = json_encode($table);
 
                 </div>
               </div>
+	<!-- consumed and generated Chart monthly-->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Energy Generated and Consumed Every Day</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <div id="chart_multipleline_div" style="width: 700px; height: 320px"></div>
+                    </div>
+                  <hr>
 
+                </div>
+              </div>
+
+	<!-- consumed and generated Chart daily -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Energy Generated and Consumed Every Day</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <div id="chart_gen_consume_daily_div" style="width: 700px; height: 320px"></div>
+                    </div>
+                  <hr>
+
+                </div>
+              </div>
 
               <!-- Bar Chart -->
               <div class="card shadow mb-4">

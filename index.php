@@ -502,50 +502,46 @@ $tracer->statData[9];
     }
 </script>
 
-<script>
-google.charts.load('current', {packages: ['corechart', 'bar']});
-google.charts.setOnLoadCallback(drawTopX);
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawStuff);
 
-function drawTopX() {
-      var data = new google.visualization.DataTable();
-      data.addColumn('timeofday', 'Consume of Day');
-      data.addColumn('number', 'Kwh Generated');
+    function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+            ['timestamp', 'Consumed'],
 
-      data.addRows([
-        [{v: [16, 0, 0], f: '4 pm'}],
-                [{v: [16, 0, 0], f: '4 pm'}]
+  		<?php
+                $db = mysqli_connect("localhost", "root", "password") or die("DB Connect error");
+                mysqli_select_db("solardata");
+                        $q = "SELECT timestamp, Consumed_energy_month FROM stats_status WHERE timestamp < NOW()";
+                $ds = mysqli_query($q);
+                while ($r = mysqli_fetch_object($ds)) {
+                    echo "['" . $r->timestamp . "', ";
+                    echo " " . $r->PV_array_voltage . ", ]";
 
+                }
+	?>
+        ]);
 
-      ]);
+        var options = {
+            width: 600,
+            legend: { position: 'none' },
+            chart: {
+                title: 'Energy Consumed',
+                subtitle: 'Total energy consumed: <?php echo $tracer->statData[7]; ?> Kwh' },
+            axes: {
+                x: {
+                    0: { side: 'bottom', label: 'Month'} // Top x-axis.
+                }
+            },
+            bar: { groupWidth: "90%" }
+        };
 
-      var options = {
-        chart: {
-          title: 'Energy Produced and Consumed',
-          subtitle: 'Energy Consumed this month:',
-        },
-        axes: {
-          x: {
-            0: {side: 'bottom'}
-          }
-        },
-        hAxis: {
-          title: 'Time of Day',
-          format: 'h:mm a',
-          viewWindow: {
-            min: [7, 30, 0],
-            max: [17, 30, 0]
-          }
-        },
-        vAxis: {
-          title: 'Rating (scale of 1-10)'
-        }
-      };
-
-      var materialChart = new google.charts.Bar(document.getElementById('chart_line_div'));
-      materialChart.draw(data, options);
-    }
+        var chart = new google.charts.Bar(document.getElementById('chart_line_div'));
+        // Convert the Classic options to Material options.
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    };
 </script>
-
 
 
 <script>
