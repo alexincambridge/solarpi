@@ -64,6 +64,17 @@ switch($_GET['q']){
         echo $json;
         break;
 
+
+       // Buscar consumed
+    case 7:
+        $statement=$pdo->prepare("SELECT `timestamp`,`Consumed_energy_today` FROM `stats_status` WHERE timestamp < NOW() - INTERVAL 600 MINUTE");
+        $statement->execute();
+        $results=$statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $json=json_encode($results, JSON_NUMERIC_CHECK);
+        echo $json;
+        break;
+
 }
 
 ?>

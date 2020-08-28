@@ -507,8 +507,8 @@ $tracer->statData[9];
     google.charts.setOnLoadCallback(drawStuff);
 
     function drawStuff() {
-        var data = new google.visualization.arrayToDataTable([
-            ['timestamp', 'Consumed'],
+           var data = new google.visualization.arrayToDataTable([
+            ['Month', 'Consumed Kwh'],
 
   		<?php
                 $db = mysqli_connect("localhost", "root", "password") or die("DB Connect error");
@@ -517,10 +517,23 @@ $tracer->statData[9];
                 $ds = mysqli_query($q);
                 while ($r = mysqli_fetch_object($ds)) {
                     echo "['" . $r->timestamp . "', ";
-                    echo " " . $r->PV_array_voltage . ", ]";
+                    echo " " . $r->Consumed_energy_month . ", ]";
 
                 }
+
 	?>
+        ['Jan', 100],
+        ['feb', 85],
+	['Mar', 10],
+	['Apr', 20],
+	['may', 30],
+	['Jun', 40],
+	['Jul', 50],
+	['Aug', 60],
+	['Sep', 70],
+	['Oct', 80],
+	['Nov', 90],
+	['Dec', 100]
         ]);
 
         var options = {
@@ -743,7 +756,7 @@ $tracer->statData[9];
                       <div class="card-body">
                           <div class="row no-gutters align-items-center">
                               <div class="col mr-2">
-                                  <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Battery SOC</div>
+                                  <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Battery Status Of Charge</div>
                                   <div class="container">
                                       <div id="g7" class="gauge"></div>
                                   </div>

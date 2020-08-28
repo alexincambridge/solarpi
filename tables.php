@@ -232,7 +232,7 @@ $ambient_temperature = $tracer->statData[15];
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>SolarPi <?php echo date("Y");?><</span>
+            <span>SolarPi <?php echo date("Y");?></span>
           </div>
         </div>
       </footer>
