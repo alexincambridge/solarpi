@@ -227,7 +227,7 @@ $jsonTable = json_encode($table);
                 var figures = google.visualization.arrayToDataTable(arrPv)
 
                 // Define the chart type (LineChart) and the container (a DIV in our case).
-                var chart = new google.visualization.LineChart(document.getElementById('chart_multipleline_div'));
+                var chart = new google.visualization.LineChart(document.getElementById('chart_gen_cons_monthly_div'));
                 chart.draw(figures, options);      // Draw the chart with Options.
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -461,11 +461,11 @@ $jsonTable = json_encode($table);
 	<!-- consumed and generated Chart monthly-->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Energy Generated and Consumed Every Day</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Energy Generated and Consumed Every Month</h6>
                 </div>
                 <div class="card-body">
                     <div class="chart-container">
-                        <div id="chart_multipleline_div" style="width: 700px; height: 320px"></div>
+                        <div id="chart_gen_cons_monthly_div" style="width: 700px; height: 320px"></div>
                     </div>
                   <hr>
 

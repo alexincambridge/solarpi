@@ -516,14 +516,14 @@ $tracer->statData[9];
                         $q = "SELECT timestamp, Consumed_energy_month FROM stats_status WHERE timestamp < NOW()";
                 $ds = mysqli_query($q);
                 while ($r = mysqli_fetch_object($ds)) {
-                    echo "['" . $r->timestamp . "', ";
-                    echo " " . $r->Consumed_energy_month . ", ]";
+                    echo "['".$r->timestamp . "' .";
+                   // echo " " . $r->Consumed_energy_month . ", ]";
 
                 }
 
 	?>
-        ['Jan', 100],
-        ['feb', 85],
+       ['Jan', 100],
+       ['feb', 85],
 	['Mar', 10],
 	['Apr', 20],
 	['may', 30],
@@ -539,7 +539,8 @@ $tracer->statData[9];
         var options = {
             width: 600,
             legend: { position: 'none' },
-            chart: {
+colors: ['#FFC725'],
+    chart: {
                 title: 'Energy Consumed',
                 subtitle: 'Total energy consumed: <?php echo $tracer->statData[7]; ?> Kwh' },
             axes: {
