@@ -56,6 +56,6 @@ if ($tracer->getStatData()) {
     $i++;
 
   }
-echo "he";
+
 }
 ?>

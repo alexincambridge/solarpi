@@ -209,11 +209,11 @@ $jsonTable = json_encode($table);
             type: "GET",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                var arrPv = [['Hours', 'Generated_energy_month', 'Consumed_energy_month']];    // Define an array and assign columns for the chart.
+                var arrPv = [['Hours', 'Generated_energy_month Kwh', 'Consumed_energy_month Kwh']];    // Define an array and assign columns for the chart.
 
                 // Loop through each data and populate the array.
                 $.each(data, function (index, value) {
-                    arrPv.push([value.timestamp, value.Consumed_energy_month, value.Generated_energy_month]);
+                    arrPv.push([value.timestamp, value.Generated_energy_month, value.Consumed_energy_month]);
                 });
 
                 // Set chart Options.
@@ -242,7 +242,7 @@ $jsonTable = json_encode($table);
     google.charts.load('visualization', { packages: ['corechart'] });
     google.charts.setOnLoadCallback(drawLineChart);
     drawLineChart();
-    setInterval(drawLineChart, 5000);
+    setInterval(drawLineChart, 50000);
     function drawLineChart() {
         $.ajax({
             url: "http://experiments.ddns.net/solarpi/getDataStats.php?q=6",
@@ -250,12 +250,11 @@ $jsonTable = json_encode($table);
             type: "GET",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                var arrPv = [['Hours', 'Generated_energy_today', 'Consumed_energy_today']];    // Define anarray and assign columns for the chart.
+                var arrPv = [['Hours', 'Generated_energy_today Kwh', 'Consumed_energy_today Kwh']];    // Define anarray and assign columns for the chart.
 
                 // Loop through each data and populate the array.
                 $.each(data, function (index, value) {
-                    arrPv.push([value.timestamp, value.Consumed_energy_today, value.Generated_energy_today])
-;
+                    arrPv.push([value.timestamp, value.Generated_energy_today, value.Consumed_energy_today]);
                 });
 
                 // Set chart Options.
@@ -278,21 +277,12 @@ $jsonTable = json_encode($table);
         });
     }
 </script>
-
-
-
-
-
-
-
-
-
-
+/*
     <!-- Voltage GRAPH -->
     <script type="text/javascript">
         google.load("visualization", "1", {packages: ["corechart"]});
         google.setOnLoadCallback(drawChart);
-
+        setInterval(drawLineChart, 5000);
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
                 ['TIME', 'Volts (V)'],
@@ -300,7 +290,7 @@ $jsonTable = json_encode($table);
                 <?php
                 $db = mysqli_connect("localhost", "root", "password") or die("DB Connect error");
                 mysqli_select_db("solardata");
-                        $q = "SELECT PV_array_voltage FROM status WHERE timestamp < NOW() - INTERVAL 600 MINUTE";
+                        $q = "SELECT PV_array_voltage FROM status WHERE timestamp < NOW() - INTERVAL 60 MINUTE";
                 $ds = mysqli_query($q);
                 while ($r = mysqli_fetch_object($ds)) {
                     echo "['" . $r->timestamp . "', ";
@@ -325,7 +315,7 @@ $jsonTable = json_encode($table);
             chart.draw(data, options);
         }
     </script>
-
+*/
 <body id="page-top">
 
 <!-- Page Wrapper -->

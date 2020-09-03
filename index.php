@@ -26,8 +26,8 @@
 require_once 'PhpEpsolarTracer.php';
 $tracer = new PhpEpsolarTracer('/dev/ttyXRUSB0');
 
-//load On/Off 
-
+//load On/Off  /index.php?load=on
+$tracer->getCoilData();
 //do this first so we can see the result in the collected data
 if ($_GET["load"] == 'on') {
     $tracer->setLoadOn();
@@ -501,7 +501,7 @@ $tracer->statData[9];
         });
     }
 </script>
-
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
     google.charts.load('current', {'packages':['bar']});
     google.charts.setOnLoadCallback(drawStuff);
@@ -516,12 +516,14 @@ $tracer->statData[9];
                         $q = "SELECT timestamp, Consumed_energy_month FROM stats_status WHERE timestamp < NOW()";
                 $ds = mysqli_query($q);
                 while ($r = mysqli_fetch_object($ds)) {
-                    echo "['".$r->timestamp . "' .";
-                   // echo " " . $r->Consumed_energy_month . ", ]";
+			 echo "['".$row['timestamp']."',".$row['Consumed_energy_month']."],";
+
+      //              echo "['".$r->timestamp . "' .";
+//                    echo " " . $r->Consumed_energy_month . ", ]";
 
                 }
 
-	?>
+?>	
        ['Jan', 100],
        ['feb', 85],
 	['Mar', 10],
@@ -533,13 +535,13 @@ $tracer->statData[9];
 	['Sep', 70],
 	['Oct', 80],
 	['Nov', 90],
-	['Dec', 100]
+	['Dec', 100], 
         ]);
 
         var options = {
             width: 600,
             legend: { position: 'none' },
-colors: ['#FFC725'],
+            colors: ['#FFC725'],
     chart: {
                 title: 'Energy Consumed',
                 subtitle: 'Total energy consumed: <?php echo $tracer->statData[7]; ?> Kwh' },
@@ -548,10 +550,12 @@ colors: ['#FFC725'],
                     0: { side: 'bottom', label: 'Month'} // Top x-axis.
                 }
             },
-            bar: { groupWidth: "90%" }
+             bar: { groupWidth: "90%" }
         };
 
-        var chart = new google.charts.Bar(document.getElementById('chart_line_div'));
+    //var chart = new google.visualization.ColumnChart(document.getElementById('chart_line_div'));
+   // chart.draw(data, options);
+      var chart = new google.charts.Bar(document.getElementById('chart_line_div'));
         // Convert the Classic options to Material options.
         chart.draw(data, google.charts.Bar.convertOptions(options));
     };
@@ -894,7 +898,6 @@ colors: ['#FFC725'],
         </div>
         <!-- /.container-fluid -->
 
-      </div>
       <!-- End of Main Content -->
 
       <!-- Footer -->
