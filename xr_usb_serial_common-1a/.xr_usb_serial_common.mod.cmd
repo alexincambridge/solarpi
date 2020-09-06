@@ -1,0 +1,1 @@
+cmd_/home/pi/epsolar-tracer/xr_usb_serial_common-1a/xr_usb_serial_common.mod := { echo  /home/pi/epsolar-tracer/xr_usb_serial_common-1a/xr_usb_serial_common.o; echo; } > /home/pi/epsolar-tracer/xr_usb_serial_common-1a/xr_usb_serial_common.mod

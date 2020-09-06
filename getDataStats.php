@@ -35,7 +35,7 @@ switch($_GET['q']){
 
 	// Buscar voltage DC
     case 4:
-        $statement=$pdo->prepare("SELECT `timestamp`,`PV_array_voltage` FROM `status` WHERE timestamp < NOW() - INTERVAL 1 DAY");
+        $statement=$pdo->prepare("SELECT `timestamp`,`PV_array_voltage` FROM `status` WHERE timestamp <= NOW() - INTERVAL 1 DAY");
         $statement->execute();
         $results=$statement->fetchAll(PDO::FETCH_ASSOC);
 
@@ -56,7 +56,7 @@ switch($_GET['q']){
 
        // Buscar generated and consumed daily
     case 6:
-        $statement=$pdo->prepare("SELECT `timestamp`,`Generated_energy_today`, `Consumed_energy_today` FROM `stats_status` WHERE timestamp < NOW() - INTERVAL 1440 MINUTE");
+        $statement=$pdo->prepare("SELECT `id`,`timestamp`,`Generated_energy_today`, `Consumed_energy_today` FROM `stats_status` ORDER BY `id` ASC");
         $statement->execute();
         $results=$statement->fetchAll(PDO::FETCH_ASSOC);
 

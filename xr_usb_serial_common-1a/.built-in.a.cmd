@@ -1,0 +1,1 @@
+cmd_/home/pi/epsolar-tracer/xr_usb_serial_common-1a/built-in.a := rm -f /home/pi/epsolar-tracer/xr_usb_serial_common-1a/built-in.a; ar cDPrST /home/pi/epsolar-tracer/xr_usb_serial_common-1a/built-in.a 

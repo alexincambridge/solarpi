@@ -75,7 +75,7 @@ $jsonTable = json_encode($table);
     google.charts.load('visualization', { packages: ['corechart'] });
     google.charts.setOnLoadCallback(drawLineChart);
 
-    setInterval(drawLineChart, 50000);
+    setInterval(drawLineChart, 5000);
     function drawLineChart() {
         $.ajax({
             url: "http://experiments.ddns.net/solarpi/getDataStats.php?q=2",
@@ -116,7 +116,7 @@ $jsonTable = json_encode($table);
     google.charts.load('visualization', { packages: ['corechart'] });
     google.charts.setOnLoadCallback(drawLineChart);
 
-    setInterval(drawLineChart, 50000);
+    setInterval(drawLineChart, 5000);
     function drawLineChart() {
         $.ajax({
             url: "http://experiments.ddns.net/solarpi/getDataStats.php?q=3",
@@ -242,7 +242,7 @@ $jsonTable = json_encode($table);
     google.charts.load('visualization', { packages: ['corechart'] });
     google.charts.setOnLoadCallback(drawLineChart);
     drawLineChart();
-    setInterval(drawLineChart, 50000);
+    setInterval(drawLineChart, 5000);
     function drawLineChart() {
         $.ajax({
             url: "http://experiments.ddns.net/solarpi/getDataStats.php?q=6",
@@ -277,7 +277,7 @@ $jsonTable = json_encode($table);
         });
     }
 </script>
-/*
+
     <!-- Voltage GRAPH -->
     <script type="text/javascript">
         google.load("visualization", "1", {packages: ["corechart"]});
@@ -315,7 +315,7 @@ $jsonTable = json_encode($table);
             chart.draw(data, options);
         }
     </script>
-*/
+
 <body id="page-top">
 
 <!-- Page Wrapper -->

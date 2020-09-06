@@ -23,8 +23,7 @@ $solararray["/dev/ttyXRUSB0"]["port"] = '23';
 
 require_once 'PhpEpsolarTracer.php';
 
-$date = date("M H:i");
-
+$date = date("D H:i");
 $time = time();
 
 $i = 1;
