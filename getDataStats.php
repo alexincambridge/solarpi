@@ -25,7 +25,7 @@ switch($_GET['q']){
 
     // Buscar datos load DC
     case 3:
-        $statement=$pdo->prepare("SELECT `timestamp`,`Load_voltage`,`Load_current`,`Load_power` FROM `status`");
+        $statement=$pdo->prepare("SELECT `timestamp`,`Load_voltage`,`Load_current`,`Load_power` FROM `status` ORDER BY `timestamp`");
         $statement->execute();
         $results=$statement->fetchAll(PDO::FETCH_ASSOC);
 

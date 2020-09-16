@@ -213,7 +213,7 @@ $jsonTable = json_encode($table);
 
                 // Loop through each data and populate the array.
                 $.each(data, function (index, value) {
-                    arrPv.push([value.timestamp, value.Generated_energy_month, value.Consumed_energy_month]);
+                    arrPv.push([value.timestamp, value.Consumed_energy_month, value.Generated_energy_month]);
                 });
 
                 // Set chart Options.
@@ -254,7 +254,7 @@ $jsonTable = json_encode($table);
 
                 // Loop through each data and populate the array.
                 $.each(data, function (index, value) {
-                    arrPv.push([value.timestamp, value.Generated_energy_today, value.Consumed_energy_today]);
+                    arrPv.push([value.timestamp, value.Consumed_energy_today, value.Generated_energy_today]);
                 });
 
                 // Set chart Options.

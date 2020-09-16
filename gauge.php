@@ -13,9 +13,9 @@
 
         var data = google.visualization.arrayToDataTable([
           ['Label', 'Value'],
-          ['Volts', 0],
-          ['Watts', 0],
-          ['Power', 0]
+          ['Volts (V)', 0],
+          ['Power (A)', 0],
+          ['Watts (W)', 0]
          
         ]);
 
