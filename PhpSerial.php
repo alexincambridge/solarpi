@@ -4,16 +4,12 @@ define ("SERIAL_DEVICE_SET", 1);
 define ("SERIAL_DEVICE_OPENED", 2);
 
 /**
+ *
  * Serial port control class
  *
  * THIS PROGRAM COMES WITH ABSOLUTELY NO WARRANTIES !
  * USE IT AT YOUR OWN RISKS !
  *
- * @author Rémy Sanchez <remy.sanchez@hyperthese.net>
- * @author Rizwan Kassim <rizwank@geekymedia.com>
- * @thanks Aurélien Derouineau for finding how to open serial ports with windows
- * @thanks Alec Avedisyan for help and testing with reading
- * @thanks Jim Wright for OSX cleanup/fixes.
  * @copyright under GPL 2 licence
  */
 class PhpSerial
